@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Vector2D.h"
 #include "texture.h"
+#include "checkML.h"
 
 class SceneObject: public GameObject
 {
