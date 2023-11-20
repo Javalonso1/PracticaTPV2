@@ -46,7 +46,8 @@ bool Alien::Update() {	//Update
 	}
 	return ImAlive;	//Devuelve true si sigue vivo, y false si ha sido golpeado
 }
-void Alien::Hit() {	//Si es golpeado
+bool Alien::Hit() {	//Si es golpeado
+	//LLamada a un padre
 	ImAlive = false;	//No está vivo
 }
 SDL_Rect const Alien:: getRect() {	//Método que devuelve la hitbox del alien

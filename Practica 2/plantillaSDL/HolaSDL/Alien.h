@@ -1,10 +1,12 @@
 #pragma once
 #include "checkML.h"
+#include "GameObject.h"
+#include "SceneObject.h"
 #include "Vector2D.h"
 #include "texture.h"
 class Game;
 
-class Alien
+class Alien: public SceneObject
 {
 private:
 	int ReduceFrames;	//Frame actual del alien, usado para variar velocidad
@@ -23,7 +25,7 @@ public:
 	Alien(Point2D<int>&, Texture&, int, Game*, int);
 	void Render();		//Renderizado
 	bool Update();		//Bucle principal
-	void Hit();			//Método para ser golpeado
+	bool Hit();			//Método para ser golpeado
 	SDL_Rect const getRect();	//Devuelve el rect
 	void AumentVel();	//Método para acelerar a los aliens
 	void VerticalMove(int);	//Método para que los aliens bajen

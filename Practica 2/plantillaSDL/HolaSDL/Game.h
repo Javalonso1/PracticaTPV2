@@ -7,8 +7,10 @@
 #include "Bunker.h"
 #include "Cannon.h"
 #include "texture.h"
+#include "SceneObject.h"
 #include <random>
 #include <iostream>
+#include <list>
 const int NUM_TEXTURES = 5;
 const int veticalDown = 13;
 class Game
@@ -29,6 +31,8 @@ private:
 	std::mt19937_64 rnd;	//Número random
 	int dedAliens;			//Contador de aliens muertos
 	std::string mapa;		//Nombre del mapa
+
+	std::list<SceneObject*> objetos;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	Game();				//Constructor vacío

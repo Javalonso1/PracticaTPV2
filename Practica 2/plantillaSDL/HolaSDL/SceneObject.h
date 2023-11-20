@@ -11,10 +11,11 @@ protected:
 	int width;
 	int height;
 	int vidas;
+	SDL_Rect* screenPos;
 public:
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, Game*);
 	~SceneObject();
-	void hit(SDL_Rect, char);
+	bool hit(SDL_Rect*, char);
 };
 
