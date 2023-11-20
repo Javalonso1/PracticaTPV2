@@ -13,24 +13,22 @@ class Mothership : public GameObject
 	private:	
 		int level;
 		int direction;
-		bool moveH;
+		bool wall;
+		bool move;
 		bool landed;
 
 		int livingAliens;
-		std::vector<Alien> aliens;
 	public:
 		Mothership();
-		Mothership(Game*);
-		~Mothership();
+		Mothership(Game*, int);
 		int getDirection() const;
 		bool shouldMove() const;
 		void cannotMove();
-		void AlienDied(int);
+		void AlienDied();
 		void AlienLanded();
 		bool haveLanded() const; 
 		int getAlienCount() const;
 
 		void Update();
-		void Render();
 };
 

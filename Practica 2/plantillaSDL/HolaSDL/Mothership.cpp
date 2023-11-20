@@ -5,26 +5,22 @@
 #include "Game.h"
 #include "checkML.h"
 
-Mothership::Mothership() {};
-Mothership::Mothership(Game* game) : GameObject(game) {}
-
-Mothership::~Mothership() {
-
-}
+Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall() {};
+Mothership::Mothership(Game* game, int alive) : GameObject(game), direction(1), landed(false), level(10), livingAliens(alive), move(true), wall(false) {}
 
 int Mothership::getDirection() const{
 	return direction;
 }
 
 bool Mothership::shouldMove() const {
-	return moveH;
+	return move;
 }
 
 void Mothership::cannotMove() {
-	moveH = false;
+	wall = true;
 }
 
-void Mothership::AlienDied(int pos) {
+void Mothership::AlienDied() {
 	//Llamar al alien en pos
 }
 
@@ -41,22 +37,11 @@ int Mothership::getAlienCount() const{
 }
 
 void Mothership::Update() {
-	if (moveH) {
-		for (int i = 0; i < aliens.size(); i++) {
-			if (!aliens[i].Update()) {
-
-			}
-		}
+	if (wall = true) {
+		move = false;
+		wall = false;
 	}
-	else {
-		for (int i = 0; i < aliens.size(); i++) {
-			//Mover a cada alien para abajo
-		}
-	}
-}
-
-void Mothership::Render() {
-	for (int i = 0; i < aliens.size(); i++) {
-		aliens[i].Render();
+	else if (move = false) {
+		move = true;
 	}
 }

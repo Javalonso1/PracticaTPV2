@@ -4,5 +4,5 @@
 #include "GameObject.h"
 #include "Game.h"
 
-GameObject::GameObject() {};
+GameObject::GameObject() : myGame() {};
 GameObject::GameObject(Game* gayme) : myGame(gayme) {};
