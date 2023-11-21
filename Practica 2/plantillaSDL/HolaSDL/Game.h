@@ -8,6 +8,7 @@
 #include "Cannon.h"
 #include "texture.h"
 #include "SceneObject.h"
+#include "Mothership.h"
 #include <random>
 #include <iostream>
 #include <list>
@@ -22,6 +23,7 @@ private:
 	int WinLong;			//Ancho de pantalla
 	SDL_Renderer* renderer;	//Renderizador
 	SDL_Window* window;		//Ventana donde se renderiza el juego
+	Mothership* myMothership;
 	std::vector<Alien> aliens;		//Array de aliens
 	std::vector<Laser> lasers;		//Array de láseres
 	std::vector<Bunker> bunkers;	//Array de búnkeres

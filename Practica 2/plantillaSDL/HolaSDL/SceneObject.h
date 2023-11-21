@@ -15,7 +15,7 @@ protected:
 public:
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, Game*);
-	~SceneObject();
-	bool hit(SDL_Rect*, char);
+	virtual ~SceneObject();
+	virtual bool hit(SDL_Rect*, char) = 0;
 };
 

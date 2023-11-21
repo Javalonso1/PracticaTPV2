@@ -6,3 +6,7 @@
 
 GameObject::GameObject() : myGame() {};
 GameObject::GameObject(Game* gayme) : myGame(gayme) {};
+
+GameObject::~GameObject() {
+
+}

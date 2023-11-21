@@ -1,6 +1,5 @@
 #pragma once
 #include "checkML.h"
-#include "GameObject.h"
 #include "SceneObject.h"
 #include "Vector2D.h"
 #include "texture.h"
@@ -27,10 +26,10 @@ private:
 	int minimoAltura;	//Altura bajo la cual sucede game over
 public:
 	Alien();			//Constructor vacío
-	Alien(Point2D<int>&, Texture&, int, Game*, int, Mothership*);
-	void Render();		//Renderizado
-	bool Update();		//Bucle principal
-	bool Hit(SDL_Rect*, char);			//Método para ser golpeado
+	Alien(Point2D<int>&, Texture*, int, Game*, int, Mothership*);
+	void Render() const override;		//Renderizado
+	bool Update() override;		//Bucle principal
+	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
 	SDL_Rect const getRect();	//Devuelve el rect
 	void AumentVel();	//Método para acelerar a los aliens
 	void VerticalMove(int);	//Método para que los aliens bajen

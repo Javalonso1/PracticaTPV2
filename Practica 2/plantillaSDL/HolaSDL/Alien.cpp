@@ -13,37 +13,34 @@ const int velLaser = 8;				//Velocidad que el alien le da al láser en su constru
 const int BordeD = 790;				//Constante que indica cuál es el borde derecho de la ventana
 const int BordeI = 10;				//Constante que indica cuál es el borde izquierdo de la ventana
 Alien::Alien() : myTexture(), subtipo(), ImAlive(), frame(), SceneObject(), ReduceFrames(), numberFrames(), minimoAltura(), myMother(), rect() {}	//Constructor vacío
-Alien::Alien(Point2D<int>& a, Texture& b, int d, Game* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 1, f),
+Alien::Alien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
 																					ImAlive(true), frame(true), ReduceFrames(0), numberFrames(7),
-																					minimoAltura(h), myMother(m) {//Constuctor del alien
+																					minimoAltura(h), myMother(m), myTexture(b) {//Constuctor del alien
 	rect.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
 	rect.w = myTexture->getFrameWidth();
+	myMother->assignAlien();
 	//shootlaser = (*myGame).getRandomRange(6,180);	//Da un valor aleatorio al tiempo de espera para disparar láser
 }
-void Alien::Render() {	//Renderizado
-	rect.x = pos.getX();	//Le da la posición a su rect
-	rect.y = pos.getY();
+void Alien::Render() const{	//Renderizado
 	if (frame) (*myTexture).renderFrame(rect, subtipo, 0);	//Renderiza el alien
 	else (*myTexture).renderFrame(rect, subtipo, 1);	
-	if (ReduceFrames > numberFrames) {
-		frame = !frame;		//Cambia a su siguiente frame para la animación
-	}	
+		
 }
 bool Alien::Update() {	//Update
-	if (ReduceFrames > numberFrames) {	//Método usado para que el alien solo se mueva cada cierto número de tics
+	if (myMother->shouldMove()) {
+		frame = !frame;		//Cambia a su siguiente frame para la animación
+
 		int mov = myMother->getDirection() * Velocidad;	//Pilla el movimiento del alien en el eje x
 		Vector2D a(mov, 0);
-		if (myMother->shouldMove()) {
+		if (!myMother->shouldVertical()) {
 			pos = pos + a;	//Aplica el movimiento horizontal
 			if (pos.getX() > BordeD - myTexture->getFrameWidth()) myMother->cannotMove();	//Detecta si choca con un borde
 			if (pos.getX() < BordeI) myMother->cannotMove();
 		}
 		else {
-			VerticalMove(5);
+			VerticalMove(10);
 		}
-		ReduceFrames = 0;
 	}
-	else ReduceFrames++;
 	/*if (subtipo == 0 && shootlaser <= 0) {	//si el timer para disparar el laser llega a 0, dispara un laser
 		Point2D<int> g(Pos.getX() + LaserDesplazacion, Pos.getY());
 		Vector2D<int> vel(0, velLaser);
@@ -55,16 +52,18 @@ bool Alien::Update() {	//Update
 	else {
 		//shootlaser--;
 	}*/
+	rect.x = pos.getX();	//Le da la posición a su rect
+	rect.y = pos.getY();
 	return ImAlive;	//Devuelve true si sigue vivo, y false si ha sido golpeado
 }
-bool Alien::Hit(SDL_Rect* laser, char frien) {	//Si es golpeado
-	if (hit(laser, frien)) {
+bool Alien::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
+	if (SDL_HasIntersection(laser, screenPos)) {
 		ImAlive = false;
+		myMother->AlienDied();
 		return true;
 	}
 	else {
 		return false;
-
 	}
 }
 SDL_Rect const Alien:: getRect() {	//Método que devuelve la hitbox del alien

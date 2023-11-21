@@ -34,14 +34,14 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			lector >> input2;	
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al Alien
 			lector >> input2;
-			Alien aux(xd, *texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight()); //Crea un alien
+			Alien aux(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership); //Crea un alien
 			aliens.push_back(aux);	//le añade al vector de aliens
 		}
 		else if (input1 == 2) {	//Si es un 2, es un bunker
 			lector >> input1;
 			lector >> input2;	//Pilla la posición
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker
-			Bunker aux(xd, *texturas[1]);	//Crea un bunker
+			Bunker aux(xd, *texturas[1],this);	//Crea un bunker
 			bunkers.push_back(aux);	//Lo añade al vector de bunkers
 		}		
 	}
@@ -49,13 +49,14 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), aliens(), lasers(), bunkers(), nave(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
 			window(), aliens(), lasers(), bunkers(), nave(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e) {
-	
+	myMothership = new Mothership(this);
 }
 Game::~Game() {	//Destructor del Game
 	delete(nave);	//Se borra la nave
 	for (int i = 0; i < NUM_TEXTURES; i++) {	//Se borran todas las texturas
 		delete(texturas[i]);
 	}
+	delete(myMothership);
 	SDL_DestroyRenderer(renderer);	//Se destruye el renderer
 	SDL_DestroyWindow(window);	//Se destruye la ventana
 	SDL_Quit();	//Se sale de SDL	
@@ -131,8 +132,6 @@ void Game::Render() {//Método que renderiza el juego
 
 
 void Game::Update() {	//Método que llama a todos los updates del juego
-	
-
 	for (int i = 0; i < aliens.size(); i++) {
 		if(aliens[i].Update()){}	//llama al update de los aliens
 		else {			//si da false
@@ -167,6 +166,7 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 		dedAliens = 0;
 		for (int i = 0; i < aliens.size(); i++) aliens[i].AumentVel();	//Se le dice a todos los aliens que aumenten la velocidad
 	}
+	myMothership->Update();
 }
 void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa a la nave
 	SDL_Event ev;
@@ -207,13 +207,13 @@ void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de 
 	lasers.push_back(*a);
 }
 void Game::CheckColisions(Laser* a) {	//método que comprueba la colisiones del láser
-	bool chocado = false;
+	/*bool chocado = false;
 	int i = 0;
 	if (a->Friendly()) {		//Si es un láser de la nave
 		while( i < aliens.size() && !chocado) {	//Comprueba si ha chocado con cualquiera de los aliens
 			if (SDL_HasIntersection(&(a->getRect()), &(aliens[i].getRect()))) {
-				aliens[i].Hit();				//De ser el caso envía al alien y a sí mismo Hit()
-				a->Hit();
+				//aliens[i].hit();				//De ser el caso envía al alien y a sí mismo Hit()
+				//a->Hit();
 				chocado = true;
 			}
 			i++;
@@ -229,14 +229,15 @@ void Game::CheckColisions(Laser* a) {	//método que comprueba la colisiones del l
 	if (!chocado) {//Si no ha chocado ya
 		i = 0;
 		while(i<bunkers.size() && !chocado){	//Comprueba si ha chocado con cualquiera de los bunkers
-			if (SDL_HasIntersection(&(a->getRect()), &(bunkers[i].getRect()))) {
-				bunkers[i].Hit();	//De ser este el caso, envía Hit a ambos
-				a->Hit();
+			if (SDL_HasIntersection(&(a->getRect()), (bunkers[i].getRect()))) {
+				//bunkers[i].Hit();	//De ser este el caso, envía Hit a ambos
+				//a->Hit();
 				chocado = true;
 			}
 			i++;
 		}
 	}	
+	*/
 }
 int Game::getRandomRange(int min, int max) {	//Método que pilla un número random
 	return std::uniform_int_distribution<int>(min, max)(rnd);

@@ -1,23 +1,76 @@
 ﻿  Alien.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   Cannon.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,10): error C2259: "Laser": no se puede crear una instancia de una clase abstract
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Laser.h(7,7): message : vea la declaración de 'Laser'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,10): message : debido a los siguientes miembros:
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,10): message : 'void GameObject::Render(void) const': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\GameObject.h(14,15): message : vea la declaración de 'GameObject::Render'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,10): message : 'bool SceneObject::hit(SDL_Rect *,char)': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\SceneObject.h(19,15): message : vea la declaración de 'SceneObject::hit'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): error C2259: "Laser": no se puede crear una instancia de una clase abstract
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Laser.h(7,7): message : vea la declaración de 'Laser'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): message : debido a los siguientes miembros:
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): message : 'void GameObject::Render(void) const': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\GameObject.h(14,15): message : vea la declaración de 'GameObject::Render'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): message : 'bool SceneObject::hit(SDL_Rect *,char)': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\SceneObject.h(19,15): message : vea la declaración de 'SceneObject::hit'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): error C2661: 'Laser::Laser': ninguna función sobrecargada acepta 3 argumentos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(33,11): message : al hacer coincidir la lista de argumentos '(Vector2D<int>, Vector2D<int>, bool)'
   Game.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(37,13): error C2661: 'Alien::Alien': ninguna función sobrecargada acepta 5 argumentos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(37,13): message : al hacer coincidir la lista de argumentos '(Vector2D<int>, Texture, int, Game *, int)'
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(670): error C2259: "Laser": no se puede crear una instancia de una clase abstract
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Laser.h(7,7): message : vea la declaración de 'Laser'
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(670): message : debido a los siguientes miembros:
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(670): message : 'void GameObject::Render(void) const': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\GameObject.h(14,15): message : vea la declaración de 'GameObject::Render'
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(670): message : 'bool SceneObject::hit(SDL_Rect *,char)': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\SceneObject.h(19,15): message : vea la declaración de 'SceneObject::hit'
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\vector(798,27): message : Vea la referencia a la creación de una instancia de la función plantilla "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const _Ty&>(_Alloc &,_Objty *const ,const _Ty &)" que se está compilando
+          with
+          [
+              _Alloc=std::allocator<Laser>,
+              _Ty=Laser,
+              _Objty=Laser
+          ]
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\vector(780,20): message : Vea la referencia a la creación de una instancia de la función plantilla "_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<const _Ty&>(const _Ty &)" que se está compilando
+          with
+          [
+              _Ty=Laser
+          ]
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\vector(871,9): message : Vea la referencia a la creación de una instancia de la función plantilla "_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<const _Ty&>(const _Ty &)" que se está compilando
+          with
+          [
+              _Ty=Laser
+          ]
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\vector(870,23): message : al compilar la función del miembro clase plantilla "void std::vector<Laser,std::allocator<Laser>>::push_back(const _Ty &)"
+          with
+          [
+              _Ty=Laser
+          ]
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(207,18): message : vea la primera referencia a “std::vector<Laser,std::allocator<Laser>>::push_back” en “Game::fireLaser”
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.h(28,21): message : Vea la referencia a la creación de una instancia de clase plantilla "std::vector<Laser,std::allocator<Laser>>" que se está compilando
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(677,47): error C2259: "Laser": no se puede crear una instancia de una clase abstract
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Laser.h(7,7): message : vea la declaración de 'Laser'
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(677,47): message : debido a los siguientes miembros:
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(677,47): message : 'void GameObject::Render(void) const': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\GameObject.h(14,15): message : vea la declaración de 'GameObject::Render'
+c:\software\programacion\MSVStudio2022\VC\Tools\MSVC\14.36.32532\include\xmemory(677,47): message : 'bool SceneObject::hit(SDL_Rect *,char)': es abstracto
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\SceneObject.h(19,15): message : vea la declaración de 'SceneObject::hit'
   GameObject.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  main.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Laser.cpp
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   Mothership.cpp
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Vector2D.cpp
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  main.cpp
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código...
-C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Alien.cpp(63): error C4716: 'Alien::Hit': debe devolver un valor

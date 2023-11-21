@@ -15,20 +15,26 @@ class Mothership : public GameObject
 		int direction;
 		bool wall;
 		bool move;
+		bool vertical;
 		bool landed;
-
+		int frames;
 		int livingAliens;
 	public:
 		Mothership();
-		Mothership(Game*, int);
+		Mothership(Game*);
+		~Mothership();
 		int getDirection() const;
 		bool shouldMove() const;
+		bool shouldVertical() const;
+		
 		void cannotMove();
+		void assignAlien();
 		void AlienDied();
 		void AlienLanded();
 		bool haveLanded() const; 
 		int getAlienCount() const;
 
-		void Update();
+		void Render() const override;
+		bool Update() override;
 };
 

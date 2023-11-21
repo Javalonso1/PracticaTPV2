@@ -2,19 +2,21 @@
 #include "checkML.h"
 #include "Vector2D.h"
 #include "texture.h"
-class Bunker
+#include "SceneObject.h"
+
+class Bunker : public SceneObject
 {
 private:
 	Point2D<int> Pos;	//Posición en lógica
 	int vidas;			//Golpes restantes al bunker
 	Texture* myTexture;	//Textura 
-	SDL_Rect rect;		//Posición en pantalla
+
 public:
 	Bunker();			//Constructor vacío
-	Bunker(Point2D<int>&, Texture&);	//Constructor
-	void Render();		//Renderizado
-	bool Update();		//Bucle Principal
-	void Hit();			//Método para ser golpeado
-	SDL_Rect const getRect();	//Devuelve rect
+	Bunker(Point2D<int>&, Texture&, Game*);	//Constructor
+	void Render() const override;		//Renderizado
+	bool Update() override;		//Bucle Principal
+	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
+	SDL_Rect* const getRect();	//Devuelve rect
 };
 
