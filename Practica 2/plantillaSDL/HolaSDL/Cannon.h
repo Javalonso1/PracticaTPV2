@@ -20,7 +20,7 @@ public:
 	Cannon(Point2D<int>*, Texture*, Game*, float);	//Constructor
 	void Render();		//Renderiza
 	bool Update();		//Bucle principal
-	void Hit();			//Método para recibir daño cuando es golpeado
+	bool Hit(SDL_Rect*, char);			//Método para recibir daño cuando es golpeado
 	void handleEvent(int, bool);	//Usado para manejar eventos
 	SDL_Rect const getRect();		//Devuelve el rect
 };

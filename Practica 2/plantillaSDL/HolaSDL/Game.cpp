@@ -120,7 +120,7 @@ void Game::Render() {//Método que renderiza el juego
 		aliens[i].Render();
 	}
 	for (int i = 0; i < lasers.size(); i++) {	//Se renderizan todos los lasers
-		lasers[i].Render(renderer);
+		lasers[i].Render();
 	}
 	for (int i = 0; i < bunkers.size(); i++) {	//Se renderizan todos los bunkers
 		bunkers[i].Render();		
@@ -155,8 +155,7 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 		EndGame();	//Si da false, ha perdido todas las vidas, y la partida acaba
 	}
 	for (int i = 0; i < lasers.size(); i++) {
-		if (lasers[i].Update()) {	//Se llama al Update de cada laser
-			CheckColisions(&lasers[i]);		//Se comprueban las colisiones de ese láser
+		if (lasers[i].Update()) {	//Se llama al Update de cada laser			
 		}
 		else {			
 			lasers.erase(lasers.begin() + i);	//Se borra el láser si ha chocado
@@ -206,38 +205,34 @@ bool Game::cannotMove() {	//Método al que llaman los aliens de chocar con una pa
 void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
 	lasers.push_back(*a);
 }
-void Game::CheckColisions(Laser* a) {	//método que comprueba la colisiones del láser
-	/*bool chocado = false;
+void Game::CheckColisions(SDL_Rect* LaserRect, bool friendly, Laser* a) {	//método que comprueba la colisiones del láser	
+	bool chocado = false;
 	int i = 0;
-	if (a->Friendly()) {		//Si es un láser de la nave
+	if (friendly) {		//Si es un láser de la nave
 		while( i < aliens.size() && !chocado) {	//Comprueba si ha chocado con cualquiera de los aliens
-			if (SDL_HasIntersection(&(a->getRect()), &(aliens[i].getRect()))) {
-				//aliens[i].hit();				//De ser el caso envía al alien y a sí mismo Hit()
-				//a->Hit();
+			if (aliens[i].hit(LaserRect, friendly)) {								
+				a->Hit();
 				chocado = true;
 			}
 			i++;
 		}
 	}
-	else{	//Si es un láser de la nave, checkea si choca con la nave
-		if (SDL_HasIntersection(&(a->getRect()), &(nave->getRect()))) {
-			a->Hit();	//De ser el caso envía a ambos el método hit
-			nave->Hit();
+	else{	//Si no es un láser de la nave, checkea si choca con la nave
+		if (nave->Hit(LaserRect, friendly)) {
+			a->Hit();
 			chocado = true;
 		}
 	}
 	if (!chocado) {//Si no ha chocado ya
 		i = 0;
 		while(i<bunkers.size() && !chocado){	//Comprueba si ha chocado con cualquiera de los bunkers
-			if (SDL_HasIntersection(&(a->getRect()), (bunkers[i].getRect()))) {
-				//bunkers[i].Hit();	//De ser este el caso, envía Hit a ambos
-				//a->Hit();
+			if (bunkers[i].hit(LaserRect, friendly)) {
+				a->Hit();
 				chocado = true;
 			}
 			i++;
 		}
-	}	
-	*/
+	}		
 }
 int Game::getRandomRange(int min, int max) {	//Método que pilla un número random
 	return std::uniform_int_distribution<int>(min, max)(rnd);
@@ -247,4 +242,7 @@ void Game::EndGame() {	//Método para acabar con el juego
 }
 bool Game::getExit() {	//Método que comprueba si ha acabado el juego
 	return exit;
+}
+SDL_Renderer* Game::getRenderer() {
+	return renderer;
 }

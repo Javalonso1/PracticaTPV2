@@ -47,10 +47,11 @@ public:
 	int GetDirection();	//Devuelve la dirección de los aliens
 	bool cannotMove();	//Es llamado cuando los aliens chocan con una pared
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
-	void CheckColisions(Laser* a);	//Comprueba las colisiones de todos los láseres
+	void CheckColisions(SDL_Rect*, bool, Laser*);	//Comprueba las colisiones de todos los láseres
 	int getRandomRange(int min, int max);	//Devuelve un númerp random
 	bool getExit();		//Devuelve exit
 	void EndGame();		//Cierra el juego
 	void loadTextures();			//Carga las texturas
+	SDL_Renderer* getRenderer();
 };
 

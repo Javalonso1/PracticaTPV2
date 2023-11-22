@@ -11,9 +11,7 @@ class Alien: public SceneObject
 private:
 	int ReduceFrames;	//Frame actual del alien, usado para variar velocidad
 	bool frame;			//Frame actual de la animación
-
-	//Point2D<int> Pos;	//Posición del alien en lógica
-	SDL_Rect rect;		//Posición en pantalla
+		
 	int subtipo;		//Subtipo de alien
 	Texture* myTexture;	//Textura
 
@@ -30,7 +28,7 @@ public:
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
-	SDL_Rect const getRect();	//Devuelve el rect
+	SDL_Rect* const getRect();	//Devuelve el rect
 	void AumentVel();	//Método para acelerar a los aliens
 	void VerticalMove(int);	//Método para que los aliens bajen
 };

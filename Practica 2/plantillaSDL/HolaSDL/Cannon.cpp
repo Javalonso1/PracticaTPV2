@@ -30,7 +30,7 @@ bool Cannon::Update() {		//Update
 		if (dispara) {	//Si el jugador le dice que dispare
 			Point2D<int> g(Pos.getX()+ LaserDesplazacion, Pos.getY());	//Crea un Point2D que será la posición del láser
 			Vector2D<int> vel(0, velLaser);		//Crea un vector que será la velocidad al láser
-			Laser a(g, vel, true);		//Crea un láser con todos sus valores
+			Laser a(g, vel, true, myGame);		//Crea un láser con todos sus valores
 			myGame->fireLaser(&a);		//Le pasa el láser al Game
 			tiempoRes = 0;		//Reinicia el timer
 			dispara = false;
@@ -38,8 +38,14 @@ bool Cannon::Update() {		//Update
 	}
 	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
-void Cannon::Hit() {	//Si es golpeado
-	vidas--;	//Pierde una vida
+bool Cannon::Hit(SDL_Rect* laser, char frien) {	//Si es golpeado
+	if (SDL_HasIntersection(laser, &rect)) {
+		vidas--;		
+		return true;
+	}
+	else {
+		return false;
+	}	
 }
 void Cannon::handleEvent(int mov, bool disparado) {		//Le pasan los inputs del jugador, y este método lo transforma en variables legibles en el Cannon
 	DirecMov = mov*10;
