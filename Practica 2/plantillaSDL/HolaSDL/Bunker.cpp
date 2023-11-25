@@ -25,3 +25,6 @@ bool Bunker::hit(SDL_Rect* laser, char frien) {	//Si es golpeado, pierde una de 
 SDL_Rect* const Bunker::getRect() {	//Método que devuelve la hitbox del bunker
 	return screenPos;
 }
+void Bunker::setListIterator(std::list<SceneObject*>::iterator it) {
+	miIterador = it;
+}

@@ -9,6 +9,7 @@
 #include "texture.h"
 #include "SceneObject.h"
 #include "Mothership.h"
+#include "UFO.h"
 #include <random>
 #include <iostream>
 #include <list>
@@ -24,10 +25,16 @@ private:
 	SDL_Renderer* renderer;	//Renderizador
 	SDL_Window* window;		//Ventana donde se renderiza el juego
 	Mothership* myMothership;
-	std::vector<Alien> aliens;		//Array de aliens
-	std::vector<Laser> lasers;		//Array de láseres
-	std::vector<Bunker> bunkers;	//Array de búnkeres
+
+	std::list<SceneObject*> Lista;
 	Cannon* nave;			//Nave del jugador
+	Laser* laserAMeter;
+
+	/*std::vector<Alien> aliens;		//Array de aliens
+	std::vector<Laser> lasers;		//Array de láseres
+	std::vector<Bunker> bunkers;	//Array de búnkeres	
+	UFO* ufo;*/
+
 	bool exit;				//Booleano para terminar el juego
 	Texture* texturas[NUM_TEXTURES];	//Array con las texturas
 	std::mt19937_64 rnd;	//Número random
@@ -53,5 +60,6 @@ public:
 	void EndGame();		//Cierra el juego
 	void loadTextures();			//Carga las texturas
 	SDL_Renderer* getRenderer();
+	void HasDied(std::list<SceneObject*>::iterator Iterador);
 };
 

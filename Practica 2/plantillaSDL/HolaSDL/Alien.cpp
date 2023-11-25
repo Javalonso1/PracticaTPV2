@@ -77,4 +77,8 @@ void Alien::VerticalMove(int y) {	//Método al que se llama para que el alien des
 	Vector2D a(0, y);
 	pos = pos + a;	//Se cambia la posición
 	if (pos.getY() > minimoAltura) (*myGame).EndGame();	//Si ha alcanzado la altura de la nave, eso es que el jugador ha perdido, y el juego termina
+
+}
+void Alien::setListIterator(std::list<SceneObject*>::iterator it) {
+	miIterador = it;
 }

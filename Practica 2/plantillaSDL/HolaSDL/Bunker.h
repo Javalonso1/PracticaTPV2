@@ -17,6 +17,7 @@ public:
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle Principal
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
+	void setListIterator(std::list<SceneObject*>::iterator) override;
 	SDL_Rect* const getRect();	//Devuelve rect
 };
 

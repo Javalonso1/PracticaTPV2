@@ -31,5 +31,6 @@ public:
 	SDL_Rect* const getRect();	//Devuelve el rect
 	void AumentVel();	//Método para acelerar a los aliens
 	void VerticalMove(int);	//Método para que los aliens bajen
+	void setListIterator(std::list<SceneObject*>::iterator) override;
 };
 

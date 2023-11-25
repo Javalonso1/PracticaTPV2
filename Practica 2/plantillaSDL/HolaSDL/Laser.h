@@ -16,6 +16,7 @@ public:
 	void Render() const override;
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, char) override;			//Método que anula 
+	void setListIterator(std::list<SceneObject*>::iterator) override;
 	bool Hit();
 	SDL_Rect* const getRect();	//Devuelve rect
 	bool const Friendly();		//Devuelve friendly
