@@ -8,8 +8,8 @@
 #include "SceneObject.h"
 
 const int Velocidad = 15;			//Constante que indica cuanto se mueve el alien
-const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto al alien
-const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
+//const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto al alien
+//const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
 const int BordeD = 790;				//Constante que indica cuál es el borde derecho de la ventana
 const int BordeI = 10;				//Constante que indica cuál es el borde izquierdo de la ventana
 Alien::Alien() : myTexture(), subtipo(), ImAlive(), frame(), SceneObject(), ReduceFrames(), numberFrames(), minimoAltura(), myMother() {}	//Constructor vacío

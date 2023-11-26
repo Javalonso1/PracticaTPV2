@@ -8,7 +8,7 @@ class Mothership;
 
 class Alien: public SceneObject
 {
-private:
+protected:
 	int ReduceFrames;	//Frame actual del alien, usado para variar velocidad
 	bool frame;			//Frame actual de la animación
 		
@@ -26,7 +26,7 @@ public:
 	Alien();			//Constructor vacío
 	Alien(Point2D<int>&, Texture*, int, Game*, int, Mothership*);
 	void Render() const override;		//Renderizado
-	bool Update() override;		//Bucle principal
+	virtual bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
 	SDL_Rect* const getRect();	//Devuelve el rect
 	void AumentVel();	//Método para acelerar a los aliens

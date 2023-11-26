@@ -1,0 +1,27 @@
+#include "ShooterAlien.h"
+#include "Alien.h"
+#include "Vector2D.h"
+#include "texture.h"
+#include "Laser.h"
+#include "Game.h"
+#include "Mothership.h"
+
+const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto al alien
+const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
+
+bool ShooterAlien::Update()  {
+	Alien::Update();
+	if (myMother->shouldMove()) {
+		if (shootlaser <= 0) {	//si el timer para disparar el laser llega a 0, dispara un laser
+			Point2D<int> g(pos.getX() + LaserDesplazacion, pos.getY());
+			Vector2D<int> vel(0, velLaser);
+			Laser* xd = new Laser(g, vel, false, myGame);	//Crea el láser
+			myGame->fireLaser(xd);	//Se lo pasa al Game para que lo meta en su vector
+
+			shootlaser = myGame->getRandomRange(30, 180);	//Da un valor random de nuevo al timer
+		}
+		else {
+			shootlaser--;
+		}
+	}
+}

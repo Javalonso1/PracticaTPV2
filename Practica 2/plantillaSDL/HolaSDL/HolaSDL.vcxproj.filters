@@ -51,6 +51,9 @@
     <ClCompile Include="UFO.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="ShooterAlien.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkML.h">
@@ -87,6 +90,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="UFO.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ShooterAlien.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
