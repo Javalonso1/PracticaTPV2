@@ -20,5 +20,6 @@ public:
 	bool Hit();
 	SDL_Rect* const getRect();	//Devuelve rect
 	bool const Friendly();		//Devuelve friendly
+	void save(std::ostream&) const override;
 };
 

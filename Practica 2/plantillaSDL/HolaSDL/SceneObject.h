@@ -20,5 +20,6 @@ public:
 	virtual ~SceneObject();
 	virtual bool hit(SDL_Rect*, char) = 0;
 	virtual void setListIterator(std::list<SceneObject*>::iterator) = 0;
+
 };
 

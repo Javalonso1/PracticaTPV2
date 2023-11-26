@@ -6,7 +6,7 @@
 #include "checkML.h"
 
 Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall() {};
-Mothership::Mothership(Game* game) : GameObject(game), direction(1), landed(false), level(10), livingAliens(0), move(true), wall(false), frames(0) { }
+Mothership::Mothership(Game* game) : GameObject(game), direction(1), landed(false), level(20), livingAliens(0), move(true), wall(false), frames(0) { }
 
 Mothership::~Mothership() {
 
@@ -70,4 +70,7 @@ bool Mothership::Update() {
 		frames++;
 	}
 	return true;
+}
+void Mothership::save(std::ostream& a) const {
+	a << "3 " << direction << " " << level << " " << frames;
 }

@@ -4,7 +4,7 @@
 #include "texture.h"
 #include "Game.h"
 const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto a la nave
-const int velLaser = -10;			//Velocidad que la nave le da al láser en su construtor
+const int velLaser = -5;			//Velocidad que la nave le da al láser en su construtor
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
 Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d) : myTexture(b), DirecMov(), dispara(false), tiempoRes(d), tiempoEsp(d), 
@@ -15,7 +15,7 @@ SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 3, c) { //Constructor co
 void Cannon::Render() const{	//Render
 	(*myTexture).renderFrame(*screenPos, 0, 0);	//Renderiza la nave
 }
-bool Cannon::Update() {		//Update
+bool Cannon::Update() {		//Update	
 	if (DirecMov != 0) {	//Si el jugador le dice que se mueva en una dirección
 		Vector2D a(DirecMov, 0);	//Le da ese valor al vector
 		pos = pos + a;		//Cambia su posición de acuerdo con ello
@@ -40,18 +40,24 @@ bool Cannon::Update() {		//Update
 	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
 bool Cannon::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
-	if (SDL_HasIntersection(laser, screenPos)) {
-		vidas--;		
-		return true;
+	if (frien == false) {
+		if (SDL_HasIntersection(laser, screenPos)) {
+			vidas--;
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	else {
-		return false;
-	}	
+	else return false;
 }
 void Cannon::handleEvent(int mov, bool disparado) {		//Le pasan los inputs del jugador, y este método lo transforma en variables legibles en el Cannon
-	DirecMov = mov*10;
+	DirecMov = mov*5;
 	dispara = disparado;	
 }
 void Cannon::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
+}
+void Cannon::save(std::ostream& a) const {
+	a << "0 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << tiempoEsp;
 }

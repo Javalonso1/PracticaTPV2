@@ -32,5 +32,6 @@ public:
 	void AumentVel();	//Método para acelerar a los aliens
 	void VerticalMove(int);	//Método para que los aliens bajen
 	void setListIterator(std::list<SceneObject*>::iterator) override;
+	void save(std::ostream&) const override;
 };
 

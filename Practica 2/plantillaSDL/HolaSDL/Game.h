@@ -27,8 +27,7 @@ private:
 	Mothership* myMothership;
 
 	std::list<SceneObject*> Lista;
-	Cannon* nave;			//Nave del jugador
-	Laser* laserAMeter;
+	Cannon* nave;			//Nave del jugador	
 
 	/*std::vector<Alien> aliens;		//Array de aliens
 	std::vector<Laser> lasers;		//Array de láseres
@@ -40,12 +39,13 @@ private:
 	std::mt19937_64 rnd;	//Número random
 	int dedAliens;			//Contador de aliens muertos
 	std::string mapa;		//Nombre del mapa
+	std::string guardado;		//Nombre del mapa guardado
 
 	std::list<SceneObject*> objetos;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	Game();				//Constructor vacío
-	Game(std::string);	//Constructor
+	Game(std::string, std::string);	//Constructor
 	~Game();			//Destructor
 	void Run();			//Lanza el juego
 	void Render();		//Renderiza
@@ -61,5 +61,6 @@ public:
 	void loadTextures();			//Carga las texturas
 	SDL_Renderer* getRenderer();
 	void HasDied(std::list<SceneObject*>::iterator Iterador);
+	void Save();
 };
 

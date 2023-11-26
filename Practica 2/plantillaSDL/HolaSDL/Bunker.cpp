@@ -10,7 +10,7 @@ void Bunker::Render() const {	//Renderizado del bunker
 		(*myTexture).renderFrame(*screenPos, 0, 4 - vidas);	//Renderiza el bunker
 	}
 }
-bool Bunker::Update() {	//Devuelve si aún tiene vidas
+bool Bunker::Update() {	//Devuelve si aún tiene vidas	
 	return vidas > 0;
 }
 bool Bunker::hit(SDL_Rect* laser, char frien) {	//Si es golpeado, pierde una de sus vidas
@@ -27,4 +27,7 @@ SDL_Rect* const Bunker::getRect() {	//Método que devuelve la hitbox del bunker
 }
 void Bunker::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
+}
+void Bunker::save(std::ostream& a) const {
+	a << "4 " << pos.getX() << " " << pos.getY() << " " << vidas;
 }

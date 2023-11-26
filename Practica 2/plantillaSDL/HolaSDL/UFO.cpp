@@ -7,7 +7,7 @@ const int BordeD = 850;				//Constante que indica cuál es el borde derecho de la
 const int BordeI = -50;				//Constante que indica cuál es el borde izquierdo de la ventana
 
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
-UFO::UFO(Point2D<int> a, Texture* b, Game* c) : myTexture(b), tiempoEsp(), MiEstado(Oculto), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, c), MovingRight(-1)
+UFO::UFO(Point2D<int> a, Texture* b, Game* c) : myTexture(b), tiempoEsp(), MiEstado(Oculto), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 10, c), MovingRight(-1)
 {
 	tiempoEsp =  50;//myGame->getRandomRange(100, 280);
 }
@@ -15,7 +15,7 @@ void UFO::Render() const {	//Render
 	if(MiEstado == Visible)(*myTexture).renderFrame(*screenPos, 0, 0);	//Renderiza la nave
 	else if (MiEstado == Destruido && MovingRight !=0)(*myTexture).renderFrame(*screenPos, 0, 1);	//Renderiza la nave
 }
-bool UFO::Update() {		//Update
+bool UFO::Update() {		//Update	
 	if (MiEstado == Oculto) {
 		tiempoEsp--;
 		if (tiempoEsp <= 0) {
@@ -29,7 +29,7 @@ bool UFO::Update() {		//Update
 		}
 	}
 	else if (MiEstado == Visible) {		
-		Vector2D a(10 * MovingRight, 0);
+		Vector2D a(5 * MovingRight, 0);
 		pos = pos + a;
 		if (MovingRight == 1 && pos.getX() > BordeD - myTexture->getFrameWidth()) 
 		{ 
@@ -41,7 +41,10 @@ bool UFO::Update() {		//Update
 			tiempoEsp = 50;// myGame->getRandomRange(100, 280);
 		}
 
-	}if (MiEstado == Destruido) MovingRight = 0;
+	}if (MiEstado == Destruido) {
+		MovingRight = 0;
+		vidas--;
+	}
 
 
 
@@ -52,7 +55,7 @@ bool UFO::Update() {		//Update
 bool UFO::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (MiEstado == Visible) {
 		if (SDL_HasIntersection(laser, screenPos)) {
-			vidas--;
+			MiEstado = Destruido;
 			return true;
 		}
 		else {
@@ -61,9 +64,9 @@ bool UFO::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	}
 	else return false;
 }
-void UFO::Destroyed() {
-	MiEstado = Destruido;
-}
 void UFO::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
+}
+void UFO::save(std::ostream& a) const {
+	a << "5 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << MiEstado << " " << tiempoEsp;
 }

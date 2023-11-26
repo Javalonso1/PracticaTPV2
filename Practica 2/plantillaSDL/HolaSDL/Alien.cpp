@@ -26,7 +26,7 @@ void Alien::Render() const{	//Renderizado
 	else (*myTexture).renderFrame(*screenPos, subtipo, 1);
 		
 }
-bool Alien::Update() {	//Update
+bool Alien::Update() {	//Update		
 	if (myMother->shouldMove()) {
 		frame = !frame;		//Cambia a su siguiente frame para la animación
 
@@ -57,14 +57,17 @@ bool Alien::Update() {	//Update
 	return ImAlive;	//Devuelve true si sigue vivo, y false si ha sido golpeado
 }
 bool Alien::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
-	if (SDL_HasIntersection(laser, screenPos)) {
-		ImAlive = false;
-		myMother->AlienDied();
-		return true;
+	if (frien) {
+		if (SDL_HasIntersection(laser, screenPos)) {
+			ImAlive = false;
+			myMother->AlienDied();
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	else {
-		return false;
-	}
+	else return false;
 }
 SDL_Rect* const Alien:: getRect() {	//Método que devuelve la hitbox del alien
 	return screenPos;
@@ -81,4 +84,7 @@ void Alien::VerticalMove(int y) {	//Método al que se llama para que el alien des
 }
 void Alien::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
+}
+void Alien::save(std::ostream& a) const {
+	a << "1 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << subtipo;
 }

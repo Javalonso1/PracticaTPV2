@@ -19,5 +19,6 @@ public:
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
 	void setListIterator(std::list<SceneObject*>::iterator) override;
 	SDL_Rect* const getRect();	//Devuelve rect
+	void save(std::ostream&) const override;
 };
 

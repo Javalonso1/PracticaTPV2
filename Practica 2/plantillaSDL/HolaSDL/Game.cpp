@@ -48,8 +48,8 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 	Lista.push_back(new UFO(ga, texturas[5], this));
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
-Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
-			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e) {
+Game::Game(std::string e, std::string g) : direction(true), WinHeight(), WinLong(), renderer(),
+			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g) {
 	myMothership = new Mothership(this);	
 	
 }
@@ -106,13 +106,13 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 			}
 			Render();
 			Update();					//Ejecuta todos los eventos del main (Render, Update...)
-			SDL_Delay(50);				//Pequeño delay
+			SDL_Delay(25);				//Pequeño delay
 			HandleEvents();
 		}
 	}
 }
 
-void Game::Render() {//Método que renderiza el juego
+void Game::Render() {//Método que renderiza el juego	
 	SDL_Rect rect;	
 	rect.h = 600;
 	rect.w = 800;
@@ -127,17 +127,16 @@ void Game::Render() {//Método que renderiza el juego
 
 
 
-void Game::Update() {	//Método que llama a todos los updates del juego	
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); ++i) {
-		if((*i)->Update()){}
-		else {
-			HasDied(i);
-		}
-	}
-	if (laserAMeter != nullptr) {
-		Lista.push_back(laserAMeter);
-		laserAMeter = nullptr;
-	}
+void Game::Update() {	//Método que llama a todos los updates del juego		
+	std::list<SceneObject*>::iterator i = Lista.begin();
+	while (i != Lista.end()) {
+		if ((*i)->Update()) {i++;}
+		else
+		{
+			HasDied(i);			
+			i = Lista.end();
+		}				
+	}	
 	/*for (int i = 0; i < aliens.size(); i++) {
 		if(aliens[i].Update()){}	//llama al update de los aliens
 		else {			//si da false
@@ -194,6 +193,9 @@ void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa
 			case SDLK_SPACE:
 				shoot = true;
 				break;
+			case SDLK_g:
+				Save();
+				break;
 			default:
 				break;
 			}
@@ -213,13 +215,12 @@ bool Game::cannotMove() {	//Método al que llaman los aliens de chocar con una pa
 	return true;
 }
 void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
-	laserAMeter = a;	
+	Lista.push_back(a);
 }
 void Game::CheckColisions(SDL_Rect* LaserRect, bool friendly, Laser* a) {	//método que comprueba la colisiones del láser	
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		if ((*i)->hit(LaserRect, friendly)) {}
-		else {
-			a->Hit();
+	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {		
+		if ((*i)->hit(LaserRect, friendly)) {a->Hit();}
+		else {			
 		}
 	}
 	
@@ -256,10 +257,8 @@ void Game::CheckColisions(SDL_Rect* LaserRect, bool friendly, Laser* a) {	//méto
 		}
 	}	*/	
 }
-int Game::getRandomRange(int min, int max) {	//Método que pilla un número random
-	std::cout << "c";
-	return std::uniform_int_distribution<int>(min, max)(rnd);
-	std::cout << "d";
+int Game::getRandomRange(int min, int max) {	//Método que pilla un número random	
+	return std::uniform_int_distribution<int>(min, max)(rnd);	
 }
 void Game::EndGame() {	//Método para acabar con el juego
 	exit = false;
@@ -272,4 +271,13 @@ SDL_Renderer* Game::getRenderer() {
 }
 void Game::HasDied(std::list<SceneObject*>::iterator it) {
 	Lista.erase(it);
+}
+void Game::Save() {
+	std::ofstream a(guardado);
+	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		(*i)->save(a);
+		a << "\n";
+	}
+	myMothership->save(a);
+	std::cout << "Exito";
 }

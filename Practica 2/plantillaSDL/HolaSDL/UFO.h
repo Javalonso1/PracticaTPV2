@@ -21,6 +21,6 @@ public:
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado	
 	void setListIterator(std::list<SceneObject*>::iterator) override;
-	void Destroyed();
+	void save(std::ostream&) const override;
 };
 

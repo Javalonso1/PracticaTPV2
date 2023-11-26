@@ -18,9 +18,9 @@ void Laser::Render() const {	//Render
 	else SDL_SetRenderDrawColor(myGame->getRenderer(), 0, 255, 0, 255);		//Si es un láser de un alien, se colorea de rojo
 	SDL_RenderFillRect(myGame->getRenderer(),screenPos);	//Se dibuja un rectángulo de ese color
 }
-bool Laser::Update() {	//Update
-	pos = pos + Vel;	//Avanza
-	myGame->CheckColisions(screenPos, friendly, this);
+bool Laser::Update() {	//Update		
+	pos = pos + Vel;	//Avanza	
+	myGame->CheckColisions(screenPos, friendly, this);		
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
 bool Laser::hit(SDL_Rect*, char) {		//Método al que se llama cuando choca con algo		
@@ -38,4 +38,7 @@ bool const Laser::Friendly() {	//Método que devuelve true si es un láser lanzado
 }
 void Laser::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
+}
+void Laser::save(std::ostream& a) const {
+	a << "6 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << friendly;
 }

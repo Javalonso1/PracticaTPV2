@@ -36,5 +36,6 @@ class Mothership : public GameObject
 
 		void Render() const override;
 		bool Update() override;
+		void save(std::ostream&) const override;
 };
 

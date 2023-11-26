@@ -20,7 +20,7 @@ void firstTest()
 	
 				
 		try {
-			Game a("trinchera.txt");
+			Game a("trinchera.txt", "guardar.txt");
 			a.Run(); //Contrusctor del game. Le damos el nombre del archivo del mapa			
 		}
 		catch (string error) {		//Detecta si hay algún error en este proceso, y lanza el error de ser el caso
