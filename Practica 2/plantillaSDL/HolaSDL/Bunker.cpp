@@ -3,7 +3,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 Bunker::Bunker() : Pos(), vidas(), myTexture() {}	//Constructor vacío del bunker
-Bunker::Bunker(Point2D<int>& a, Texture& b, Game* gayme) : Pos(a), vidas(4), myTexture(&b), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 4, gayme) {}	//Constructor con valores
+Bunker::Bunker(Point2D<int>& a, Texture& b, Game* gayme, int i) : Pos(a), vidas(i), myTexture(&b), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 4, gayme) {}	//Constructor con valores
 
 void Bunker::Render() const {	//Renderizado del bunker
 	if (vidas > 0) {

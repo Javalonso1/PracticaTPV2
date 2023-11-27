@@ -14,7 +14,7 @@ private:
 	float tiempoEsp;	//Tiempo que debe esperar la nave para disparar de nuevo	
 public:
 	Cannon();			//Constructor vacío
-	Cannon(Point2D<int>, Texture*, Game*, float);	//Constructor
+	Cannon(Point2D<int>, Texture*, Game*, float, float);	//Constructor
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado

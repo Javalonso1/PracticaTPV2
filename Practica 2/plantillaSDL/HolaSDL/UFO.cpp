@@ -7,10 +7,7 @@ const int BordeD = 850;				//Constante que indica cuál es el borde derecho de la
 const int BordeI = -50;				//Constante que indica cuál es el borde izquierdo de la ventana
 
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
-UFO::UFO(Point2D<int> a, Texture* b, Game* c) : myTexture(b), tiempoEsp(), MiEstado(Oculto), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 10, c), MovingRight(-1)
-{
-	tiempoEsp =  50;//myGame->getRandomRange(100, 280);
-}
+UFO::UFO(Point2D<int> a, Texture* b, Game* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
 void UFO::Render() const {	//Render
 	if(MiEstado == Visible)(*myTexture).renderFrame(*screenPos, 0, 0);	//Renderiza la nave
 	else if (MiEstado == Destruido && MovingRight !=0)(*myTexture).renderFrame(*screenPos, 0, 1);	//Renderiza la nave

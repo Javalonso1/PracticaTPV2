@@ -28,7 +28,9 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			lector >> input1;	//Pilla la posición
 			lector >> minAlt;	
 			Point2D<int> ab(input1, minAlt); //Crea un Point2D que darle a la nave
-			nave = new Cannon(ab, texturas[0], this, 13);	//Crea una nave nueva
+			lector >> input1;	
+			lector >> input2;
+			nave = new Cannon(ab, texturas[0], this,input2, input1);	//Crea una nave nueva
 			Lista.push_back(nave);
 		}
 		else if (input1 == 1) {	//Si es 1, es un alien
@@ -43,22 +45,43 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 				Lista.push_back(new Alien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
 			}
 		}
-		else if (input1 == 2) {	//Si es un 2, es un bunker
+		else if (input1 == 5) {	//Si es un 5, es un bunker
+			lector >> input1;
+			lector >> input2;	//Pilla la posición
+			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al UFO
+			lector >> input2;
+			lector >> input1;	//Pilla número de vidas
+			lector >> minAlt;	//Pilla número de vidas
+			Lista.push_back(new UFO(xd, texturas[5], this, input2, input1, minAlt));//Pilla número de vidas
+			
+		}
+		else if (input1 == 4) {	//Si es un 4, es un bunker
 			lector >> input1;
 			lector >> input2;	//Pilla la posición
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
-			Lista.push_back(new Bunker(xd, *texturas[1], this));	//Lo añade al vector de bunkers			
+			lector >> input2;	//Pilla número de vidas
+			Lista.push_back(new Bunker(xd, *texturas[1], this, input2));	//Lo añade al vector de bunkers			
 		}		
-	}	
-	Point2D<int> ga(0, 20);
-	Lista.push_back(new UFO(ga, texturas[5], this));
+		else if (input1 == 6) {
+			lector >> input1;
+			lector >> input2;	//Pilla la posición
+			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
+			lector >> input1;	//Pilla número de vidas
+			lector >> input2;	//Pilla número de vidas
+			Lista.push_back(new Laser(xd, input1, input2, this));	//Crea el láser
+		}
+		else if (input1 == 3) {
+			//a << "3 " << direction << " " << level << " " << frames;
+			lector >> input1;
+			lector >> input2;
+			lector >> minAlt;
+			myMothership = new Mothership(this, input1, input2, minAlt);			
+		}		
+	}		
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e, std::string g) : direction(true), WinHeight(), WinLong(), renderer(),
-			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g), rnd(time(nullptr)) {
-	myMothership = new Mothership(this);	
-	
-}
+			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g), rnd(time(nullptr)) {}
 Game::~Game() {	//Destructor del Game
 	//delete(nave);	//Se borra la nave
 	for (int i = 0; i < NUM_TEXTURES; i++) {	//Se borran todas las texturas
@@ -286,10 +309,10 @@ void Game::HasDied(std::list<SceneObject*>::iterator it) {
 
 void Game::Save() {
 	std::ofstream a(guardado);
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		(*i)->save(a);
-		a << "\n";
-	}
 	myMothership->save(a);
+	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		a << "\n";
+		(*i)->save(a);		
+	}	
 	std::cout << "Exito";
 }

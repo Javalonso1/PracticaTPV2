@@ -15,9 +15,8 @@ ShooterAlien::ShooterAlien(Point2D<int>& a, Texture* b, int d, Game* f, int h, M
 bool ShooterAlien::Update()  {
 	if (myMother->shouldMove()) {
 		if (shootlaser <= 0) {	//si el timer para disparar el laser llega a 0, dispara un laser
-			Point2D<int> g(pos.getX() + LaserDesplazacion, pos.getY());
-			Vector2D<int> vel(0, velLaser);
-			Laser* xd = new Laser(g, vel, false, myGame);	//Crea el láser
+			Point2D<int> g(pos.getX() + LaserDesplazacion, pos.getY());			
+			Laser* xd = new Laser(g, velLaser, false, myGame);	//Crea el láser
 			myGame->fireLaser(xd);	//Se lo pasa al Game para que lo meta en su vector
 
 			//shootlaser = myGame->getRandomRange(30, 180);	//Da un valor random de nuevo al timer

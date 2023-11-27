@@ -17,7 +17,7 @@ Alien::Alien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) 
 																					ImAlive(true), frame(true), ReduceFrames(0), numberFrames(7),
 																					minimoAltura(h), myMother(m), myTexture(b) {//Constuctor del alien
 	screenPos->h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
-	screenPos->w = myTexture->getFrameWidth();
+	screenPos->w = myTexture->getFrameWidth();	
 	myMother->assignAlien();
 	//shootlaser = (*myGame).getRandomRange(6,180);	//Da un valor aleatorio al tiempo de espera para disparar láser
 }
@@ -86,5 +86,5 @@ void Alien::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
 }
 void Alien::save(std::ostream& a) const {
-	a << "1 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << subtipo;
+	a << "1 " << pos.getX() << " " << pos.getY() << " " << subtipo;
 }

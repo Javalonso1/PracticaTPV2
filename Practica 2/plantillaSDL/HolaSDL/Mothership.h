@@ -21,7 +21,7 @@ class Mothership : public GameObject
 		int livingAliens;
 	public:
 		Mothership();
-		Mothership(Game*);
+		Mothership(Game*, int, int, int);
 		~Mothership();
 		int getDirection() const;
 		bool shouldMove() const;

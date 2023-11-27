@@ -8,8 +8,9 @@ const int heigth = 10;	//constante que guarda cuanto de alto mide el láser
 const int wide = 3;		//constante que gurada cuanto de ancho mide el láser
 
 Laser::Laser() : Vel(), friendly(){}		//Constructor vacío
-Laser::Laser(Point2D<int>& a, Vector2D<int>& b, bool c, Game* gayme): Vel(b), friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
+Laser::Laser(Point2D<int>& a,int b, bool c, Game* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
 	ImAlive = true;
+	Vel = Vector2D<int> (0, b);		//Crea un vector que será la velocidad al láser
 }
 void Laser::Render() const {	//Render
 	screenPos->x = pos.getX();	//Modifica el rect según su posición
@@ -40,5 +41,5 @@ void Laser::setListIterator(std::list<SceneObject*>::iterator it) {
 	miIterador = it;
 }
 void Laser::save(std::ostream& a) const {
-	a << "6 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << friendly;
+	a << "6 " << pos.getX() << " " << pos.getY() << " " << Vel.getY() << " " <<friendly;
 }

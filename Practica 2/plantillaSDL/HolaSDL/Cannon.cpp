@@ -7,8 +7,8 @@ const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser r
 const int velLaser = -5;			//Velocidad que la nave le da al láser en su construtor
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
-Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d) : myTexture(b), DirecMov(), dispara(false), tiempoRes(d), tiempoEsp(d), 
-SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 3, c) { //Constructor con valores
+Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d, float e) : myTexture(b), DirecMov(), dispara(false), tiempoRes(e), tiempoEsp(d), 
+SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c) { //Constructor con valores
 	screenPos->h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
 	screenPos->w = myTexture->getFrameWidth();
 }
@@ -27,9 +27,8 @@ bool Cannon::Update() {		//Update
 	}
 	else {
 		if (dispara) {	//Si el jugador le dice que dispare
-			Point2D<int> g(pos.getX()+ LaserDesplazacion, pos.getY());	//Crea un Point2D que será la posición del láser
-			Vector2D<int> vel(0, velLaser);		//Crea un vector que será la velocidad al láser
-			Laser* a = new Laser(g, vel, true, myGame);		//Crea un láser con todos sus valores
+			Point2D<int> g(pos.getX()+ LaserDesplazacion, pos.getY());	//Crea un Point2D que será la posición del láser			
+			Laser* a = new Laser(g, velLaser, true, myGame);		//Crea un láser con todos sus valores
 			myGame->fireLaser(a);		//Le pasa el láser al Game
 			tiempoRes = 0;		//Reinicia el timer
 			dispara = false;
