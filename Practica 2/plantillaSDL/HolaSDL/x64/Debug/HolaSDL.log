@@ -1,43 +1,4 @@
-﻿  Alien.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Bunker.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Cannon.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Game.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  GameObject.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Laser.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  main.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Mothership.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  SceneObject.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  ShooterAlien.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\ShooterAlien.h(2,10): error C2001: nueva línea en constante
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  texture.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(16,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(17,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(40,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(41,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-  UFO.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Vector2D.cpp
-  Generando código...
+﻿  Mothership.cpp
+C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  HolaSDL.vcxproj -> C:\Users\usuario_local\Documents\GitHub\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

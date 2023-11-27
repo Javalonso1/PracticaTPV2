@@ -9,6 +9,7 @@
 #include "texture.h"
 #include "SceneObject.h"
 #include "Mothership.h"
+#include "ShooterAlien.h"
 #include "UFO.h"
 #include <random>
 #include <iostream>

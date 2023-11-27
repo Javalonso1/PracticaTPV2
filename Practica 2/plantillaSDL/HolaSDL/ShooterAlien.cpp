@@ -9,8 +9,10 @@
 const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto al alien
 const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
 
+ShooterAlien::ShooterAlien() {};
+ShooterAlien::ShooterAlien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) : Alien(a, b, d, f, h, m), shootlaser(0) {};
+
 bool ShooterAlien::Update()  {
-	Alien::Update();
 	if (myMother->shouldMove()) {
 		if (shootlaser <= 0) {	//si el timer para disparar el laser llega a 0, dispara un laser
 			Point2D<int> g(pos.getX() + LaserDesplazacion, pos.getY());
@@ -18,10 +20,12 @@ bool ShooterAlien::Update()  {
 			Laser* xd = new Laser(g, vel, false, myGame);	//Crea el láser
 			myGame->fireLaser(xd);	//Se lo pasa al Game para que lo meta en su vector
 
-			shootlaser = myGame->getRandomRange(30, 180);	//Da un valor random de nuevo al timer
+			//shootlaser = myGame->getRandomRange(30, 180);	//Da un valor random de nuevo al timer
+			shootlaser = 5;
 		}
 		else {
 			shootlaser--;
 		}
 	}
+	return Alien::Update();
 }

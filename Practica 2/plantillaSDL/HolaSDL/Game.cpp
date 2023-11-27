@@ -7,6 +7,7 @@
 #include "Bunker.h"
 #include "Cannon.h"
 #include "texture.h"
+#include "ShooterAlien.h"
 #include <random>
 #include <iostream>
 #include <fstream>
@@ -35,7 +36,12 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			lector >> input2;	
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al Alien
 			lector >> input2;			
-			Lista.push_back(new Alien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
+			if (input2 == 0) {
+				Lista.push_back(new ShooterAlien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership));
+			}
+			else {
+				Lista.push_back(new Alien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
+			}
 		}
 		else if (input1 == 2) {	//Si es un 2, es un bunker
 			lector >> input1;
@@ -49,7 +55,7 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e, std::string g) : direction(true), WinHeight(), WinLong(), renderer(),
-			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g) {
+			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g), rnd(time(nullptr)) {
 	myMothership = new Mothership(this);	
 	
 }
@@ -257,21 +263,27 @@ void Game::CheckColisions(SDL_Rect* LaserRect, bool friendly, Laser* a) {	//méto
 		}
 	}	*/	
 }
+
 int Game::getRandomRange(int min, int max) {	//Método que pilla un número random	
 	return std::uniform_int_distribution<int>(min, max)(rnd);	
 }
+
 void Game::EndGame() {	//Método para acabar con el juego
 	exit = false;
 }
+
 bool Game::getExit() {	//Método que comprueba si ha acabado el juego
 	return exit;
 }
+
 SDL_Renderer* Game::getRenderer() {
 	return renderer;
 }
+
 void Game::HasDied(std::list<SceneObject*>::iterator it) {
 	Lista.erase(it);
 }
+
 void Game::Save() {
 	std::ofstream a(guardado);
 	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {

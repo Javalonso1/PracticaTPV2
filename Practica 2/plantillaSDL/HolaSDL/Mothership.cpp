@@ -61,6 +61,9 @@ bool Mothership::Update() {
 		else if (vertical) {
 			vertical = false;
 			direction = -direction;
+			if (level > 2) {
+				level -= 2;
+			}
 		}
 		move = true;
 		frames = 0;

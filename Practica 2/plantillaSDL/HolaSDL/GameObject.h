@@ -13,6 +13,6 @@ public:
 	virtual ~GameObject();
 	virtual void Render() const = 0;
 	virtual bool Update() = 0;
-	virtual void save(std::ostream&) const = 0;
+	virtual void save(std::ostream&) const = 0; 
 };
 
