@@ -87,11 +87,15 @@
     <ClInclude Include="Bunker.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="checkML.h" />
+    <ClInclude Include="FileFormatError.h" />
+    <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="InvadersError.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Mothership.h" />
     <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="UFO.h" />

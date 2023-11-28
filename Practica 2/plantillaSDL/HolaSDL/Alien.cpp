@@ -12,6 +12,8 @@ const int Velocidad = 15;			//Constante que indica cuanto se mueve el alien
 //const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
 const int BordeD = 790;				//Constante que indica cuál es el borde derecho de la ventana
 const int BordeI = 10;				//Constante que indica cuál es el borde izquierdo de la ventana
+const int points = 10;
+
 Alien::Alien() : myTexture(), subtipo(), ImAlive(), frame(), SceneObject(), ReduceFrames(), numberFrames(), minimoAltura(), myMother() {}	//Constructor vacío
 Alien::Alien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
 																					ImAlive(true), frame(true), ReduceFrames(0), numberFrames(7),
@@ -60,7 +62,7 @@ bool Alien::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (frien) {
 		if (SDL_HasIntersection(laser, screenPos)) {
 			ImAlive = false;
-			myMother->AlienDied();
+			myMother->AlienDied(points * (3 - subtipo));
 			return true;
 		}
 		else {

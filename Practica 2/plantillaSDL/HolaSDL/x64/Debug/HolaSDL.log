@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
+U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  HolaSDL.vcxproj -> U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

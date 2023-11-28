@@ -6,6 +6,7 @@
 #include "SDL_image.h"
 #include <iostream>
 #include "Game.h"
+#include "InvadersError.h"
 
 using namespace std;
 
@@ -24,8 +25,8 @@ void firstTest()
 			Game a(Nombre2, Nombre2);
 			a.Run(); //Contrusctor del game. Le damos el nombre del archivo del mapa			
 		}
-		catch (string error) {		//Detecta si hay algún error en este proceso, y lanza el error de ser el caso
-			cout << error;
+		catch (InvadersError error) {		//Detecta si hay algún error en este proceso, y lanza el error de ser el caso
+			cout << error.what();
 		}	
 	
 }

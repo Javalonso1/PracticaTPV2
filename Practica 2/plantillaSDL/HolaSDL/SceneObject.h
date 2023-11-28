@@ -13,7 +13,7 @@ protected:
 	int width;
 	int height;
 	int vidas;
-	SDL_Rect* screenPos;
+	SDL_Rect screenPos;
 public:
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, Game*);

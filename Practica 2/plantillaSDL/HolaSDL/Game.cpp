@@ -11,6 +11,10 @@
 #include <random>
 #include <iostream>
 #include <fstream>
+#include "FileFormatError.h"
+#include "FileNotFoundError.h"
+#include "SDLError.h"
+#include <string>
 
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
@@ -18,8 +22,9 @@ constexpr int winHeight = 600;
 
 void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
 	std::ifstream lector(e);
+	int lineas = 0;
 	int minAlt;
-	if (lector.peek() == EOF) throw "Error";	//Si no hay archivo nada más empezar, eso es que el nombre de mapa es incorrecto, por lo que se lanza un error
+	if (lector.peek() == EOF) throw FileNotFoundError(e);	//Si no hay archivo nada más empezar, eso es que el nombre de mapa es incorrecto, por lo que se lanza un error
 	while (lector.peek() != EOF) {			//Mientras no se haya leído hasta el final del archivo...
 		int input1;
 		int input2;
@@ -30,7 +35,7 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			Point2D<int> ab(input1, minAlt); //Crea un Point2D que darle a la nave
 			lector >> input1;	
 			lector >> input2;
-			nave = new Cannon(ab, texturas[0], this,input2, input1);	//Crea una nave nueva
+			nave = new Cannon(ab, texturas[0], this,input1, input2);	//Crea una nave nueva
 			Lista.push_back(nave);
 		}
 		else if (input1 == 1) {	//Si es 1, es un alien
@@ -76,7 +81,11 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			lector >> input2;
 			lector >> minAlt;
 			myMothership = new Mothership(this, input1, input2, minAlt);			
-		}		
+		}
+		else {
+			throw FileFormatError("not valid object type", lineas, e);
+		}
+		lineas++;
 	}		
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
@@ -109,8 +118,10 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 	window = SDL_CreateWindow("First test with SDL", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, winWidth, winHeight, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	if (window == nullptr || renderer == nullptr)
-		throw std::string("Error cargando SDL");
+	if (window == nullptr || renderer == nullptr) {
+		std::string ayo = SDL_GetError();
+		throw SDLError(ayo);
+	}		
 	else {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
@@ -122,8 +133,8 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 			throw std::string("No se han encontrado las texturas");
 		}
 		try { LeerArchivo(mapa); }	//Intenta leer el archivo de mapa
-		catch (...) {	//Si salta error es	que no existe un mapa con ese nombre
-			throw std::string("No existe mapa con ese nombre");
+		catch (InvadersError e) {	//Si salta error es	que no existe un mapa con ese nombre
+			throw e;
 		}
 
 		while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado								
@@ -166,44 +177,9 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 			i = Lista.end();
 		}				
 	}	
-	/*for (int i = 0; i < aliens.size(); i++) {
-		if(aliens[i].Update()){}	//llama al update de los aliens
-		else {			//si da false
-			dedAliens++;	//Se suma 1 a los aliens muertos (para ver si aumentan la velocidad y eso)
-			aliens.erase(aliens.begin() + i);	//Se borra el alien del vector
-			i--;
-		}
-	}
-	if (aliens.size() == 0) EndGame();	//Si no hay aliens, eso es que la partida ha acabado
-	for (int i = 0; i < bunkers.size(); i++) {	
-		if(bunkers[i].Update()){}	//llama al update de los bunkers
-		else
-		{			
-			bunkers.erase(bunkers.begin() + i);	//Si da false, se elimina el bunker
-			i--;
-		}
-	}
-	if((*nave).Update()){}	//Se llama al update de la nave
-	else
-	{
-		EndGame();	//Si da false, ha perdido todas las vidas, y la partida acaba
-	}
-	if (ufo->Update()) {}
-	else {
-		ufo->Destroyed();
-	}
-	for (int i = 0; i < lasers.size(); i++) {
-		if (lasers[i].Update()) {	//Se llama al Update de cada laser			
-		}
-		else {			
-			lasers.erase(lasers.begin() + i);	//Se borra el láser si ha chocado
-		}
-	}
-	if (dedAliens > NumDedAliens) {	//Si muere cierta cantidad de aliens, aumenta la velocidad a la que se mueven estos
-		dedAliens = 0;
-		for (int i = 0; i < aliens.size(); i++) aliens[i].AumentVel();	//Se le dice a todos los aliens que aumenten la velocidad
-	}*/
 	myMothership->Update();
+	system("cls");
+	std::cout << myMothership->getPoint();
 }
 void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa a la nave
 	SDL_Event ev;

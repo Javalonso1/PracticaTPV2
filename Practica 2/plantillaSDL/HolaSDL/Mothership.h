@@ -19,6 +19,7 @@ class Mothership : public GameObject
 		bool landed;
 		int frames;
 		int livingAliens;
+		int points;
 	public:
 		Mothership();
 		Mothership(Game*, int, int, int);
@@ -29,13 +30,16 @@ class Mothership : public GameObject
 		
 		void cannotMove();
 		void assignAlien();
-		void AlienDied();
+		void AlienDied(int);
 		void AlienLanded();
 		bool haveLanded() const; 
 		int getAlienCount() const;
+		int getPoint() const;
 
 		void Render() const override;
 		bool Update() override;
 		void save(std::ostream&) const override;
+
+
 };
 

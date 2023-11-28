@@ -7,13 +7,13 @@ const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser r
 const int velLaser = -5;			//Velocidad que la nave le da al láser en su construtor
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
-Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d, float e) : myTexture(b), DirecMov(), dispara(false), tiempoRes(e), tiempoEsp(d), 
+Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d, float e) : myTexture(b), DirecMov(), dispara(false), tiempoRes(0), tiempoEsp(e), 
 SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c) { //Constructor con valores
-	screenPos->h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
-	screenPos->w = myTexture->getFrameWidth();
+	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
+	screenPos.w = myTexture->getFrameWidth();
 }
 void Cannon::Render() const{	//Render
-	(*myTexture).renderFrame(*screenPos, 0, 0);	//Renderiza la nave
+	(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave
 }
 bool Cannon::Update() {		//Update	
 	if (DirecMov != 0) {	//Si el jugador le dice que se mueva en una dirección
@@ -41,7 +41,8 @@ bool Cannon::Update() {		//Update
 bool Cannon::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (frien == false) {
 		if (SDL_HasIntersection(laser, screenPos)) {
-			vidas--;
+			vidas--;			
+			if (vidas <= 0) myGame->EndGame();
 			return true;
 		}
 		else {

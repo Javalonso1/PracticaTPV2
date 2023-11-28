@@ -6,6 +6,8 @@
 
 const int heigth = 10;	//constante que guarda cuanto de alto mide el láser
 const int wide = 3;		//constante que gurada cuanto de ancho mide el láser
+const int maxTam = 600;
+const int minTam = 0;
 
 Laser::Laser() : Vel(), friendly(){}		//Constructor vacío
 Laser::Laser(Point2D<int>& a,int b, bool c, Game* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
@@ -17,11 +19,12 @@ void Laser::Render() const {	//Render
 	screenPos->y = pos.getY();	
 	if (!friendly)SDL_SetRenderDrawColor(myGame->getRenderer(), 255, 0, 0, 255);	//Si es un láser de la nave, se colorea de verde
 	else SDL_SetRenderDrawColor(myGame->getRenderer(), 0, 255, 0, 255);		//Si es un láser de un alien, se colorea de rojo
-	SDL_RenderFillRect(myGame->getRenderer(),screenPos);	//Se dibuja un rectángulo de ese color
+	SDL_RenderFillRect(myGame->getRenderer(),screenPos);	//Se dibuja un rectángulo de ese color	
 }
 bool Laser::Update() {	//Update		
 	pos = pos + Vel;	//Avanza	
 	myGame->CheckColisions(screenPos, friendly, this);		
+	if (pos.getY() > maxTam || pos.getY() < minTam) ImAlive = false;
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
 bool Laser::hit(SDL_Rect*, char) {		//Método al que se llama cuando choca con algo		

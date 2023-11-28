@@ -5,8 +5,8 @@
 #include "Game.h"
 #include "checkML.h"
 
-Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall() {};
-Mothership::Mothership(Game* game, int a, int b, int c) : GameObject(game), direction(a), landed(false), level(b), livingAliens(0), move(true), wall(false), frames(c) {}
+Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall(), points() {};
+Mothership::Mothership(Game* game, int a, int b, int c) : GameObject(game), direction(a), landed(false), level(b), livingAliens(0), move(true), wall(false), frames(c), points(0) {}
 
 Mothership::~Mothership() {
 
@@ -32,8 +32,9 @@ void Mothership::assignAlien() {
 	livingAliens++;
 }
 
-void Mothership::AlienDied() {
+void Mothership::AlienDied(int i) {
 	livingAliens--;
+	points += i;
 }
 
 void Mothership::AlienLanded() {
@@ -51,6 +52,9 @@ int Mothership::getAlienCount() const{
 void Mothership::Render() const {
 
 }
+int Mothership::getPoint() const {
+	return points;
+ }
 
 bool Mothership::Update() {
 	if (frames > level) {
