@@ -15,15 +15,15 @@ Laser::Laser(Point2D<int>& a,int b, bool c, Game* gayme): friendly(c), SceneObje
 	Vel = Vector2D<int> (0, b);		//Crea un vector que será la velocidad al láser
 }
 void Laser::Render() const {	//Render
-	screenPos->x = pos.getX();	//Modifica el rect según su posición
-	screenPos->y = pos.getY();	
 	if (!friendly)SDL_SetRenderDrawColor(myGame->getRenderer(), 255, 0, 0, 255);	//Si es un láser de la nave, se colorea de verde
 	else SDL_SetRenderDrawColor(myGame->getRenderer(), 0, 255, 0, 255);		//Si es un láser de un alien, se colorea de rojo
-	SDL_RenderFillRect(myGame->getRenderer(),screenPos);	//Se dibuja un rectángulo de ese color	
+	SDL_RenderFillRect(myGame->getRenderer(),&screenPos);	//Se dibuja un rectángulo de ese color	
 }
 bool Laser::Update() {	//Update		
 	pos = pos + Vel;	//Avanza	
-	myGame->CheckColisions(screenPos, friendly, this);		
+	screenPos.x = pos.getX();	//Modifica el rect según su posición
+	screenPos.y = pos.getY();
+	myGame->CheckColisions(&screenPos, friendly, this);		
 	if (pos.getY() > maxTam || pos.getY() < minTam) ImAlive = false;
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
@@ -35,7 +35,7 @@ bool Laser::Hit() {
 	return true;
 }
 SDL_Rect* const Laser::getRect() {	//Método que devuelve su rect
-	return screenPos;
+	return &screenPos;
 }
 bool const Laser::Friendly() {	//Método que devuelve true si es un láser lanzado por la nave, y false en cualquier otro caso
 	return friendly;

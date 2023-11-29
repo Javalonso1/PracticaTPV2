@@ -22,7 +22,7 @@ void firstTest()
 	
 				
 		try {
-			Game a(Nombre2, Nombre2);
+			Game a(Nombre1, Nombre2);
 			a.Run(); //Contrusctor del game. Le damos el nombre del archivo del mapa			
 		}
 		catch (InvadersError error) {		//Detecta si hay algún error en este proceso, y lanza el error de ser el caso

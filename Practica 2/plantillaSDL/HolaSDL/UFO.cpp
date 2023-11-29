@@ -9,8 +9,8 @@ const int BordeI = -50;				//Constante que indica cuál es el borde izquierdo de 
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
 UFO::UFO(Point2D<int> a, Texture* b, Game* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
 void UFO::Render() const {	//Render
-	if(MiEstado == Visible)(*myTexture).renderFrame(*screenPos, 0, 0);	//Renderiza la nave
-	else if (MiEstado == Destruido && MovingRight !=0)(*myTexture).renderFrame(*screenPos, 0, 1);	//Renderiza la nave
+	if(MiEstado == Visible)(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave
+	else if (MiEstado == Destruido && MovingRight !=0)(*myTexture).renderFrame(screenPos, 0, 1);	//Renderiza la nave
 }
 bool UFO::Update() {		//Update	
 	if (MiEstado == Oculto) {
@@ -45,13 +45,13 @@ bool UFO::Update() {		//Update
 
 
 
-	screenPos->x = pos.getX();	//Le da la posición a su rect
-	screenPos->y = pos.getY();
+	screenPos.x = pos.getX();	//Le da la posición a su rect
+	screenPos.y = pos.getY();
 	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
 bool UFO::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (MiEstado == Visible) {
-		if (SDL_HasIntersection(laser, screenPos)) {
+		if (SDL_HasIntersection(laser, &screenPos)) {
 			MiEstado = Destruido;
 			return true;
 		}

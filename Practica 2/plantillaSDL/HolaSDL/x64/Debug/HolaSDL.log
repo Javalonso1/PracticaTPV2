@@ -1,4 +1,12 @@
-﻿  main.cpp
-U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
+﻿  Alien.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  texture.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(16,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(17,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(40,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(41,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
+  HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

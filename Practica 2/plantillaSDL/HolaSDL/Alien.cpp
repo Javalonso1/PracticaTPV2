@@ -18,14 +18,14 @@ Alien::Alien() : myTexture(), subtipo(), ImAlive(), frame(), SceneObject(), Redu
 Alien::Alien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
 																					ImAlive(true), frame(true), ReduceFrames(0), numberFrames(7),
 																					minimoAltura(h), myMother(m), myTexture(b) {//Constuctor del alien
-	screenPos->h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
-	screenPos->w = myTexture->getFrameWidth();	
+	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
+	screenPos.w = myTexture->getFrameWidth();	
 	myMother->assignAlien();
 	//shootlaser = (*myGame).getRandomRange(6,180);	//Da un valor aleatorio al tiempo de espera para disparar láser
 }
 void Alien::Render() const{	//Renderizado
-	if (frame) (*myTexture).renderFrame(*screenPos, subtipo, 0);	//Renderiza el alien
-	else (*myTexture).renderFrame(*screenPos, subtipo, 1);
+	if (frame) (*myTexture).renderFrame(screenPos, subtipo, 0);	//Renderiza el alien
+	else (*myTexture).renderFrame(screenPos, subtipo, 1);
 		
 }
 bool Alien::Update() {	//Update		
@@ -54,13 +54,13 @@ bool Alien::Update() {	//Update
 	else {
 		//shootlaser--;
 	}*/
-	screenPos->x = pos.getX();	//Le da la posición a su rect
-	screenPos->y = pos.getY();
+	screenPos.x = pos.getX();	//Le da la posición a su rect
+	screenPos.y = pos.getY();
 	return ImAlive;	//Devuelve true si sigue vivo, y false si ha sido golpeado
 }
 bool Alien::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (frien) {
-		if (SDL_HasIntersection(laser, screenPos)) {
+		if (SDL_HasIntersection(laser, &screenPos)) {
 			ImAlive = false;
 			myMother->AlienDied(points * (3 - subtipo));
 			return true;
@@ -72,7 +72,7 @@ bool Alien::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	else return false;
 }
 SDL_Rect* const Alien:: getRect() {	//Método que devuelve la hitbox del alien
-	return screenPos;
+	return &screenPos;
 }
 void Alien::AumentVel() {	//Método que reduze la cantidad de tics que tienen que pasar para que el alien se mueva
 	if (numberFrames > 1) numberFrames -=2;

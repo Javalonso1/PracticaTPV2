@@ -34,13 +34,13 @@ bool Cannon::Update() {		//Update
 			dispara = false;
 		}
 	}
-	screenPos->x = pos.getX();	//Le da la posición a su rect
-	screenPos->y = pos.getY();
+	screenPos.x = pos.getX();	//Le da la posición a su rect
+	screenPos.y = pos.getY();
 	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
 bool Cannon::hit(SDL_Rect* laser, char frien) {	//Si es golpeado
 	if (frien == false) {
-		if (SDL_HasIntersection(laser, screenPos)) {
+		if (SDL_HasIntersection(laser, &screenPos)) {
 			vidas--;			
 			if (vidas <= 0) myGame->EndGame();
 			return true;
