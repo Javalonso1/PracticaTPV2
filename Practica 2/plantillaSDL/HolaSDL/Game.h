@@ -28,6 +28,7 @@ private:
 	Mothership* myMothership;
 
 	std::list<SceneObject*> Lista;
+	std::list<SceneObject*> aDestruir;
 	Cannon* nave;			//Nave del jugador	
 
 	/*std::vector<Alien> aliens;		//Array de aliens
@@ -55,7 +56,7 @@ public:
 	int GetDirection();	//Devuelve la dirección de los aliens
 	bool cannotMove();	//Es llamado cuando los aliens chocan con una pared
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
-	void CheckColisions(SDL_Rect*, bool, Laser*);	//Comprueba las colisiones de todos los láseres
+	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres
 	int getRandomRange(int min, int max);	//Devuelve un númerp random
 	bool getExit();		//Devuelve exit
 	void EndGame();		//Cierra el juego
@@ -63,5 +64,6 @@ public:
 	SDL_Renderer* getRenderer();
 	void HasDied(std::list<SceneObject*>::iterator Iterador);
 	void Save();
+	void DestroyDead();
 };
 

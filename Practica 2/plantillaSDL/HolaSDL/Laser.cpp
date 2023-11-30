@@ -22,9 +22,10 @@ void Laser::Render() const {	//Render
 bool Laser::Update() {	//Update		
 	pos = pos + Vel;	//Avanza	
 	screenPos.x = pos.getX();	//Modifica el rect según su posición
-	screenPos.y = pos.getY();
-	myGame->CheckColisions(&screenPos, friendly, this);		
-	if (pos.getY() > maxTam || pos.getY() < minTam) ImAlive = false;
+	screenPos.y = pos.getY();	
+	if (myGame->CheckColisions(&screenPos, friendly) || pos.getY() > maxTam || pos.getY() < minTam) {
+		myGame->HasDied(miIterador);
+	}
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
 bool Laser::hit(SDL_Rect*, char) {		//Método al que se llama cuando choca con algo		

@@ -171,15 +171,16 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 	std::list<SceneObject*>::iterator i = Lista.begin();
 	while (i != Lista.end()) {
 		if ((*i)->Update()) {i++;}
-		else
+		/*else
 		{
 			HasDied(i);			
 			i = Lista.end();
-		}				
+		}		*/		
 	}	
 	myMothership->Update();
 	system("cls");
 	std::cout << myMothership->getPoint();
+	DestroyDead();
 }
 void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa a la nave
 	SDL_Event ev;
@@ -222,45 +223,18 @@ bool Game::cannotMove() {	//Método al que llaman los aliens de chocar con una pa
 void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
 	Lista.push_back(a);
 }
-void Game::CheckColisions(SDL_Rect* LaserRect, bool friendly, Laser* a) {	//método que comprueba la colisiones del láser	
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {		
-		if ((*i)->hit(LaserRect, friendly)) {a->Hit();}
-		else {			
-		}
+bool Game::CheckColisions(SDL_Rect* LaserRect, bool friendly) {	//método que comprueba la colisiones del láser	
+	std::list<SceneObject*>::iterator i = Lista.begin();
+	while (i != Lista.end() && (*i)->hit(LaserRect, friendly)) {
+		i++;
 	}
-	
-	
-	/*bool chocado = false;
-	int i = 0;
-	if (friendly) {		//Si es un láser de la nave
-		while( i < aliens.size() && !chocado) {	//Comprueba si ha chocado con cualquiera de los aliens
-			if (aliens[i].hit(LaserRect, friendly)) {								
-				a->Hit();
-				chocado = true;
-			}
-			i++;
+	return i != Lista.end();
+
+	/*for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		if ((*i)->hit(LaserRect, friendly)) {
+			return true;
 		}
-		if (!chocado) if (ufo->hit(LaserRect, friendly)) {
-			a->Hit();
-			chocado = true;
-		}
-	}
-	else{	//Si no es un láser de la nave, checkea si choca con la nave
-		if (nave->hit(LaserRect, friendly)) {
-			a->Hit();
-			chocado = true;
-		}
-	}
-	if (!chocado) {//Si no ha chocado ya
-		i = 0;
-		while(i<bunkers.size() && !chocado){	//Comprueba si ha chocado con cualquiera de los bunkers
-			if (bunkers[i].hit(LaserRect, friendly)) {
-				a->Hit();
-				chocado = true;
-			}
-			i++;
-		}
-	}	*/	
+	}*/
 }
 
 int Game::getRandomRange(int min, int max) {	//Método que pilla un número random	
@@ -280,7 +254,17 @@ SDL_Renderer* Game::getRenderer() {
 }
 
 void Game::HasDied(std::list<SceneObject*>::iterator it) {
-	Lista.erase(it);
+	aDestruir.push_back(it);
+}
+
+void Game::DestroyDead() {
+	std::list<SceneObject*>::iterator i = aDestruir.begin();
+	std::list<SceneObject*>::iterator aux;
+	while (i != Lista.end()) {
+		aux = i;
+		i++;
+		delete(*aux);
+	}
 }
 
 void Game::Save() {
