@@ -17,9 +17,8 @@ public:
 	Cannon(Point2D<int>, Texture*, Game*, float, float);	//Constructor
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle principal
-	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
+	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado
 	void handleEvent(int, bool);	//Usado para manejar eventos	
-	void setListIterator(std::list<SceneObject*>::iterator) override;
 	void save(std::ostream&) const override;
 };
 

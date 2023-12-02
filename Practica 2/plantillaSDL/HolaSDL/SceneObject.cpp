@@ -15,11 +15,15 @@ SceneObject::~SceneObject() {
 
 }
 
-bool SceneObject::hit(SDL_Rect* laser, char friendly) {
+bool SceneObject::hit(SDL_Rect* laser, bool friendly) {
 	if (SDL_HasIntersection(laser, &screenPos)) {
 		return true;
 	}
 	else {
 		return false;
 	}
+}
+
+void SceneObject::setListIterator(std::list<SceneObject*>::iterator it) {
+	miIterador = it;
 }

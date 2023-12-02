@@ -14,7 +14,7 @@
 #include <random>
 #include <iostream>
 #include <list>
-const int NUM_TEXTURES = 5;
+const int NUM_TEXTURES = 6;
 const int veticalDown = 13;
 class Game
 {
@@ -25,16 +25,11 @@ private:
 	int WinLong;			//Ancho de pantalla
 	SDL_Renderer* renderer;	//Renderizador
 	SDL_Window* window;		//Ventana donde se renderiza el juego
-	Mothership* myMothership;
+	Mothership* myMothership;		//Referencia a la mothership
 
-	std::list<SceneObject*> Lista;
-	std::list<SceneObject*> aDestruir;
+	std::list<SceneObject*> Lista;	//Lista con todos los objetos jugables
+	std::list<std::list<SceneObject*>::iterator> aDestruir;	//Lista con los objetos muertos
 	Cannon* nave;			//Nave del jugador	
-
-	/*std::vector<Alien> aliens;		//Array de aliens
-	std::vector<Laser> lasers;		//Array de láseres
-	std::vector<Bunker> bunkers;	//Array de búnkeres	
-	UFO* ufo;*/
 
 	bool exit;				//Booleano para terminar el juego
 	Texture* texturas[NUM_TEXTURES];	//Array con las texturas
@@ -62,8 +57,8 @@ public:
 	void EndGame();		//Cierra el juego
 	void loadTextures();			//Carga las texturas
 	SDL_Renderer* getRenderer();
-	void HasDied(std::list<SceneObject*>::iterator Iterador);
-	void Save();
-	void DestroyDead();
+	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
+	void Save();		//Guarda el juego
+	void DestroyDead();	//Destruye a los objetos en la lista de muertos
 };
 

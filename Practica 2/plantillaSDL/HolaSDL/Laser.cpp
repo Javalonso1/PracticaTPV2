@@ -28,22 +28,24 @@ bool Laser::Update() {	//Update
 	}
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
-bool Laser::hit(SDL_Rect*, char) {		//Método al que se llama cuando choca con algo		
+bool Laser::hit(SDL_Rect* rect, bool fren) {		//Método al que se llama cuando choca con algo		
+	/*if (SDL_HasIntersection(rect, &screenPos) && fren != friendly) {
+		return true;
+	}
+	else {
+		return false;
+	}*/
 	return false;
 }
-bool Laser::Hit() {
-	ImAlive = false;
-	return true;
-}
+
 SDL_Rect* const Laser::getRect() {	//Método que devuelve su rect
 	return &screenPos;
 }
+
 bool const Laser::Friendly() {	//Método que devuelve true si es un láser lanzado por la nave, y false en cualquier otro caso
 	return friendly;
 }
-void Laser::setListIterator(std::list<SceneObject*>::iterator it) {
-	miIterador = it;
-}
+
 void Laser::save(std::ostream& a) const {
 	a << "6 " << pos.getX() << " " << pos.getY() << " " << Vel.getY() << " " <<friendly;
 }

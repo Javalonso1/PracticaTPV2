@@ -12,14 +12,13 @@ protected:
 	Point2D<int> pos;
 	int width;
 	int height;
-	int vidas;
 	SDL_Rect screenPos;
 public:
+	int vidas;
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, Game*);
 	virtual ~SceneObject();
-	virtual bool hit(SDL_Rect*, char) = 0;
-	virtual void setListIterator(std::list<SceneObject*>::iterator) = 0;
-
+	virtual bool hit(SDL_Rect*, bool) = 0;
+	void setListIterator(std::list<SceneObject*>::iterator);
 };
 

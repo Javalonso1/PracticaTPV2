@@ -86,7 +86,10 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			throw FileFormatError("not valid object type", lineas, e);
 		}
 		lineas++;
-	}		
+	}	
+	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		(*i)->setListIterator(i);
+	}
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e, std::string g) : direction(true), WinHeight(), WinLong(), renderer(),
@@ -101,6 +104,10 @@ Game::~Game() {	//Destructor del Game
 	SDL_DestroyRenderer(renderer);	//Se destruye el renderer
 	SDL_DestroyWindow(window);	//Se destruye la ventana
 	SDL_Quit();	//Se sale de SDL	
+	for (auto i : Lista) {
+		delete i;
+	}
+	Lista.clear();
 }
 
 
@@ -168,9 +175,11 @@ void Game::Render() {//Método que renderiza el juego
 
 
 void Game::Update() {	//Método que llama a todos los updates del juego		
+	system("cls");
 	std::list<SceneObject*>::iterator i = Lista.begin();
 	while (i != Lista.end()) {
-		if ((*i)->Update()) {i++;}
+		(*i)->Update();
+		i++;
 		/*else
 		{
 			HasDied(i);			
@@ -178,9 +187,11 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 		}		*/		
 	}	
 	myMothership->Update();
-	system("cls");
+	if (myMothership->getAlienCount() <= 0) {
+		exit = false;
+	}
 	std::cout << myMothership->getPoint();
-	DestroyDead();
+ 	DestroyDead();
 }
 void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa a la nave
 	SDL_Event ev;
@@ -222,19 +233,14 @@ bool Game::cannotMove() {	//Método al que llaman los aliens de chocar con una pa
 }
 void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
 	Lista.push_back(a);
+	a->setListIterator(--Lista.end());
 }
 bool Game::CheckColisions(SDL_Rect* LaserRect, bool friendly) {	//método que comprueba la colisiones del láser	
 	std::list<SceneObject*>::iterator i = Lista.begin();
-	while (i != Lista.end() && (*i)->hit(LaserRect, friendly)) {
+	while (i != Lista.end() && !(*i)->hit(LaserRect, friendly)) {
 		i++;
 	}
 	return i != Lista.end();
-
-	/*for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		if ((*i)->hit(LaserRect, friendly)) {
-			return true;
-		}
-	}*/
 }
 
 int Game::getRandomRange(int min, int max) {	//Método que pilla un número random	
@@ -258,13 +264,11 @@ void Game::HasDied(std::list<SceneObject*>::iterator it) {
 }
 
 void Game::DestroyDead() {
-	std::list<SceneObject*>::iterator i = aDestruir.begin();
-	std::list<SceneObject*>::iterator aux;
-	while (i != Lista.end()) {
-		aux = i;
-		i++;
-		delete(*aux);
+	for (std::list <std::list<SceneObject*>::iterator>::iterator i = aDestruir.begin(); i != aDestruir.end(); i++) {
+		delete **i;
+		Lista.erase(*i);
 	}
+	aDestruir.clear();
 }
 
 void Game::Save() {

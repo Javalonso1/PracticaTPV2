@@ -15,9 +15,7 @@ public:
 	Laser(Point2D<int>&, int, bool, Game*);	//Constructor
 	void Render() const override;
 	bool Update() override;		//Bucle principal
-	bool hit(SDL_Rect*, char) override;			//Método que anula 
-	void setListIterator(std::list<SceneObject*>::iterator) override;
-	bool Hit();
+	bool hit(SDL_Rect*, bool) override;			//Método que anula 
 	SDL_Rect* const getRect();	//Devuelve rect
 	bool const Friendly();		//Devuelve friendly
 	void save(std::ostream&) const override;

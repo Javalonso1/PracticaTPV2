@@ -4,6 +4,8 @@
 #include "texture.h"
 #include "SceneObject.h"
 
+class Game;
+
 class Bunker : public SceneObject
 {
 private:
@@ -16,8 +18,7 @@ public:
 	Bunker(Point2D<int>&, Texture&, Game*, int);	//Constructor
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle Principal
-	bool hit(SDL_Rect*, char) override;			//Método para ser golpeado
-	void setListIterator(std::list<SceneObject*>::iterator) override;
+	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado
 	SDL_Rect* const getRect();	//Devuelve rect
 	void save(std::ostream&) const override;
 };
