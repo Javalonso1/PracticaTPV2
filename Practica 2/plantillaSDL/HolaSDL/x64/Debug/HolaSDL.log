@@ -1,6 +1,36 @@
-﻿  Game.cpp
+﻿  Alien.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Bunker.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Cannon.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(12,57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Game.cpp
 C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  GameObject.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Laser.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Mothership.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ShooterAlien.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  UFO.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\UFO.cpp(12,93): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  main.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
   HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

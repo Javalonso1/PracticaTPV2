@@ -20,7 +20,6 @@ class Game
 {
 private:
 	bool direction;			//Dirección a la que se mueven los aliens
-	bool Change;			//Indica que se produce un cambio de dirección
 	int WinHeight;			//Alto de pantalla
 	int WinLong;			//Ancho de pantalla
 	SDL_Renderer* renderer;	//Renderizador
@@ -47,8 +46,7 @@ public:
 	void Render();		//Renderiza
 	void Update();		//Bucle principal
 	void HandleEvents();	//Ejecuta eventos
-	int GetDirection();	//Devuelve la dirección de los aliens
-	bool cannotMove();	//Es llamado cuando los aliens chocan con una pared
+	int GetDirection();	//Devuelve la dirección de los aliens	
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres
 	int getRandomRange(int min, int max);	//Devuelve un númerp random

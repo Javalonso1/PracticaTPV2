@@ -19,7 +19,7 @@
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
-bool save = false;
+bool save = false;		//variables load y save, usadas para poder conectar dos inputs y guardar en varios archivos distintos.
 bool load = false;
 
 void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
@@ -77,8 +77,7 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 			lector >> input2;	//Pilla número de vidas
 			Lista.push_back(new Laser(xd, input1, input2, this));	//Crea el láser
 		}
-		else if (input1 == 3) {
-			//a << "3 " << direction << " " << level << " " << frames;
+		else if (input1 == 3) {			
 			lector >> input1;
 			lector >> input2;
 			lector >> minAlt;
@@ -95,14 +94,12 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
-			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), rnd(time(nullptr)) {}
-Game::~Game() {	//Destructor del Game
-	//delete(nave);	//Se borra la nave
+			window(), exit(true), texturas(), dedAliens(0), mapa(e), rnd(time(nullptr)) {}
+Game::~Game() {	//Destructor del Game	
 	for (int i = 0; i < NUM_TEXTURES; i++) {	//Se borran todas las texturas
 		delete(texturas[i]);
 	}
-	delete(myMothership);
-	//delete(ufo);
+	delete(myMothership);	
 	SDL_DestroyRenderer(renderer);	//Se destruye el renderer
 	SDL_DestroyWindow(window);	//Se destruye la ventana
 	SDL_Quit();	//Se sale de SDL	
@@ -146,13 +143,7 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 			throw e;
 		}
 
-		while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado								
-			if (Change) {	//Si la variable Change es true, eso es que los aliens han llegado a una pared				
-				Change = false;	//Se desactiva change
-				/*for (int i = 0; i < aliens.size(); i++) {	//Se mueve a los aliens hacia abajo
-					aliens[i].VerticalMove(veticalDown);
-				}*/
-			}
+		while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado
 			Render();
 			Update();					//Ejecuta todos los eventos del main (Render, Update...)
 			SDL_Delay(25);				//Pequeño delay
@@ -182,11 +173,6 @@ void Game::Update() {	//Método que llama a todos los updates del juego
 	while (i != Lista.end()) {
 		(*i)->Update();
 		i++;
-		/*else
-		{
-			HasDied(i);			
-			i = Lista.end();
-		}		*/		
 	}	
 	myMothership->Update();
 	if (myMothership->getAlienCount() <= 0) {
@@ -270,10 +256,6 @@ int Game::GetDirection() {	//Método que los aliens usan para ver si se mueven a 
 		return -1;
 	}	
 }
-bool Game::cannotMove() {	//Método al que llaman los aliens de chocar con una pared
-	Change = true;
-	return true;
-}
 void Game::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
 	Lista.push_back(a);
 	a->setListIterator(--Lista.end());
@@ -315,27 +297,28 @@ void Game::DestroyDead() {
 }
 
 void Game::Save(int i) {
-	if (save) {
+	if (save) { //si save es igual a true, es que se quiere guardar partida
 		std::string guardar = "saved";
 		guardar += std::to_string(i);
-		guardar += ".txt";
+		guardar += ".txt";	//Se pilla la dirección
 		std::cout << guardar;
 		std::ofstream a(guardar);		
-		myMothership->save(a);
+		myMothership->save(a);	//Se guarda la mothership, y luego se guardan, de uno en uno, todos los elementos de la lista de objetos
 		for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
 			a << "\n";
 			(*i)->save(a);
-		}		
+		}
+		save = false;	//Se desactiva save
 	}
 	else {
-		if (load) {
+		if (load) {	//si load es true, es que se quiere cargar partida
 			std::string cargar = "saved";
 			cargar += std::to_string(i);
-			cargar += ".txt";
-			//std::list<SceneObject*> Lista2;
-			//Lista = Lista2;
-			Lista.clear();
-			LeerArchivo(cargar);			
+			cargar += ".txt";	//Se pilla la dirección
+			Lista.clear();	//se elimina la lista de objetos y se borra la Mothership
+			delete(myMothership);
+			LeerArchivo(cargar); //Se carga la nueva información
+			load = false;
 		}
 	}
 }
