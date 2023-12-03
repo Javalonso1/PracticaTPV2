@@ -1,10 +1,6 @@
-﻿  Alien.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Game.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(38,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(38,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Generando código...
-  HolaSDL.vcxproj -> C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
+﻿  Game.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

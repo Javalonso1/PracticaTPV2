@@ -19,6 +19,8 @@
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
+bool save = false;
+bool load = false;
 
 void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
 	std::ifstream lector(e);
@@ -92,8 +94,8 @@ void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transform
 	}
 }
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
-Game::Game(std::string e, std::string g) : direction(true), WinHeight(), WinLong(), renderer(),
-			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), guardado(g), rnd(time(nullptr)) {}
+Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
+			window(), exit(true), texturas(), Change(false), dedAliens(0), mapa(e), rnd(time(nullptr)) {}
 Game::~Game() {	//Destructor del Game
 	//delete(nave);	//Se borra la nave
 	for (int i = 0; i < NUM_TEXTURES; i++) {	//Se borran todas las texturas
@@ -202,16 +204,57 @@ void Game::HandleEvents() {	//Método que pilla un input del jugador y se lo pasa
 		case SDL_KEYDOWN:
 			switch (ev.key.keysym.sym) {
 			case SDLK_LEFT:
+				load = false;
+				save = false;
 				move = -1;
 				break;
 			case SDLK_RIGHT:
+				load = false;
+				save = false;
 				move = 1;
 				break;
 			case SDLK_SPACE:
+				load = false;
+				save = false;
 				shoot = true;
 				break;
 			case SDLK_g:
-				Save();
+				load = false;
+				save = true;
+				break;
+			case SDLK_l:
+				save = false;
+				load = true;
+				break;
+			case SDLK_0:
+				Save(0);
+				break;
+			case SDLK_1:
+				Save(1);
+				break;
+			case SDLK_2:
+				Save(2);
+				break;
+			case SDLK_3:
+				Save(3);
+				break;
+			case SDLK_4:
+				Save(4);
+				break;
+			case SDLK_5:
+				Save(5);
+				break;
+			case SDLK_6:
+				Save(6);
+				break;
+			case SDLK_7:
+				Save(7);
+				break;
+			case SDLK_8:
+				Save(8);
+				break;
+			case SDLK_9:
+				Save(9);
 				break;
 			default:
 				break;
@@ -271,12 +314,28 @@ void Game::DestroyDead() {
 	aDestruir.clear();
 }
 
-void Game::Save() {
-	std::ofstream a(guardado);
-	myMothership->save(a);
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		a << "\n";
-		(*i)->save(a);		
-	}	
-	std::cout << "Exito";
+void Game::Save(int i) {
+	if (save) {
+		std::string guardar = "saved";
+		guardar += std::to_string(i);
+		guardar += ".txt";
+		std::cout << guardar;
+		std::ofstream a(guardar);		
+		myMothership->save(a);
+		for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+			a << "\n";
+			(*i)->save(a);
+		}		
+	}
+	else {
+		if (load) {
+			std::string cargar = "saved";
+			cargar += std::to_string(i);
+			cargar += ".txt";
+			//std::list<SceneObject*> Lista2;
+			//Lista = Lista2;
+			Lista.clear();
+			LeerArchivo(cargar);			
+		}
+	}
 }
