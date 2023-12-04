@@ -73,6 +73,8 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mothership.cpp" />
@@ -91,6 +93,8 @@
     <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InvadersError.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Mothership.h" />
@@ -98,6 +102,7 @@
     <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\gameList.h" />
     <ClInclude Include="UFO.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

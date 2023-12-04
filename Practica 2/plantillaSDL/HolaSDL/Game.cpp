@@ -146,7 +146,7 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 		while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado
 			Render();
 			Update();					//Ejecuta todos los eventos del main (Render, Update...)
-			SDL_Delay(25);				//Pequeño delay
+			SDL_Delay(5);				//Pequeño delay
 			HandleEvents();
 		}
 	}
