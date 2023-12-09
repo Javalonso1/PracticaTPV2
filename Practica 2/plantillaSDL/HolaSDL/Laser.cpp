@@ -10,7 +10,7 @@ const int maxTam = 600;
 const int minTam = 0;
 
 Laser::Laser() : Vel(), friendly(){}		//Constructor vacío
-Laser::Laser(Point2D<int>& a,int b, bool c, Game* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
+Laser::Laser(Point2D<int>& a,int b, bool c, PlayState* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
 	ImAlive = true;
 	Vel = Vector2D<int> (0, b);		//Crea un vector que será la velocidad al láser
 }
@@ -23,8 +23,8 @@ bool Laser::Update() {	//Update
 	pos = pos + Vel;	//Avanza	
 	screenPos.x = pos.getX();	//Modifica el rect según su posición
 	screenPos.y = pos.getY();	
-	if (myGame->CheckColisions(&screenPos, friendly) || pos.getY() > maxTam || pos.getY() < minTam) {
-		myGame->HasDied(miIterador);
+	if (myPlayState->CheckColisions(&screenPos, friendly) || pos.getY() > maxTam || pos.getY() < minTam) {
+		myPlayState->HasDied(miIterador);
 	}
 	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }

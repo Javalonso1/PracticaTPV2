@@ -6,7 +6,7 @@
 #include "checkML.h"
 
 Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall(), points() {};
-Mothership::Mothership(Game* game, int a, int b, int c) : GameObject(game), direction(a), landed(false), level(b), livingAliens(0), move(true), wall(false), frames(c), points(0) {}
+Mothership::Mothership(PlayState* game, int a, int b, int c) : GameObject(game), direction(a), landed(false), level(b), livingAliens(0), move(true), wall(false), frames(c), points(0) {}
 
 Mothership::~Mothership() {
 

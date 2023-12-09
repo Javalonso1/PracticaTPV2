@@ -22,7 +22,7 @@ class Mothership : public GameObject
 		int points;
 	public:
 		Mothership();
-		Mothership(Game*, int, int, int);
+		Mothership(PlayState*, int, int, int);
 		~Mothership();
 		int getDirection() const;
 		bool shouldMove() const;
