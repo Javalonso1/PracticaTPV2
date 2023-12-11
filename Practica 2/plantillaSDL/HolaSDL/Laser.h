@@ -12,7 +12,7 @@ private:
 	bool ImAlive;		//Booleano de vida para borrarse después de un golpe	
 public:
 	Laser();			//Constructor vacío
-	Laser(Point2D<int>&, int, bool, PlayState*);	//Constructor
+	Laser(Point2D<int>&, int, bool, Game*);	//Constructor
 	void Render() const override;
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool) override;			//Método que anula 
