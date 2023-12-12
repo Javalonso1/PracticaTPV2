@@ -2,14 +2,14 @@
 #include "UFO.h"
 #include "Vector2D.h"
 #include "texture.h"
-#include "Game.h"
+#include "PlayState.h"
 const int BordeD = 850;				//Constante que indica cuál es el borde derecho de la ventana
 const int BordeI = -50;				//Constante que indica cuál es el borde izquierdo de la ventana
 const int espera = 50;				//Tiempo que permanece el ovni fuera de la pantalla. Constante porque no nos funciona el random
 const int velocidad = 5;			//Velocidad horizontal del alien
 
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
-UFO::UFO(Point2D<int> a, Texture* b, Game* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
+UFO::UFO(Point2D<int> a, Texture* b, PlayState* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
 
 void UFO::Render() const {	//Render
 	if(MiEstado == Visible)(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave

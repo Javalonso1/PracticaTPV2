@@ -2,15 +2,17 @@
 #include "GameObject.h"
 #include "Vector2D.h"
 #include "texture.h"
+#include "PlayState.h"
 #include "checkML.h"
 #include <vector>
 #include "Alien.h"
 
-class Game;
+class PlayState;
 
 class Mothership : public GameObject
 {
 	private:	
+		PlayState* myPlayState;
 		int level;
 		int direction;
 		bool wall;
@@ -22,7 +24,7 @@ class Mothership : public GameObject
 		int points;
 	public:
 		Mothership();
-		Mothership(Game*, int, int, int);
+		Mothership(PlayState*, int, int, int);
 		~Mothership();
 		int getDirection() const;
 		bool shouldMove() const;

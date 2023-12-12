@@ -3,8 +3,9 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
+#include "PlayState.h"
 
-class Game;
+class PlayState;
 
 class Bunker : public SceneObject
 {
@@ -15,7 +16,7 @@ private:
 
 public:
 	Bunker();			//Constructor vacío
-	Bunker(Point2D<int>&, Texture&, Game*, int);	//Constructor
+	Bunker(Point2D<int>&, Texture&, PlayState*, int);	//Constructor
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle Principal
 	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado

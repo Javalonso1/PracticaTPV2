@@ -2,10 +2,10 @@
 #include "Bunker.h"
 #include "Vector2D.h"
 #include "texture.h"
-#include "Game.h"
+#include "PlayState.h"
 
 Bunker::Bunker() : Pos(), vidas(), myTexture() {}	//Constructor vacío del bunker
-Bunker::Bunker(Point2D<int>& a, Texture& b, Game* gayme, int i) : Pos(a), vidas(i), myTexture(&b), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 4, gayme) {}	//Constructor con valores
+Bunker::Bunker(Point2D<int>& a, Texture& b, PlayState* gayme, int i) : Pos(a), vidas(i), myTexture(&b), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 4, gayme) {}	//Constructor con valores
 
 void Bunker::Render() const {	//Renderizado del bunker
 	if (vidas > 0) {
@@ -19,7 +19,7 @@ bool Bunker::hit(SDL_Rect* laser,  bool frien) {	//Si es golpeado, pierde una de
 	if (SDL_HasIntersection(laser, &screenPos)) {
 		vidas--;
 		if (vidas == 0) {
-			myGame->HasDied(miIterador);
+			myPlayState->HasDied(miIterador);
 		}
 		return true;
 	}

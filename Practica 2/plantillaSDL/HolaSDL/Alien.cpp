@@ -2,7 +2,7 @@
 #include "Alien.h"
 #include "Vector2D.h"
 #include "texture.h"
-#include "Game.h"
+#include "PlayState.h"
 #include "Mothership.h"
 #include "GameObject.h"
 #include "SceneObject.h"
@@ -15,7 +15,7 @@ const int speedUp = 1;				//Incremento de velocidad al chocar con un borde
 const int vertical = 20;			//Velocidad de bajada cuando chocan con un borde
 
 Alien::Alien() : myTexture(), subtipo(), frame(), SceneObject(), minimoAltura(), myMother() {}	//Constructor vacío
-Alien::Alien(Point2D<int>& a, Texture* b, int d, Game* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
+Alien::Alien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
 																					frame(true), minimoAltura(h), 
 																					myMother(m), myTexture(b) {//Constuctor del alien
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
@@ -48,7 +48,7 @@ bool Alien::Update() {	//Update
 }
 bool Alien::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	if (frien && SDL_HasIntersection(laser, &screenPos)) {
-		myGame->HasDied(miIterador);
+		myPlayState->HasDied(miIterador);
 		myMother->AlienDied(points * (3 - subtipo));
 		return true;
 	}
@@ -61,7 +61,7 @@ SDL_Rect* const Alien:: getRect() {	//Método que devuelve la hitbox del alien
 void Alien::VerticalMove(int y) {	//Método al que se llama para que el alien descienda al chocar con un borde
 	Vector2D a(0, y);
 	pos = pos + a;	//Se cambia la posición
-	if (pos.getY() > minimoAltura) (*myGame).EndGame();	//Si ha alcanzado la altura de la nave, eso es que el jugador ha perdido, y el juego termina
+	if (pos.getY() > minimoAltura) (*myPlayState).EndGame();	//Si ha alcanzado la altura de la nave, eso es que el jugador ha perdido, y el juego termina
 
 }
 

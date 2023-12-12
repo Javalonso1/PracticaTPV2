@@ -1,5 +1,6 @@
 #pragma once
 #include "checkML.h"
+#include "PlayState.h"
 #include "SDL_image.h"
 #include <vector>
 #include "Alien.h"
@@ -37,8 +38,7 @@ private:
 	std::string mapa;		//Nombre del mapa	
 
 	std::list<SceneObject*> objetos;
-public:
-	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
+public:	
 	Game();				//Constructor vacío
 	Game(std::string);	//Constructor
 	~Game();			//Destructor
@@ -57,5 +57,6 @@ public:
 	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
 	void Save(int);		//Guarda el juego
 	void DestroyDead();	//Destruye a los objetos en la lista de muertos
+	Texture* devuelveText(int);
 };
 

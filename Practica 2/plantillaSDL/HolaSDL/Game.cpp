@@ -1,5 +1,6 @@
 #include "checkML.h"
 #include "Game.h"
+#include "PlayState.h"
 #include "SDL_image.h"
 #include <vector>
 #include "Alien.h"
@@ -22,76 +23,7 @@ constexpr int winHeight = 600;
 bool save = false;		//variables load y save, usadas para poder conectar dos inputs y guardar en varios archivos distintos.
 bool load = false;
 
-void Game::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
-	std::ifstream lector(e);
-	int lineas = 0;
-	int minAlt;
-	if (lector.peek() == EOF) throw FileNotFoundError(e);	//Si no hay archivo nada más empezar, eso es que el nombre de mapa es incorrecto, por lo que se lanza un error
-	while (lector.peek() != EOF) {			//Mientras no se haya leído hasta el final del archivo...
-		int input1;
-		int input2;
-		lector >> input1;		//se lee el tipo de archivo a crear
-		if (input1 == 0) {		//si es 0, eso es que es una nave
-			lector >> input1;	//Pilla la posición
-			lector >> minAlt;	
-			Point2D<int> ab(input1, minAlt); //Crea un Point2D que darle a la nave
-			lector >> input1;	
-			lector >> input2;
-			nave = new Cannon(ab, texturas[0], this,input1, input2);	//Crea una nave nueva
-			Lista.push_back(nave);
-		}
-		else if (input1 == 1) {	//Si es 1, es un alien
-			lector >> input1;	//Pilla la posición
-			lector >> input2;	
-			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al Alien
-			lector >> input2;			
-			if (input2 == 0) {
-				Lista.push_back(new ShooterAlien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership));
-			}
-			else {
-				Lista.push_back(new Alien(xd, texturas[2], input2, this, minAlt - texturas[0]->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
-			}
-		}
-		else if (input1 == 5) {	//Si es un 5, es un bunker
-			lector >> input1;
-			lector >> input2;	//Pilla la posición
-			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al UFO
-			lector >> input2;
-			lector >> input1;	//Pilla número de vidas
-			lector >> minAlt;	//Pilla número de vidas
-			Lista.push_back(new UFO(xd, texturas[5], this, input2, input1, minAlt));//Pilla número de vidas
-			
-		}
-		else if (input1 == 4) {	//Si es un 4, es un bunker
-			lector >> input1;
-			lector >> input2;	//Pilla la posición
-			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
-			lector >> input2;	//Pilla número de vidas
-			Lista.push_back(new Bunker(xd, *texturas[1], this, input2));	//Lo añade al vector de bunkers			
-		}		
-		else if (input1 == 6) {
-			lector >> input1;
-			lector >> input2;	//Pilla la posición
-			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
-			lector >> input1;	//Pilla número de vidas
-			lector >> input2;	//Pilla número de vidas
-			Lista.push_back(new Laser(xd, input1, input2, this));	//Crea el láser
-		}
-		else if (input1 == 3) {			
-			lector >> input1;
-			lector >> input2;
-			lector >> minAlt;
-			myMothership = new Mothership(this, input1, input2, minAlt);			
-		}
-		else {
-			throw FileFormatError("not valid object type", lineas, e);
-		}
-		lineas++;
-	}	
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		(*i)->setListIterator(i);
-	}
-}
+
 Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), exit(), texturas(), dedAliens(0), mapa(){}
 Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
 			window(), exit(true), texturas(), dedAliens(0), mapa(e), rnd(time(nullptr)) {}
@@ -138,7 +70,7 @@ void Game::Run() {	//Método al que se llama para ejecutar un tick en el juego
 		catch (...) {	//Si salta error es que no se han encontrado las texturas
 			throw std::string("No se han encontrado las texturas");
 		}
-		try { LeerArchivo(mapa); }	//Intenta leer el archivo de mapa
+		try { /*LeerArchivo(mapa); */}	//Intenta leer el archivo de mapa
 		catch (InvadersError e) {	//Si salta error es	que no existe un mapa con ese nombre
 			throw e;
 		}
@@ -317,8 +249,12 @@ void Game::Save(int i) {
 			cargar += ".txt";	//Se pilla la dirección
 			Lista.clear();	//se elimina la lista de objetos y se borra la Mothership
 			delete(myMothership);
-			LeerArchivo(cargar); //Se carga la nueva información
+			/*LeerArchivo(cargar); //Se carga la nueva información*/
 			load = false;
 		}
 	}
+	
 }
+Texture* Game::devuelveText(int i) {
+		return texturas[i];
+	}

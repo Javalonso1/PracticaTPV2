@@ -3,7 +3,7 @@
 #include "Vector2D.h"
 #include "SceneObject.h"
 #include "texture.h"
-class Game;
+class PlayState;
 class Cannon : public SceneObject
 {
 private:	
@@ -14,7 +14,7 @@ private:
 	float tiempoEsp;	//Tiempo que debe esperar la nave para disparar de nuevo	
 public:
 	Cannon();			//Constructor vacío
-	Cannon(Point2D<int>, Texture*, Game*, float, float);	//Constructor
+	Cannon(Point2D<int>, Texture*, PlayState*, float, float);	//Constructor
 	void Render() const override;		//Renderizado
 	bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado

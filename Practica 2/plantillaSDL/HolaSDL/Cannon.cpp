@@ -2,13 +2,13 @@
 #include "Cannon.h"
 #include "Vector2D.h"
 #include "texture.h"
-#include "Game.h"
+#include "PlayState.h"
 const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto a la nave
 const int velLaser = -5;			//Velocidad que la nave le da al láser en su construtor
 const int movSpeed = 5;				//Velocidad a la que se mueve la nave
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
-Cannon::Cannon(Point2D<int> a, Texture* b, Game* c, float d, float e) : myTexture(b), DirecMov(), dispara(false), tiempoRes(0), tiempoEsp(e), 
+Cannon::Cannon(Point2D<int> a, Texture* b, PlayState* c, float d, float e) : myTexture(b), DirecMov(), dispara(false), tiempoRes(0), tiempoEsp(e),
 SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c) { //Constructor con valores
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
 	screenPos.w = myTexture->getFrameWidth();
@@ -29,8 +29,8 @@ bool Cannon::Update() {		//Update
 	else {
 		if (dispara) {	//Si el jugador le dice que dispare
 			Point2D<int> g(pos.getX()+ LaserDesplazacion, pos.getY());	//Crea un Point2D que será la posición del láser			
-			Laser* a = new Laser(g, velLaser, true, myGame);		//Crea un láser con todos sus valores
-			myGame->fireLaser(a);		//Le pasa el láser al Game
+			Laser* a = new Laser(g, velLaser, true, myPlayState);		//Crea un láser con todos sus valores
+			myPlayState->fireLaser(a);		//Le pasa el láser al Game
 			tiempoRes = 0;		//Reinicia el timer
 			dispara = false;
 		}
@@ -43,7 +43,7 @@ bool Cannon::Update() {		//Update
 bool Cannon::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	if (!frien && SDL_HasIntersection(laser, &screenPos)) {
 		vidas--;			
-		if (vidas <= 0) myGame->EndGame();
+		if (vidas <= 0) myPlayState->EndGame();
 		return true;
 	}
 	else return false;
