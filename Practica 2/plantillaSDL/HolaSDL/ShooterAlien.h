@@ -12,7 +12,7 @@ private:
 	int shootlaser;		//Tiempo restante hasta siguiente láser
 public:
 	ShooterAlien();
-	ShooterAlien(Point2D<int>&, Texture*, int, Game*, int, Mothership*);
+	ShooterAlien(Point2D<int>&, Texture*, int, PlayState*, int, Mothership*);
 	bool Update() override;
 };
 

@@ -71,13 +71,17 @@
     <ClCompile Include="Alien.cpp" />
     <ClCompile Include="Bunker.cpp" />
     <ClCompile Include="Cannon.cpp" />
+    <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Mothership.cpp" />
+    <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="ShooterAlien.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -89,6 +93,7 @@
     <ClInclude Include="Bunker.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="checkML.h" />
+    <ClInclude Include="EndState.h" />
     <ClInclude Include="FileFormatError.h" />
     <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Game.h" />
@@ -97,7 +102,10 @@
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InvadersError.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Mothership.h" />
+    <ClInclude Include="PauseState.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />

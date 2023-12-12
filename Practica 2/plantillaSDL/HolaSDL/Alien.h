@@ -3,6 +3,7 @@
 #include "SceneObject.h"
 #include "Vector2D.h"
 #include "texture.h"
+#include "PlayState.h"
 class Game;
 class Mothership;
 
@@ -19,7 +20,7 @@ protected:
 	int minimoAltura;	//Altura bajo la cual sucede game over
 public:
 	Alien();			//Constructor vacío
-	Alien(Point2D<int>&, Texture*, int, Game*, int, Mothership*);
+	Alien(Point2D<int>&, Texture*, int, PlayState*, int, Mothership*);
 	void Render() const override;		//Renderizado
 	virtual bool Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado

@@ -9,7 +9,7 @@ const int espera = 50;				//Tiempo que permanece el ovni fuera de la pantalla. C
 const int velocidad = 5;			//Velocidad horizontal del alien
 
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
-UFO::UFO(Point2D<int> a, Texture* b, Game* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
+UFO::UFO(Point2D<int> a, Texture* b, PlayState* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
 
 void UFO::Render() const {	//Render
 	if(MiEstado == Visible)(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave
