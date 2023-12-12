@@ -1,49 +1,7 @@
-﻿  Alien.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Bunker.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Cannon.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(12,57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  Game.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Game.cpp(40,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  GameObject.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  GameState.cpp
-  GameStateMachine.cpp
-  Laser.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  main.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Mothership.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  SceneObject.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  ShooterAlien.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  texture.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(16,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(17,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(40,21): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.cpp(41,23): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-  UFO.cpp
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\UFO.cpp(12,93): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-  Vector2D.cpp
+﻿  MainMenuState.cpp
+  PauseState.cpp
+  PlayState.cpp
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(71,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\texture.h(77,9): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código...
-  HolaSDL.vcxproj -> C:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
+  HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
