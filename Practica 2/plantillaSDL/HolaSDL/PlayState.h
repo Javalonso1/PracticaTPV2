@@ -19,17 +19,32 @@ public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	PlayState(Game*);
 	~PlayState();
+	void Run();			//Lanza el juego
+	void Render();		//Renderiza
+	void Update();		//Bucle principal
 	void HandleEvents();	//Ejecuta eventos
-	int GetDirection();	//Devuelve la dirección de los aliens	
+	//int GetDirection();	//Devuelve la dirección de los aliens	
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres
-	int getRandomRange(int min, int max);	//Devuelve un númerp random
-	bool getExit();		//Devuelve exit
-	void EndGame();		//Cierra el juego
-	void loadTextures();			//Carga las texturas
-//	SDL_Renderer* getRenderer();
+	//int getRandomRange(int min, int max);	//Devuelve un númerp random
+	//bool getExit();		//Devuelve exit
+	void EndGame();		//Cierra el juego	
 	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
 	void Save(int);		//Guarda el juego
 	void DestroyDead();	//Destruye a los objetos en la lista de muertos	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 };
 

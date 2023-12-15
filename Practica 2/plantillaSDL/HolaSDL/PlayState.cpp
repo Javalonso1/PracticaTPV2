@@ -20,8 +20,8 @@
 //const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 //constexpr int winWidth = 800;
 //constexpr int winHeight = 600;
-//bool save = false;		//variables load y save, usadas para poder conectar dos inputs y guardar en varios archivos distintos.
-//bool load = false;
+bool save = false;		//variables load y save, usadas para poder conectar dos inputs y guardar en varios archivos distintos.
+bool load = false;
 void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
 	std::ifstream lector(e);
 	int lineas = 0;
@@ -92,9 +92,112 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 		(*i)->setListIterator(i);
 	}
 }
-PlayState::PlayState(Game* a) :GameState(a){}
+PlayState::PlayState(Game* a) :GameState(a), exit(true) {}
 PlayState::~PlayState(){
 
+}
+
+void PlayState::Run() {
+	while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado
+		Render();
+		Update();					//Ejecuta todos los eventos del main (Render, Update...)
+		SDL_Delay(5);				//Pequeño delay
+		HandleEvents();
+	}
+}
+void PlayState::Render() {
+	SDL_Rect rect;
+	rect.h = 600;
+	rect.w = 800;
+	rect.x = 0;
+	rect.y = 0;
+	myGame->devuelveText(3)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
+	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		(*i)->Render();
+	}
+	SDL_RenderPresent(myGame->getRenderer());
+}
+void PlayState::Update() {
+	system("cls");
+	std::list<SceneObject*>::iterator i = Lista.begin();
+	while (i != Lista.end()) {
+		(*i)->Update();
+		i++;
+	}
+	myMothership->Update();
+	if (myMothership->getAlienCount() <= 0) {
+		exit = false;
+	}
+	std::cout << myMothership->getPoint();
+	DestroyDead();
+}
+void PlayState::HandleEvents() {
+	SDL_Event ev;
+	int move = 0;
+	bool shoot = false;
+	while (SDL_PollEvent(&ev) != 0) {			//Lector de eventos de teclado. Lee los inputs del jugador y los pasa a variables
+		switch (ev.type) {
+		case SDL_KEYDOWN:
+			switch (ev.key.keysym.sym) {
+			case SDLK_LEFT:
+				load = false;
+				save = false;
+				move = -1;
+				break;
+			case SDLK_RIGHT:
+				load = false;
+				save = false;
+				move = 1;
+				break;
+			case SDLK_SPACE:
+				load = false;
+				save = false;
+				shoot = true;
+				break;
+			case SDLK_g:
+				load = false;
+				save = true;
+				break;
+			case SDLK_l:
+				save = false;
+				load = true;
+				break;
+			case SDLK_0:
+				Save(0);
+				break;
+			case SDLK_1:
+				Save(1);
+				break;
+			case SDLK_2:
+				Save(2);
+				break;
+			case SDLK_3:
+				Save(3);
+				break;
+			case SDLK_4:
+				Save(4);
+				break;
+			case SDLK_5:
+				Save(5);
+				break;
+			case SDLK_6:
+				Save(6);
+				break;
+			case SDLK_7:
+				Save(7);
+				break;
+			case SDLK_8:
+				Save(8);
+				break;
+			case SDLK_9:
+				Save(9);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	nave->handleEvent(move, shoot);
 }
 
 bool PlayState::CheckColisions(SDL_Rect* LaserRect, bool friendly) {	//método que comprueba la colisiones del láser	
@@ -113,4 +216,37 @@ void PlayState::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vecto
 }
 void PlayState::EndGame() {	//Método para acabar con el juego
 	exit = false;
+}
+void PlayState::DestroyDead() {
+	for (std::list <std::list<SceneObject*>::iterator>::iterator i = aDestruir.begin(); i != aDestruir.end(); i++) {
+		delete** i;
+		Lista.erase(*i);
+	}
+	aDestruir.clear();
+}
+void PlayState::Save(int i) {
+	if (save) { //si save es igual a true, es que se quiere guardar partida
+		std::string guardar = "saved";
+		guardar += std::to_string(i);
+		guardar += ".txt";	//Se pilla la dirección
+		std::cout << guardar;
+		std::ofstream a(guardar);
+		myMothership->save(a);	//Se guarda la mothership, y luego se guardan, de uno en uno, todos los elementos de la lista de objetos
+		for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+			a << "\n";
+			(*i)->save(a);
+		}
+		save = false;	//Se desactiva save
+	}
+	else {
+		if (load) {	//si load es true, es que se quiere cargar partida
+			std::string cargar = "saved";
+			cargar += std::to_string(i);
+			cargar += ".txt";	//Se pilla la dirección
+			Lista.clear();	//se elimina la lista de objetos y se borra la Mothership
+			delete(myMothership);
+			LeerArchivo(cargar); //Se carga la nueva información*/
+			load = false;
+		}
+	}
 }
