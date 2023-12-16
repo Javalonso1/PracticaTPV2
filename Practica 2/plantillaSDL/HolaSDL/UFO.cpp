@@ -16,7 +16,7 @@ void UFO::Render() const {	//Render
 	else if (MiEstado == Destruido && MovingRight !=0)(*myTexture).renderFrame(screenPos, 0, 1);	//Renderiza la nave
 }
 
-bool UFO::Update() {		//Update	
+void UFO::Update() {		//Update	
 	if (MiEstado == Oculto) {
 		tiempoEsp--;
 		if (tiempoEsp <= 0) {
@@ -51,7 +51,6 @@ bool UFO::Update() {		//Update
 
 	screenPos.x = pos.getX();	//Le da la posición a su rect
 	screenPos.y = pos.getY();
-	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
 
 bool UFO::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado

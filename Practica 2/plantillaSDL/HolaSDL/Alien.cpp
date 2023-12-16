@@ -27,7 +27,7 @@ void Alien::Render() const{	//Renderizado
 	else (*myTexture).renderFrame(screenPos, subtipo, 1);
 		
 }
-bool Alien::Update() {	//Update		
+void Alien::Update() {	//Update		
 	if (myMother->shouldMove()) {
 		frame = !frame;		//Cambia a su siguiente frame para la animación
 
@@ -44,7 +44,6 @@ bool Alien::Update() {	//Update
 	}
 	screenPos.x = pos.getX();	//Le da la posición a su rect
 	screenPos.y = pos.getY();
-	return true;
 }
 bool Alien::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	if (frien && SDL_HasIntersection(laser, &screenPos)) {

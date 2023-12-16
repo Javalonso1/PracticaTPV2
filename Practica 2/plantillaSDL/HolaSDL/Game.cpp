@@ -16,14 +16,16 @@
 #include "FileNotFoundError.h"
 #include "SDLError.h"
 #include <string>
+#include "GameStateMachine.h"
+#include "MainMenuState.h"
 
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
 
 
-Game::Game() : direction(),WinHeight(), WinLong(), renderer(), window(), texturas(), mapa(){}
-Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
+Game::Game() : WinHeight(), WinLong(), renderer(), window(), texturas(), mapa(){}
+Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 			window(), texturas(), mapa(e) {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("First test with SDL", SDL_WINDOWPOS_CENTERED,
@@ -48,10 +50,12 @@ Game::Game(std::string e) : direction(true), WinHeight(), WinLong(), renderer(),
 		catch (InvadersError e) {	//Si salta error es	que no existe un mapa con ese nombre
 			throw e;
 		}
-		myPlayState->Run();
+		DeusEx = new GameStateMachine();
+		//DeusEx->pushState(myPlayState);
+		DeusEx->pushState(new MainMenuState(this));
+		//myPlayState->Run();
+		Run();
 	}
-
-
 }
 Game::~Game() {	//Destructor del Game	
 	for (int i = 0; i < NUM_TEXTURES; i++) {	//Se borran todas las texturas
@@ -83,3 +87,11 @@ SDL_Renderer* Game::getRenderer() {
 Texture* Game::devuelveText(int i) {
 		return texturas[i];
 	}
+
+void Game::Run() {
+	while (true) {
+		DeusEx->update();
+		DeusEx->render();
+		SDL_Delay(10);
+	}
+}

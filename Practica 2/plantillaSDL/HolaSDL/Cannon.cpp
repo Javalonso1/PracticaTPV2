@@ -16,7 +16,7 @@ SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c) { //Constructor co
 void Cannon::Render() const{	//Render
 	(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave
 }
-bool Cannon::Update() {		//Update	
+void Cannon::Update() {		//Update	
 	if (DirecMov != 0) {	//Si el jugador le dice que se mueva en una dirección
 		Vector2D a(DirecMov, 0);	//Le da ese valor al vector
 		pos = pos + a;		//Cambia su posición de acuerdo con ello
@@ -37,13 +37,14 @@ bool Cannon::Update() {		//Update
 	}
 	screenPos.x = pos.getX();	//Le da la posición a su rect
 	screenPos.y = pos.getY();
-	return(vidas > 0);	//Devuelve true mientras tenga al menos una vida aún
 }
 
 bool Cannon::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	if (!frien && SDL_HasIntersection(laser, &screenPos)) {
 		vidas--;			
-		if (vidas <= 0) myPlayState->EndGame();
+		if (vidas <= 0) {
+			myPlayState->EndGame();
+		}
 		return true;
 	}
 	else return false;

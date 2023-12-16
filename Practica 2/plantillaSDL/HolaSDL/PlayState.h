@@ -7,6 +7,8 @@
 #include "Laser.h"
 #include "Mothership.h"
 #include <list>
+#include "gameList.h"
+
 class PlayState : public GameState
 {
 private:
@@ -15,33 +17,21 @@ private:
 	Cannon* nave;			//Nave del jugador		
 	Mothership* myMothership;
 	bool exit;				//Booleano para terminar el juego
+
+	GameList<SceneObject*, false> pasta;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	PlayState(Game*);
 	~PlayState();
-	void Run();			//Lanza el juego
-	void Render() override;		//Renderiza
-	void Update() override;		//Bucle principal
+	void Run();				//Lanza el juego
+	void Render() const override;	//Renderiza
+	void Update() override;			//Bucle principal
 	void HandleEvents() override;	//Ejecuta eventos	
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres		
-	void EndGame();		//Cierra el juego	
+	void EndGame();			//Cierra el juego	
 	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
-	void Save(int);		//Guarda el juego
-	void DestroyDead();	//Destruye a los objetos en la lista de muertos	
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	void Save(int);			//Guarda el juego
+	void DestroyDead();		//Destruye a los objetos en la lista de muertos		
 };
 

@@ -39,7 +39,7 @@ class Mothership : public GameObject
 		int getPoint() const;
 
 		void Render() const override;
-		bool Update() override;
+		void Update() override;
 		void save(std::ostream&) const override;
 
 

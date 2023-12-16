@@ -15,7 +15,7 @@ public:
 	GameState(Game*);
 	virtual ~GameState() = default;
 	virtual void Update() = 0;
-	virtual void Render() = 0;
+	virtual void Render() const = 0;
 	virtual void HandleEvents() = 0;
 	void addEventListener();
 	void addObject();

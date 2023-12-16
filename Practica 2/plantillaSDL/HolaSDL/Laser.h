@@ -15,7 +15,7 @@ public:
 	Laser();			//Constructor vacío
 	Laser(Point2D<int>&, int, bool, PlayState*);	//Constructor
 	void Render() const override;
-	bool Update() override;		//Bucle principal
+	void Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool) override;			//Método que anula 
 	SDL_Rect* const getRect();	//Devuelve rect
 	bool Friendly();		//Devuelve friendly

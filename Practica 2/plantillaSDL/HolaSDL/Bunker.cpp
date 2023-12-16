@@ -12,8 +12,8 @@ void Bunker::Render() const {	//Renderizado del bunker
 		(*myTexture).renderFrame(screenPos, 0, 4 - vidas);	//Renderiza el bunker
 	}
 }
-bool Bunker::Update() {	//Devuelve si aún tiene vidas	
-	return vidas > 0;
+void Bunker::Update() {	//Devuelve si aún tiene vidas	
+	
 }
 bool Bunker::hit(SDL_Rect* laser,  bool frien) {	//Si es golpeado, pierde una de sus vidas
 	if (SDL_HasIntersection(laser, &screenPos)) {

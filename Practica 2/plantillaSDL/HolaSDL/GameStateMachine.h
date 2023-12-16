@@ -10,11 +10,11 @@ private:
 public:
 	GameStateMachine();
 	~GameStateMachine();
-	void pushState();
-	void replaceState();
-	void popState();
 	void update(); 
-	void render(); 
-	void handleEvent();
+	void render() const; 
+	void handleEvent(const SDL_Event&);
+	void pushState(GameState*);
+	void replaceState(GameState*);
+	void popState();
 };
 

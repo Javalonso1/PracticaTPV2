@@ -19,14 +19,13 @@ void Laser::Render() const {	//Render
 	else SDL_SetRenderDrawColor(myPlayState->getRenderer(), 0, 255, 0, 255);		//Si es un láser de un alien, se colorea de rojo
 	SDL_RenderFillRect(myPlayState->getRenderer(),&screenPos);	//Se dibuja un rectángulo de ese color	
 }
-bool Laser::Update() {	//Update		
+void Laser::Update() {	//Update		
 	pos = pos + Vel;	//Avanza	
 	screenPos.x = pos.getX();	//Modifica el rect según su posición
 	screenPos.y = pos.getY();	
 	if (myPlayState->CheckColisions(&screenPos, friendly) || pos.getY() > maxTam || pos.getY() < minTam) {
 		myPlayState->HasDied(miIterador);
 	}
-	return ImAlive;		//Devuelve true mientras no haya chocado con nada aún
 }
 bool Laser::hit(SDL_Rect* rect, bool fren) {		//Método al que se llama cuando choca con algo		
 	/*if (SDL_HasIntersection(rect, &screenPos) && fren != friendly) {

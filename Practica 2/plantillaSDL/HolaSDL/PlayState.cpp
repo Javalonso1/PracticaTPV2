@@ -99,24 +99,26 @@ PlayState::~PlayState(){
 
 void PlayState::Run() {
 	while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado
-		Render();
 		Update();					//Ejecuta todos los eventos del main (Render, Update...)
-		SDL_Delay(5);				//Pequeño delay
+		Render();
 		HandleEvents();
+		SDL_Delay(5);				//Pequeño delay
 	}
 }
-void PlayState::Render() {
+
+void PlayState::Render() const {
 	SDL_Rect rect;
 	rect.h = 600;
 	rect.w = 800;
 	rect.x = 0;
 	rect.y = 0;
 	myGame->devuelveText(3)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+	for (std::list<SceneObject*>::const_iterator i = Lista.begin(); i != Lista.end(); i++) {
 		(*i)->Render();
 	}
 	SDL_RenderPresent(myGame->getRenderer());
 }
+
 void PlayState::Update() {
 	system("cls");
 	std::list<SceneObject*>::iterator i = Lista.begin();

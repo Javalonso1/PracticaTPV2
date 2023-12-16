@@ -15,12 +15,14 @@
 #include <random>
 #include <iostream>
 #include <list>
+#include "GameStateMachine.h"
+#include "MainMenuState.h"
+
 const int NUM_TEXTURES = 6;
 const int veticalDown = 13;
 class Game
 {
 private:
-	bool direction;			//Dirección a la que se mueven los aliens
 	int WinHeight;			//Alto de pantalla
 	int WinLong;			//Ancho de pantalla
 	SDL_Renderer* renderer;	//Renderizador
@@ -28,10 +30,13 @@ private:
 	Texture* texturas[NUM_TEXTURES];	//Array con las texturas
 	std::string mapa;		//Nombre del mapa	
 	PlayState* myPlayState;		
+	GameStateMachine* DeusEx;
+
 public:	
 	Game();				//Constructor vacío
 	Game(std::string);	//Constructor
 	~Game();			//Destructor
+	void Run();
 	void loadTextures();			//Carga las texturas
 	SDL_Renderer* getRenderer();	
 	Texture* devuelveText(int);

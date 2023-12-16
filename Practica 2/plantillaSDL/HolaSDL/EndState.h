@@ -4,6 +4,9 @@
 class EndState : public GameState
 {
 private:
+
 public:
+	EndState();
+	~EndState();
 };
 

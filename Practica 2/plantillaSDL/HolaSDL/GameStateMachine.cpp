@@ -3,27 +3,32 @@
 #include "GameState.h"
 
 
-GameStateMachine::GameStateMachine() {};
+GameStateMachine::GameStateMachine() {
+
+};
 GameStateMachine::~GameStateMachine() {};
 
 void GameStateMachine::update() {
 	iono.top()->Update();
 }
 
-void GameStateMachine::render() {
-
+void GameStateMachine::render() const {
+	iono.top()->Render();
 }
 
-void GameStateMachine::handleEvent() {
-
+void GameStateMachine::handleEvent(const SDL_Event&) {
+	iono.top()->HandleEvents();
 }
 
-void GameStateMachine::pushState() {
-
+void GameStateMachine::pushState(GameState* newState) {
+	iono.push(newState);
 }
-void GameStateMachine::replaceState() {
 
+void GameStateMachine::replaceState(GameState* newState) {
+	iono.pop();
+	iono.push(newState);
 }
+
 void GameStateMachine::popState() {
-
+	iono.pop();
 }

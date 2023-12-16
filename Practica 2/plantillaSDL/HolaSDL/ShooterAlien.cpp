@@ -11,7 +11,7 @@ const int disp = 5;					//Tiempo para disparar, hecho constante porque no nos fu
 
 ShooterAlien::ShooterAlien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : Alien(a, b, d, f, h, m), shootlaser(0) {};
 
-bool ShooterAlien::Update()  {
+void ShooterAlien::Update()  {
 	if (myMother->shouldMove()) {
 		if (shootlaser <= 0) {	//si el timer para disparar el laser llega a 0, dispara un laser
 			Point2D<int> g(pos.getX() + LaserDesplazacion, pos.getY());			
@@ -24,5 +24,5 @@ bool ShooterAlien::Update()  {
 			shootlaser--;
 		}
 	}
-	return Alien::Update();
+	Alien::Update();
 }

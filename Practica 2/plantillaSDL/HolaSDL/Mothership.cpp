@@ -56,7 +56,7 @@ int Mothership::getPoint() const {
 	return points;
  }
 
-bool Mothership::Update() {
+void Mothership::Update() {
 	if (frames > level) {
 		if (wall) {
 			vertical = true;
@@ -76,7 +76,6 @@ bool Mothership::Update() {
 		move = false;
 		frames++;
 	}
-	return true;
 }
 void Mothership::save(std::ostream& a) const {
 	a << "3 " << direction << " " << level << " " << frames;
