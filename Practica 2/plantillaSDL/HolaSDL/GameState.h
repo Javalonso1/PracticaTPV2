@@ -14,9 +14,9 @@ protected:
 public:
 	GameState(Game*);
 	virtual ~GameState() = default;
-	void update();
-	void render();
-	void handleEvent();
+	virtual void Update() = 0;
+	virtual void Render() = 0;
+	virtual void HandleEvents() = 0;
 	void addEventListener();
 	void addObject();
 	SDL_Renderer* getRenderer();

@@ -20,14 +20,11 @@ public:
 	PlayState(Game*);
 	~PlayState();
 	void Run();			//Lanza el juego
-	void Render();		//Renderiza
-	void Update();		//Bucle principal
-	void HandleEvents();	//Ejecuta eventos
-	//int GetDirection();	//Devuelve la dirección de los aliens	
+	void Render() override;		//Renderiza
+	void Update() override;		//Bucle principal
+	void HandleEvents() override;	//Ejecuta eventos	
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
-	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres
-	//int getRandomRange(int min, int max);	//Devuelve un númerp random
-	//bool getExit();		//Devuelve exit
+	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres		
 	void EndGame();		//Cierra el juego	
 	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
 	void Save(int);		//Guarda el juego
