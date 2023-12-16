@@ -90,6 +90,9 @@ Texture* Game::devuelveText(int i) {
 
 void Game::Run() {
 	while (true) {
+		while (SDL_PollEvent(&manolo)) {
+			DeusEx->handleEvent(manolo);
+		}
 		DeusEx->update();
 		DeusEx->render();
 		SDL_Delay(10);

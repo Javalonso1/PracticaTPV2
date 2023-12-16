@@ -31,6 +31,7 @@ private:
 	std::string mapa;		//Nombre del mapa	
 	PlayState* myPlayState;		
 	GameStateMachine* DeusEx;
+	SDL_Event manolo;
 
 public:	
 	Game();				//Constructor vacío

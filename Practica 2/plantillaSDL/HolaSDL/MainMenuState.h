@@ -3,13 +3,14 @@
 #include "GameState.h"
 #include "texture.h"
 #include "Button.h"
+#include <list>
 
 class Game;
 
 class MainMenuState : public GameState
 {
 private:
-	Button barry;
+	std::list<EventHandler*> listeners;
 public:
 	MainMenuState(Game*);
 	~MainMenuState();

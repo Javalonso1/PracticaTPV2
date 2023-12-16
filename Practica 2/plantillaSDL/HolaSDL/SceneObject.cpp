@@ -24,6 +24,6 @@ bool SceneObject::hit(SDL_Rect* laser, bool friendly) {
 	}
 }
 
-void SceneObject::setListIterator(std::list<SceneObject*>::iterator it) {
+void SceneObject::setListAnchor(GameList<SceneObject>::anchor it) {
 	miIterador = it;
 }

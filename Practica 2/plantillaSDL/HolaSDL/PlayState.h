@@ -12,13 +12,13 @@
 class PlayState : public GameState
 {
 private:
-	std::list<SceneObject*> Lista;	//Lista con todos los objetos jugables
-	std::list<std::list<SceneObject*>::iterator> aDestruir;	//Lista con los objetos muertos
+	//std::list<SceneObject*> Lista;	//Lista con todos los objetos jugables
+	std::list<GameList<SceneObject>::anchor> aDestruir;	//Lista con los objetos muertos
 	Cannon* nave;			//Nave del jugador		
 	Mothership* myMothership;
 	bool exit;				//Booleano para terminar el juego
 
-	GameList<SceneObject*, false> pasta;
+	GameList<SceneObject> pasta;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	PlayState(Game*);
@@ -30,7 +30,7 @@ public:
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres		
 	void EndGame();			//Cierra el juego	
-	void HasDied(std::list<SceneObject*>::iterator Iterador); //Añade un objeto a la lista de muertos
+	void HasDied(GameList<SceneObject>::anchor Iterador); //Añade un objeto a la lista de muertos
 	void Save(int);			//Guarda el juego
 	void DestroyDead();		//Destruye a los objetos en la lista de muertos		
 };

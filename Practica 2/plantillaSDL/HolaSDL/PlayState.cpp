@@ -38,7 +38,7 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 			lector >> input1;
 			lector >> input2;
 			nave = new Cannon(ab, myGame->devuelveText(0), this, input1, input2);	//Crea una nave nueva
-			Lista.push_back(nave);
+			pasta.push_back(nave);
 		}
 		else if (input1 == 1) {	//Si es 1, es un alien
 			lector >> input1;	//Pilla la posición
@@ -46,10 +46,10 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al Alien
 			lector >> input2;
 			if (input2 == 0) {
-				Lista.push_back(new ShooterAlien(xd, myGame->devuelveText(2), input2, this, minAlt - myGame->devuelveText(2)->getFrameHeight(), myMothership));
+				pasta.push_back(new ShooterAlien(xd, myGame->devuelveText(2), input2, this, minAlt - myGame->devuelveText(2)->getFrameHeight(), myMothership));
 			}
 			else {
-				Lista.push_back(new Alien(xd, myGame->devuelveText(2), input2, this, minAlt - myGame->devuelveText(2)->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
+				pasta.push_back(new Alien(xd, myGame->devuelveText(2), input2, this, minAlt - myGame->devuelveText(2)->getFrameHeight(), myMothership)); //Crea un alie);	//le añade al vector de aliens
 			}
 		}
 		else if (input1 == 5) {	//Si es un 5, es un bunker
@@ -59,7 +59,7 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 			lector >> input2;
 			lector >> input1;	//Pilla número de vidas
 			lector >> minAlt;	//Pilla número de vidas
-			Lista.push_back(new UFO(xd, myGame->devuelveText(5), this, input2, input1, minAlt));//Pilla número de vidas
+			pasta.push_back(new UFO(xd, myGame->devuelveText(5), this, input2, input1, minAlt));//Pilla número de vidas
 
 		}
 		else if (input1 == 4) {	//Si es un 4, es un bunker
@@ -67,7 +67,7 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 			lector >> input2;	//Pilla la posición
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
 			lector >> input2;	//Pilla número de vidas
-			Lista.push_back(new Bunker(xd, *myGame->devuelveText(1), this, input2));	//Lo añade al vector de bunkers			
+			pasta.push_back(new Bunker(xd, *myGame->devuelveText(1), this, input2));	//Lo añade al vector de bunkers			
 		}
 		else if (input1 == 6) {
 			lector >> input1;
@@ -75,7 +75,7 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 			Point2D<int> xd(input1, input2);	//Crea un Point2D que darle al bunker			
 			lector >> input1;	//Pilla número de vidas
 			lector >> input2;	//Pilla número de vidas
-			Lista.push_back(new Laser(xd, input1, input2, this));	//Crea el láser
+			pasta.push_back(new Laser(xd, input1, input2, this));	//Crea el láser
 		}
 		else if (input1 == 3) {
 			lector >> input1;
@@ -88,9 +88,7 @@ void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y tran
 		}
 		lineas++;
 	}
-	for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
-		(*i)->setListIterator(i);
-	}
+
 }
 PlayState::PlayState(Game* a) :GameState(a), exit(true) {}
 PlayState::~PlayState(){
@@ -113,18 +111,18 @@ void PlayState::Render() const {
 	rect.x = 0;
 	rect.y = 0;
 	myGame->devuelveText(3)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
-	for (std::list<SceneObject*>::const_iterator i = Lista.begin(); i != Lista.end(); i++) {
-		(*i)->Render();
+	for (auto i = pasta.begin(); i != pasta.end(); ++i) {
+		(*i).Render();
 	}
 	SDL_RenderPresent(myGame->getRenderer());
 }
 
 void PlayState::Update() {
 	system("cls");
-	std::list<SceneObject*>::iterator i = Lista.begin();
-	while (i != Lista.end()) {
-		(*i)->Update();
-		i++;
+	auto i = pasta.begin();
+	while (i != pasta.end()) {
+		(*i).Update();
+		++i;
 	}
 	myMothership->Update();
 	if (myMothership->getAlienCount() <= 0) {
@@ -199,32 +197,33 @@ void PlayState::HandleEvents() {
 			}
 		}
 	}
-	nave->handleEvent(move, shoot);
 }
 
 bool PlayState::CheckColisions(SDL_Rect* LaserRect, bool friendly) {	//método que comprueba la colisiones del láser	
-	std::list<SceneObject*>::iterator i = Lista.begin();
-	while (i != Lista.end() && !(*i)->hit(LaserRect, friendly)) {
-		i++;
+	auto i = pasta.begin();
+	while (i != pasta.end() && !(*i).hit(LaserRect, friendly)) {
+		++i;
 	}
-	return i != Lista.end();
+	return i != pasta.end();
 }
-void PlayState::HasDied(std::list<SceneObject*>::iterator it) {
+void PlayState::HasDied(GameList<SceneObject>::anchor it) {
 	aDestruir.push_back(it);
 }
 void PlayState::fireLaser(Laser* a) {	//Método que añade un nuevo láser al vector de láseres
-	Lista.push_back(a);
-	a->setListIterator(--Lista.end());
+	pasta.push_back(a);
 }
 void PlayState::EndGame() {	//Método para acabar con el juego
 	exit = false;
 }
 void PlayState::DestroyDead() {
-	for (std::list <std::list<SceneObject*>::iterator>::iterator i = aDestruir.begin(); i != aDestruir.end(); i++) {
-		delete** i;
-		Lista.erase(*i);
+	for (auto i = aDestruir.begin(); i != aDestruir.end(); i++) {
+		pasta.erase(*i);
 	}
 	aDestruir.clear();
+	for (auto i = queso.begin(); i != queso.end(); i++) {
+		pizza.erase(*i);
+	}
+	queso.clear();
 }
 void PlayState::Save(int i) {
 	if (save) { //si save es igual a true, es que se quiere guardar partida
@@ -234,9 +233,9 @@ void PlayState::Save(int i) {
 		std::cout << guardar;
 		std::ofstream a(guardar);
 		myMothership->save(a);	//Se guarda la mothership, y luego se guardan, de uno en uno, todos los elementos de la lista de objetos
-		for (std::list<SceneObject*>::iterator i = Lista.begin(); i != Lista.end(); i++) {
+		for (auto i = pasta.begin(); i != pasta.end(); ++i) {
 			a << "\n";
-			(*i)->save(a);
+			(*i).save(a);
 		}
 		save = false;	//Se desactiva save
 	}
@@ -245,7 +244,7 @@ void PlayState::Save(int i) {
 			std::string cargar = "saved";
 			cargar += std::to_string(i);
 			cargar += ".txt";	//Se pilla la dirección
-			Lista.clear();	//se elimina la lista de objetos y se borra la Mothership
+			pasta.clear();	//se elimina la lista de objetos y se borra la Mothership
 			delete(myMothership);
 			LeerArchivo(cargar); //Se carga la nueva información*/
 			load = false;

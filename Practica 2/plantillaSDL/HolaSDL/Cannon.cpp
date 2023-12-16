@@ -50,11 +50,28 @@ bool Cannon::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	else return false;
 }
 
-void Cannon::handleEvent(int mov, bool disparado) {		//Le pasan los inputs del jugador, y este método lo transforma en variables legibles en el Cannon
+/*void Cannon::handleEvent(int mov, bool disparado) {		//Le pasan los inputs del jugador, y este método lo transforma en variables legibles en el Cannon
 	DirecMov = mov*movSpeed;
 	dispara = disparado;	
-}
+}*/
 
 void Cannon::save(std::ostream& a) const {
 	a << "0 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << tiempoEsp;
+}
+
+void Cannon::handleEvent(const SDL_Event& ev) {
+	switch (ev.type) {
+	case SDL_KEYDOWN:
+		switch (ev.key.keysym.sym) {
+		case SDLK_LEFT:
+			DirecMov = movSpeed;
+			break;
+		case SDLK_RIGHT:
+			DirecMov = -movSpeed;
+			break;
+		case SDLK_SPACE:
+			dispara = true;
+			break;
+		}
+	}
 }

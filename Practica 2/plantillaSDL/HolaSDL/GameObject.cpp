@@ -5,7 +5,7 @@
 #include "GameState.h"
 
 GameObject::GameObject() {};
-//GameObject::GameObject(GameState* gayme) : myGameState(gayme) {};
+GameObject::GameObject(GameState* gayme) : myGameState(gayme) {};
 
 GameObject::~GameObject() {
 

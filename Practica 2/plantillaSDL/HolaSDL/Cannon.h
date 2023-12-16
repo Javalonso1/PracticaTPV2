@@ -3,8 +3,10 @@
 #include "Vector2D.h"
 #include "SceneObject.h"
 #include "texture.h"
+#include "EventHandler.h"
+
 class PlayState;
-class Cannon : public SceneObject
+class Cannon : public SceneObject, public EventHandler
 {
 private:	
 	Texture* myTexture; //Textura de la nave	
@@ -18,7 +20,8 @@ public:
 	void Render() const override;		//Renderizado
 	void Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado
-	void handleEvent(int, bool);	//Usado para manejar eventos	
+	//void handleEvent(int, bool);	//Usado para manejar eventos	
 	void save(std::ostream&) const override;
+	void handleEvent(const SDL_Event&) override;
 };
 

@@ -4,11 +4,13 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include <list>
+#include "gameList.h"
+
 class PlayState;
 class SceneObject: public GameObject
 {
 protected:
-	std::list<SceneObject*>::iterator miIterador;
+	GameList<SceneObject>::anchor miIterador;
 	PlayState* myPlayState;
 	Point2D<int> pos;
 	int width;
@@ -20,6 +22,6 @@ public:
 	SceneObject(Point2D<int>,int,int,int, PlayState*);
 	virtual ~SceneObject();
 	virtual bool hit(SDL_Rect*, bool) = 0;
-	void setListIterator(std::list<SceneObject*>::iterator);
+	void setListAnchor(GameList<SceneObject>::anchor);
 };
 
