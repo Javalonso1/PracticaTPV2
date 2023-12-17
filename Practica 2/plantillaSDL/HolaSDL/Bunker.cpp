@@ -15,16 +15,18 @@ void Bunker::Render() const {	//Renderizado del bunker
 void Bunker::Update() {	//Devuelve si aún tiene vidas	
 	
 }
-bool Bunker::hit(SDL_Rect* laser,  bool frien) {	//Si es golpeado, pierde una de sus vidas
-	if (SDL_HasIntersection(laser, &screenPos)) {
-		vidas--;
-		if (vidas == 0) {
-			myPlayState->HasDied(terador);
+bool Bunker::hit(SDL_Rect* laser,  bool frien, bool a) {	//Si es golpeado, pierde una de sus vidas
+	if (!a) {
+		if (SDL_HasIntersection(laser, &screenPos)) {
+			vidas--;
+			if (vidas == 0) {
+				myPlayState->HasDied(terador);
+			}
+			return true;
 		}
-		return true;
-	}
-	else {
-		return false;
+		else {
+			return false;
+		}
 	}
 }
 SDL_Rect* const Bunker::getRect() {	//Método que devuelve la hitbox del bunker

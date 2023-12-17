@@ -16,14 +16,14 @@ private:
 	std::list<EventHandler*> listeners;
 	Button* Continuar;
 	Button* VolverMenu;
-	Button* GuardarPartida;
-	Button* CargarPartida;
+	Button* GuardarPartida;	
 public:
 	PauseState(Game*);
 	~PauseState();
 	void Update();
 	void Render() const;
 	void HandleEvents();
+	void Save() override;			
 };
 
 

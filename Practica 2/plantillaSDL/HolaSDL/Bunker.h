@@ -19,7 +19,7 @@ public:
 	Bunker(Point2D<int>&, Texture&, PlayState*, int);	//Constructor
 	void Render() const override;		//Renderizado
 	void Update() override;		//Bucle Principal
-	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado
+	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado
 	SDL_Rect* const getRect();	//Devuelve rect
 	void save(std::ostream&) const override;
 };

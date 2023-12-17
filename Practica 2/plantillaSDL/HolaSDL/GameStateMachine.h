@@ -16,5 +16,6 @@ public:
 	void pushState(GameState*);
 	void replaceState(GameState*);
 	void popState();
+	void Save();
 };
 

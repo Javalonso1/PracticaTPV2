@@ -21,7 +21,7 @@ public:
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, PlayState*);
 	virtual ~SceneObject();
-	virtual bool hit(SDL_Rect*, bool) = 0;
+	virtual bool hit(SDL_Rect*, bool, bool) = 0;
 	void setListAnchor(GameList<SceneObject>::anchor);
 };
 

@@ -20,5 +20,6 @@ public:
 	~MainMenuState();
 	void Update();
 	void Render() const;
+	void Save() override;			//Guarda el juego
 };
 

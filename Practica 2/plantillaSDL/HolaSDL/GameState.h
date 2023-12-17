@@ -21,6 +21,7 @@ public:
 	virtual void Update() = 0;
 	virtual void Render() const = 0;
 	virtual void HandleEvents(const SDL_Event&);
+	virtual void Save() = 0;
 	void addEventListener(EventHandler*);
 	void hasDied(GameList<GameObject, true>::anchor Iterador);
 	void addObject(GameObject*);

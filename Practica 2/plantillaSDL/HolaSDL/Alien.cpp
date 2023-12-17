@@ -45,13 +45,18 @@ void Alien::Update() {	//Update
 	screenPos.x = pos.getX();	//Le da la posición a su rect
 	screenPos.y = pos.getY();
 }
-bool Alien::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
-	if (frien && SDL_HasIntersection(laser, &screenPos)) {
-		myPlayState->HasDied(terador);
-		myMother->AlienDied(points * (3 - subtipo));
-		return true;
+bool Alien::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado
+	if (a) {
+		return false;
 	}
-	else return false;
+	else {
+		if (frien && SDL_HasIntersection(laser, &screenPos)) {
+			myPlayState->HasDied(terador);
+			myMother->AlienDied(points * (3 - subtipo));
+			return true;
+		}
+		else return false;
+	}
 }
 SDL_Rect* const Alien:: getRect() {	//Método que devuelve la hitbox del alien
 	return &screenPos;
@@ -60,7 +65,7 @@ SDL_Rect* const Alien:: getRect() {	//Método que devuelve la hitbox del alien
 void Alien::VerticalMove(int y) {	//Método al que se llama para que el alien descienda al chocar con un borde
 	Vector2D a(0, y);
 	pos = pos + a;	//Se cambia la posición
-	if (pos.getY() > minimoAltura) (*myPlayState).EndGame();	//Si ha alcanzado la altura de la nave, eso es que el jugador ha perdido, y el juego termina
+	if (pos.getY() > minimoAltura) (*myPlayState).EndGame(false);	//Si ha alcanzado la altura de la nave, eso es que el jugador ha perdido, y el juego termina
 
 }
 

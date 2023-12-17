@@ -18,7 +18,7 @@
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
 
-const int NUM_TEXTURES = 13;
+const int NUM_TEXTURES = 18;
 const int veticalDown = 13;
 class Game
 {
@@ -47,6 +47,9 @@ public:
 	void pushState(GameState*);
 	void popState();
 	void replaceState(GameState*);
+	void continuar(bool);
+	void PauseGame();
+	void EndGame(bool);
 	std::string GetMap();
 };
 

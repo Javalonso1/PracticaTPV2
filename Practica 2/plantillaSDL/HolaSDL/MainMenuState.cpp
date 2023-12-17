@@ -18,7 +18,10 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 200);
 	addEventListener(CargarPartida);
 	CargarPartida->Connect([this]() {
-
+		std::string cargar = "saved.txt";		
+		PlayState* playstate = new PlayState(myGame);
+		myGame->pushState(playstate);
+		playstate->LeerArchivo(cargar);
 		});
 	pizza.push_back(CargarPartida);
 
@@ -31,7 +34,7 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 MainMenuState::~MainMenuState() {
 
 }
-
+void MainMenuState::Save() {}
 void MainMenuState::Update() {
 	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
 		(*i).Update();

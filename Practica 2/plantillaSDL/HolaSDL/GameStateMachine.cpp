@@ -32,3 +32,6 @@ void GameStateMachine::replaceState(GameState* newState) {
 void GameStateMachine::popState() {
 	iono.pop();
 }
+void GameStateMachine::Save() {
+	iono.top()->Save();
+}

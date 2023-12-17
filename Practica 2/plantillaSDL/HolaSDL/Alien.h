@@ -22,7 +22,7 @@ public:
 	Alien(Point2D<int>&, Texture*, int, PlayState*, int, Mothership*);
 	void Render() const override;		//Renderizado
 	virtual void Update() override;		//Bucle principal
-	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado
+	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado
 	SDL_Rect* const getRect();	//Devuelve el rect
 	void VerticalMove(int);	//Método para que los aliens bajen
 	void save(std::ostream&) const override;

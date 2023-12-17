@@ -20,7 +20,8 @@ public:
 	UFO(Point2D<int>, Texture*, PlayState*, int, int, int);	//Constructor
 	void Render() const override;		//Renderizado
 	void Update() override;		//Bucle principal
-	bool hit(SDL_Rect*, bool) override;			//Método para ser golpeado	
+	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado	
 	void save(std::ostream&) const override;
+	void Gamble();
 };
 

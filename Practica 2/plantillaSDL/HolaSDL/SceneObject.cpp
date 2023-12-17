@@ -15,7 +15,7 @@ SceneObject::~SceneObject() {
 
 }
 
-bool SceneObject::hit(SDL_Rect* laser, bool friendly) {
+bool SceneObject::hit(SDL_Rect* laser, bool friendly, bool a) {
 	if (SDL_HasIntersection(laser, &screenPos)) {
 		return true;
 	}

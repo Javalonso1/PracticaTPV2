@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include "SceneObject.h"
 #include "Cannon.h"
+#include "texture.h"
 #include "Game.h"
 #include "Laser.h"
 #include "Mothership.h"
@@ -15,23 +16,22 @@ private:
 	//std::list<SceneObject*> Lista;	//Lista con todos los objetos jugables
 	std::list<GameList<SceneObject>::anchor> aDestruir;	//Lista con los objetos muertos
 	Cannon* nave;			//Nave del jugador		
-	Mothership* myMothership;
-	bool exit;				//Booleano para terminar el juego
+	Mothership* myMothership;	
 
 	GameList<SceneObject> pasta;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	PlayState(Game*);
-	~PlayState();
-	void Run();				//Lanza el juego
+	~PlayState();	
 	void Render() const override;	//Renderiza
 	void Update() override;			//Bucle principal
 	void HandleEvents(const SDL_Event&) override;	//Ejecuta eventos	
-	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
-	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres		
-	void EndGame();			//Cierra el juego	
+	void fireLaser(SceneObject*);			//Llamado cuando se dispara un láser
+	bool CheckColisions(SDL_Rect*, bool, bool);	//Comprueba las colisiones de todos los láseres		
+	void EndGame(bool);			//Cierra el juego	
 	void HasDied(GameList<SceneObject>::anchor Iterador); //Añade un objeto a la lista de muertos
-	void Save(int);			//Guarda el juego
+	void Save() override;			//Guarda el juego
 	void DestroyDead();		//Destruye a los objetos en la lista de muertos		
+	Texture* returnText(int);
 };
 

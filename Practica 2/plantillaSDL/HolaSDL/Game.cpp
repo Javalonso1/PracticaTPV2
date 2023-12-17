@@ -19,11 +19,15 @@
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
 #include "PauseState.h"
+#include "EndState.h"
 
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
 
+bool goback = false;
+bool guardado = false;
+bool pause = false;
 
 Game::Game() : WinHeight(), WinLong(), renderer(), window(), texturas(), mapa(){}
 Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
@@ -87,6 +91,11 @@ void Game::loadTextures() {
 	texturas[10] = new Texture(renderer, "continuar.png", 1, 1);
 	texturas[11] = new Texture(renderer, "guardarPartida.png", 1, 1);
 	texturas[12] = new Texture(renderer, "volverAlMenu.png", 1, 1);	
+	texturas[13] = new Texture(renderer, "hasGanado.png", 1, 1);
+	texturas[14] = new Texture(renderer, "gameOver.png", 1, 1);
+	texturas[15] = new Texture(renderer, "bomb.png", 1, 1);
+	texturas[16] = new Texture(renderer, "shield.png", 1, 1);
+	texturas[17] = new Texture(renderer, "shield_reward.png", 1, 1);
 }
 
 SDL_Renderer* Game::getRenderer() {
@@ -107,12 +116,30 @@ void Game::Run() {
 			DeusEx->handleEvent(manolo);
 		}
 		DeusEx->update();
-		DeusEx->render();
+		DeusEx->render();		
 		SDL_Delay(20);
+		if (goback) {
+			popState();
+			goback = false;
+			if (guardado) {
+				DeusEx->Save();
+				pushState(new PauseState(this));
+			}
+		}
+		if (pause) {
+			pushState(new PauseState(this));
+			pause = false;
+		}
 	}
 	//Borrar el juego
 }
-
+void Game::continuar(bool aux) {
+	goback = true;
+	guardado = aux;
+}
+void Game::PauseGame() {
+	pause = true;
+}
 void Game::pushState(GameState* newState) {
 	DeusEx->pushState(newState);
 }
@@ -127,4 +154,7 @@ void Game::replaceState(GameState* newState) {
 
 std::string Game::GetMap() {
 	return mapa;
+}
+void Game::EndGame(bool a) {
+	pushState(new EndState(this, a));
 }

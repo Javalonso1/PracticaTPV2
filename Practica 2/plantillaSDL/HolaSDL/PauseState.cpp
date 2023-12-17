@@ -2,19 +2,37 @@
 #include "PauseState.h"
 #include "GameState.h"
 #include "Button.h"
+#include "MainMenuState.h"
 #include "Game.h"
 
 PauseState::PauseState(Game* e) : GameState(e) {
-	Continuar = new Button(this, myGame->devuelveText(10), 290, 115);
-	GuardarPartida = new Button(this, myGame->devuelveText(11), 220, 155);
-	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 195); //Creo que podríamos dejar la carga solo para el main menu para ahorrarnos trabajo
-	VolverMenu = new Button(this, myGame->devuelveText(12), 230, 235);	
+	Continuar = new Button(this, myGame->devuelveText(10), 290, 135);
+	addEventListener(Continuar);
+	Continuar->Connect([this]() {
+		myGame->continuar(false);
+		});
+	pizza.push_back(Continuar);
+	GuardarPartida = new Button(this, myGame->devuelveText(11), 220, 200);
+	addEventListener(GuardarPartida);
+	GuardarPartida->Connect([this]() {
+		myGame->continuar(true);
+		});
+	pizza.push_back(GuardarPartida);	
+	VolverMenu = new Button(this, myGame->devuelveText(12), 230, 265);	
+	addEventListener(VolverMenu);
+	VolverMenu->Connect([this]() {		
+		MainMenuState* playstate = new MainMenuState(myGame);
+		myGame->pushState(playstate);		
+		});
+	pizza.push_back(VolverMenu);
 }
 
 PauseState::~PauseState() {}
 
 void PauseState::Update() {
-
+	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
+		(*i).Update();
+	}
 }
 
 void PauseState::Render() const {
@@ -25,10 +43,10 @@ void PauseState::Render() const {
 	rect.y = 0;
 	myGame->devuelveText(6)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
 	Continuar->Render();
-	GuardarPartida->Render();
-	CargarPartida->Render();
+	GuardarPartida->Render();	
 	VolverMenu->Render();
 	SDL_RenderPresent(myGame->getRenderer());
 }
 
 void PauseState::HandleEvents() {}
+void PauseState::Save() {}
