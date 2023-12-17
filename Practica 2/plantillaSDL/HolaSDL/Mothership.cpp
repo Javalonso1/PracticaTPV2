@@ -33,8 +33,10 @@ void Mothership::assignAlien() {
 }
 
 void Mothership::AlienDied(int i) {
+	system("cls");
 	livingAliens--;
 	points += i;
+	std::cout << points;
 }
 
 void Mothership::AlienLanded() {
@@ -52,9 +54,6 @@ int Mothership::getAlienCount() const{
 void Mothership::Render() const {
 
 }
-int Mothership::getPoint() const {
-	return points;
- }
 
 void Mothership::Update() {
 	if (frames > level) {

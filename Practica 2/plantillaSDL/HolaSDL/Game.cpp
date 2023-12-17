@@ -18,6 +18,7 @@
 #include <string>
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
+#include "PauseState.h"
 
 const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
 constexpr int winWidth = 800;
@@ -52,7 +53,8 @@ Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 		}
 		DeusEx = new GameStateMachine();
 		//DeusEx->pushState(myPlayState);
-		DeusEx->pushState(new MainMenuState(this));
+		DeusEx->pushState(new MainMenuState(this));		
+		//DeusEx->pushState(new PauseState(this));		
 		//myPlayState->Run();
 		Run();
 	}
@@ -79,6 +81,13 @@ void Game::loadTextures() {
 	texturas[3] = new Texture(renderer, "stars.png", 1, 1);
 	texturas[4] = new Texture(renderer, "laser.png", 1, 1);
 	texturas[5] = new Texture(renderer, "ufo.png", 1, 2);
+	texturas[6] = new Texture(renderer, "mainMenu.png", 1, 1);
+	texturas[7] = new Texture(renderer, "nuevaPartida.png", 1, 1);
+	texturas[8] = new Texture(renderer, "cargarPartida.png", 1, 1);
+	texturas[9] = new Texture(renderer, "salir.png", 1, 1);
+	texturas[10] = new Texture(renderer, "continuar.png", 1, 1);
+	texturas[11] = new Texture(renderer, "guardarPartida.png", 1, 1);
+	texturas[12] = new Texture(renderer, "volverAlMenu.png", 1, 1);	
 }
 
 SDL_Renderer* Game::getRenderer() {
@@ -88,7 +97,9 @@ Texture* Game::devuelveText(int i) {
 		return texturas[i];
 	}
 
-void Game::Run() {
+
+
+void Game::Run() {	
 	while (true) {
 		while (SDL_PollEvent(&manolo)) {
 			DeusEx->handleEvent(manolo);

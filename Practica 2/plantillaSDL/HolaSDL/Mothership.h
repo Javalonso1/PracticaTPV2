@@ -35,8 +35,7 @@ class Mothership : public GameObject
 		void AlienDied(int);
 		void AlienLanded();
 		bool haveLanded() const; 
-		int getAlienCount() const;
-		int getPoint() const;
+		int getAlienCount() const;		
 
 		void Render() const override;
 		void Update() override;

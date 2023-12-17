@@ -118,7 +118,6 @@ void PlayState::Render() const {
 }
 
 void PlayState::Update() {
-	system("cls");
 	auto i = pasta.begin();
 	while (i != pasta.end()) {
 		(*i).Update();
@@ -128,7 +127,6 @@ void PlayState::Update() {
 	if (myMothership->getAlienCount() <= 0) {
 		exit = false;
 	}
-	std::cout << myMothership->getPoint();
 	DestroyDead();
 }
 void PlayState::HandleEvents() {
@@ -162,36 +160,9 @@ void PlayState::HandleEvents() {
 				save = false;
 				load = true;
 				break;
-			case SDLK_0:
-				Save(0);
-				break;
-			case SDLK_1:
-				Save(1);
-				break;
-			case SDLK_2:
-				Save(2);
-				break;
-			case SDLK_3:
-				Save(3);
-				break;
-			case SDLK_4:
-				Save(4);
-				break;
-			case SDLK_5:
-				Save(5);
-				break;
-			case SDLK_6:
-				Save(6);
-				break;
-			case SDLK_7:
-				Save(7);
-				break;
-			case SDLK_8:
-				Save(8);
-				break;
-			case SDLK_9:
-				Save(9);
-				break;
+			case SDLK_ESCAPE:
+				std::cout << "AAA";
+				break;			
 			default:
 				break;
 			}

@@ -18,7 +18,7 @@
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
 
-const int NUM_TEXTURES = 6;
+const int NUM_TEXTURES = 13;
 const int veticalDown = 13;
 class Game
 {
@@ -38,7 +38,7 @@ public:
 	Game(std::string);	//Constructor
 	~Game();			//Destructor
 	void Run();
-	void loadTextures();			//Carga las texturas
+	void loadTextures();			//Carga las texturas	
 	SDL_Renderer* getRenderer();	
 	Texture* devuelveText(int);
 };
