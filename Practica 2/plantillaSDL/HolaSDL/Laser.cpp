@@ -24,7 +24,7 @@ void Laser::Update() {	//Update
 	screenPos.x = pos.getX();	//Modifica el rect según su posición
 	screenPos.y = pos.getY();	
 	if (myPlayState->CheckColisions(&screenPos, friendly) || pos.getY() > maxTam || pos.getY() < minTam) {
-		myPlayState->HasDied(miIterador);
+		myPlayState->HasDied(terador);
 	}
 }
 bool Laser::hit(SDL_Rect* rect, bool fren) {		//Método al que se llama cuando choca con algo		

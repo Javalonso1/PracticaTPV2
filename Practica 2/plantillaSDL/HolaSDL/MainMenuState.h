@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "texture.h"
 #include <list>
+#include "PlayState.h"
 
 class Game;
 
@@ -19,6 +20,5 @@ public:
 	~MainMenuState();
 	void Update();
 	void Render() const;
-	void HandleEvents();
 };
 

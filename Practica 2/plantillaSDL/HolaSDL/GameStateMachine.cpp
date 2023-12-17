@@ -16,8 +16,8 @@ void GameStateMachine::render() const {
 	iono.top()->Render();
 }
 
-void GameStateMachine::handleEvent(const SDL_Event&) {
-	iono.top()->HandleEvents();
+void GameStateMachine::handleEvent(const SDL_Event& ev) {
+	iono.top()->HandleEvents(ev);
 }
 
 void GameStateMachine::pushState(GameState* newState) {

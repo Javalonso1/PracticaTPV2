@@ -3,17 +3,39 @@
 #include "GameState.h"
 #include "Button.h"
 #include "Game.h"
+#include "PlayState.h"
 
 MainMenuState::MainMenuState(Game* e) : GameState(e) {	
 	NuevaPartida = new Button(this, myGame->devuelveText(7), 250, 135);	
-	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 200);	
+	addEventListener(NuevaPartida);
+	NuevaPartida->Connect([this]() {
+		PlayState* playstate = new PlayState(myGame);
+		myGame->pushState(playstate);
+		playstate->LeerArchivo(myGame->GetMap());
+		});
+	pizza.push_back(NuevaPartida);
+
+	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 200);
+	addEventListener(CargarPartida);
+	CargarPartida->Connect([this]() {
+
+		});
+	pizza.push_back(CargarPartida);
+
 	Salir = new Button(this, myGame->devuelveText(9), 350, 265);
+	addEventListener(Salir);
+	Salir->Connect([this]() {myGame->ExitGame(); });
+	pizza.push_back(Salir);
 }
 
-MainMenuState::~MainMenuState() {}
+MainMenuState::~MainMenuState() {
+
+}
 
 void MainMenuState::Update() {
-
+	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
+		(*i).Update();
+	}
 }
 
 void MainMenuState::Render() const {		
@@ -27,8 +49,4 @@ void MainMenuState::Render() const {
 	CargarPartida->Render();
 	Salir->Render();
 	SDL_RenderPresent(myGame->getRenderer());
-}
-
-void MainMenuState::HandleEvents() {
-
 }

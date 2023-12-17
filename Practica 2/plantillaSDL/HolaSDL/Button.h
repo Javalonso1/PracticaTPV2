@@ -13,6 +13,7 @@ private:
 	Texture* myTexture;
 	SDL_Rect screenPos;
 	std::list<Callback> myCallbacks;
+	bool encima;
 public:
 	Button(GameState*, Texture*, int, int);
 	~Button();

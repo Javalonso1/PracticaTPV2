@@ -64,10 +64,10 @@ void Cannon::handleEvent(const SDL_Event& ev) {
 	case SDL_KEYDOWN:
 		switch (ev.key.keysym.sym) {
 		case SDLK_LEFT:
-			DirecMov = movSpeed;
+			DirecMov = -movSpeed;
 			break;
 		case SDLK_RIGHT:
-			DirecMov = -movSpeed;
+			DirecMov = movSpeed;
 			break;
 		case SDLK_SPACE:
 			dispara = true;

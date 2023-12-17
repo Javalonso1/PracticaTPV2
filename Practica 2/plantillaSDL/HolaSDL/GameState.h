@@ -3,6 +3,7 @@
 #include "gameList.h"
 #include "GameObject.h"
 #include "SDL_image.h"
+#include "EventHandler.h"
 #include <list>
 
 class Game;
@@ -13,16 +14,16 @@ protected:
 	Game* myGame;
 	GameList<GameObject, true> pizza;
 	std::list<GameList<GameObject, true>::anchor> queso;
-	std::list<GameObject*> listeners;
+	std::list<EventHandler*> listeners;
 public:
 	GameState(Game*);
 	virtual ~GameState() = default;
 	virtual void Update() = 0;
 	virtual void Render() const = 0;
-	virtual void HandleEvents() = 0;
-	void addEventListener(GameObject*);
+	virtual void HandleEvents(const SDL_Event&);
+	void addEventListener(EventHandler*);
 	void hasDied(GameList<GameObject, true>::anchor Iterador);
-	void addObject();
+	void addObject(GameObject*);
 	SDL_Renderer* getRenderer();
 };
 

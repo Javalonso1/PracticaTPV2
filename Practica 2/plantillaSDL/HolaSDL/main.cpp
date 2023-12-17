@@ -22,7 +22,7 @@ void firstTest()
 				
 		try {
 			Game a(Nombre1);
-			//a.Run(); //Contrusctor del game. Le damos el nombre del archivo del mapa			
+			a.Run(); 			
 		}
 		catch (InvadersError error) {		//Detecta si hay algún error en este proceso, y lanza el error de ser el caso
 			cout << error.what();

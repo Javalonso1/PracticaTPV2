@@ -7,7 +7,7 @@
 PauseState::PauseState(Game* e) : GameState(e) {
 	Continuar = new Button(this, myGame->devuelveText(10), 290, 115);
 	GuardarPartida = new Button(this, myGame->devuelveText(11), 220, 155);
-	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 195);
+	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 195); //Creo que podríamos dejar la carga solo para el main menu para ahorrarnos trabajo
 	VolverMenu = new Button(this, myGame->devuelveText(12), 230, 235);	
 }
 

@@ -33,6 +33,8 @@ private:
 	GameStateMachine* DeusEx;
 	SDL_Event manolo;
 
+	bool exit;
+
 public:	
 	Game();				//Constructor vacío
 	Game(std::string);	//Constructor
@@ -41,5 +43,10 @@ public:
 	void loadTextures();			//Carga las texturas	
 	SDL_Renderer* getRenderer();	
 	Texture* devuelveText(int);
+	void ExitGame();
+	void pushState(GameState*);
+	void popState();
+	void replaceState(GameState*);
+	std::string GetMap();
 };
 

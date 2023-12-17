@@ -99,7 +99,7 @@ void PlayState::Run() {
 	while (exit) {								//Bucle principal del juego. Mientras el método "getExit" del game de true, el juego no habrá acabado
 		Update();					//Ejecuta todos los eventos del main (Render, Update...)
 		Render();
-		HandleEvents();
+		//HandleEvents();
 		SDL_Delay(5);				//Pequeño delay
 	}
 }
@@ -129,8 +129,9 @@ void PlayState::Update() {
 	}
 	DestroyDead();
 }
-void PlayState::HandleEvents() {
-	SDL_Event ev;
+void PlayState::HandleEvents(const SDL_Event& ev) {
+	nave->handleEvent(ev);
+	/*SDL_Event ev;
 	int move = 0;
 	bool shoot = false;
 	while (SDL_PollEvent(&ev) != 0) {			//Lector de eventos de teclado. Lee los inputs del jugador y los pasa a variables
@@ -167,7 +168,7 @@ void PlayState::HandleEvents() {
 				break;
 			}
 		}
-	}
+	}*/
 }
 
 bool PlayState::CheckColisions(SDL_Rect* LaserRect, bool friendly) {	//método que comprueba la colisiones del láser	

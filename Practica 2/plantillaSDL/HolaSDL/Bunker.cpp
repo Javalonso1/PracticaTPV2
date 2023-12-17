@@ -19,7 +19,7 @@ bool Bunker::hit(SDL_Rect* laser,  bool frien) {	//Si es golpeado, pierde una de
 	if (SDL_HasIntersection(laser, &screenPos)) {
 		vidas--;
 		if (vidas == 0) {
-			myPlayState->HasDied(miIterador);
+			myPlayState->HasDied(terador);
 		}
 		return true;
 	}

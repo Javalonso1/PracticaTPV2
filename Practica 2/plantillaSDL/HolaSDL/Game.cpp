@@ -56,7 +56,6 @@ Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 		DeusEx->pushState(new MainMenuState(this));		
 		//DeusEx->pushState(new PauseState(this));		
 		//myPlayState->Run();
-		Run();
 	}
 }
 Game::~Game() {	//Destructor del Game	
@@ -93,19 +92,39 @@ void Game::loadTextures() {
 SDL_Renderer* Game::getRenderer() {
 	return renderer;
 }
+
 Texture* Game::devuelveText(int i) {
 		return texturas[i];
-	}
+}
 
-
+void Game::ExitGame() {
+	exit = true;
+}
 
 void Game::Run() {	
-	while (true) {
+	while (!exit) {
 		while (SDL_PollEvent(&manolo)) {
 			DeusEx->handleEvent(manolo);
 		}
 		DeusEx->update();
 		DeusEx->render();
-		SDL_Delay(10);
+		SDL_Delay(20);
 	}
+	//Borrar el juego
+}
+
+void Game::pushState(GameState* newState) {
+	DeusEx->pushState(newState);
+}
+
+void Game::popState() {
+	DeusEx->popState();
+}
+
+void Game::replaceState(GameState* newState) {
+	DeusEx->replaceState(newState);
+}
+
+std::string Game::GetMap() {
+	return mapa;
 }

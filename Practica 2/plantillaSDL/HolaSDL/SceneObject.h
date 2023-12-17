@@ -10,7 +10,7 @@ class PlayState;
 class SceneObject: public GameObject
 {
 protected:
-	GameList<SceneObject>::anchor miIterador;
+	GameList<SceneObject>::anchor terador;
 	PlayState* myPlayState;
 	Point2D<int> pos;
 	int width;

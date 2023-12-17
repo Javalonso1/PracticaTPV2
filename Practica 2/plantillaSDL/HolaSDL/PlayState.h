@@ -26,7 +26,7 @@ public:
 	void Run();				//Lanza el juego
 	void Render() const override;	//Renderiza
 	void Update() override;			//Bucle principal
-	void HandleEvents() override;	//Ejecuta eventos	
+	void HandleEvents(const SDL_Event&) override;	//Ejecuta eventos	
 	void fireLaser(Laser*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool);	//Comprueba las colisiones de todos los láseres		
 	void EndGame();			//Cierra el juego	

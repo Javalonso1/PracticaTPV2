@@ -47,7 +47,7 @@ void Alien::Update() {	//Update
 }
 bool Alien::hit(SDL_Rect* laser, bool frien) {	//Si es golpeado
 	if (frien && SDL_HasIntersection(laser, &screenPos)) {
-		myPlayState->HasDied(miIterador);
+		myPlayState->HasDied(terador);
 		myMother->AlienDied(points * (3 - subtipo));
 		return true;
 	}
