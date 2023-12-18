@@ -50,11 +50,11 @@ Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 		catch (...) {	//Si salta error es que no se han encontrado las texturas
 			throw std::string("No se han encontrado las texturas");
 		}
-		myPlayState = new PlayState(this);
+		/*myPlayState = new PlayState(this);
 		try { myPlayState->LeerArchivo(mapa);  }	//Intenta leer el archivo de mapa
 		catch (InvadersError e) {	//Si salta error es	que no existe un mapa con ese nombre
 			throw e;
-		}
+		}*/
 		DeusEx = new GameStateMachine();
 		//DeusEx->pushState(myPlayState);
 		DeusEx->pushState(new MainMenuState(this));		
@@ -74,6 +74,7 @@ Game::~Game() {	//Destructor del Game
 		delete i;
 	}
 	Lista.clear();*/
+	delete DeusEx;
 }
 
 

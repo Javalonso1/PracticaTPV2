@@ -12,12 +12,12 @@ class GameState
 {
 protected:
 	Game* myGame;
-	GameList<GameObject, true> pizza;
-	std::list<GameList<GameObject, true>::anchor> queso;
+	GameList<GameObject, true> objects;
+	std::list<GameList<GameObject, true>::anchor> deletions;
 	std::list<EventHandler*> listeners;
 public:
 	GameState(Game*);
-	virtual ~GameState() = default;
+	virtual ~GameState();
 	virtual void Update() = 0;
 	virtual void Render() const = 0;
 	virtual void HandleEvents(const SDL_Event&);

@@ -25,17 +25,19 @@ EndState::EndState(Game* e, bool a) : GameState(e) {
 		MainMenuState* playstate = new MainMenuState(myGame);
 		myGame->pushState(playstate);
 		});
-	pizza.push_back(VolverMenu);
+	objects.push_back(VolverMenu);
 	Salir = new Button(this, myGame->devuelveText(9), 350, 265);
 	addEventListener(Salir);
 	Salir->Connect([this]() {myGame->ExitGame(); });
-	pizza.push_back(Salir);
+	objects.push_back(Salir);
 }
 
-EndState::~EndState() {};
+EndState::~EndState() {
+	objects.clear();
+};
 
 void EndState::Update() {
-	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
+	for (auto i = objects.begin(); i != objects.end(); ++i) {
 		(*i).Update();
 	}
 }

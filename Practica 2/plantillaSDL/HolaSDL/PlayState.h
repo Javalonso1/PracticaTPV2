@@ -18,7 +18,7 @@ private:
 	Cannon* nave;			//Nave del jugador		
 	Mothership* myMothership;	
 
-	GameList<SceneObject> pasta;
+	GameList<SceneObject> scnobj;
 public:
 	void LeerArchivo(std::string);	//Lee el archivo y crea el juego
 	PlayState(Game*);

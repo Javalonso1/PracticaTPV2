@@ -15,6 +15,7 @@ private:
 	bool dispara;		//Indica que debe disparar	
 	float tiempoRes;	//Timer que controla la velocidad de disparo de la nave
 	float tiempoEsp;	//Tiempo que debe esperar la nave para disparar de nuevo	
+	int invencible;
 public:
 	Cannon();			//Constructor vacío
 	Cannon(Point2D<int>, Texture*, PlayState*, float, float, Texture*);	//Constructor

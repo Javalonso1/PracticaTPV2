@@ -13,7 +13,7 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 		myGame->pushState(playstate);
 		playstate->LeerArchivo(myGame->GetMap());
 		});
-	pizza.push_back(NuevaPartida);
+	objects.push_back(NuevaPartida);
 
 	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 200);
 	addEventListener(CargarPartida);
@@ -23,20 +23,22 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 		myGame->pushState(playstate);
 		playstate->LeerArchivo(cargar);
 		});
-	pizza.push_back(CargarPartida);
+	objects.push_back(CargarPartida);
 
 	Salir = new Button(this, myGame->devuelveText(9), 350, 265);
 	addEventListener(Salir);
 	Salir->Connect([this]() {myGame->ExitGame(); });
-	pizza.push_back(Salir);
+	objects.push_back(Salir);
 }
 
 MainMenuState::~MainMenuState() {
-
+	objects.clear();
 }
+
 void MainMenuState::Save() {}
+
 void MainMenuState::Update() {
-	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
+	for (auto i = objects.begin(); i != objects.end(); ++i) {
 		(*i).Update();
 	}
 }

@@ -11,26 +11,28 @@ PauseState::PauseState(Game* e) : GameState(e) {
 	Continuar->Connect([this]() {
 		myGame->continuar(false);
 		});
-	pizza.push_back(Continuar);
+	objects.push_back(Continuar);
 	GuardarPartida = new Button(this, myGame->devuelveText(11), 220, 200);
 	addEventListener(GuardarPartida);
 	GuardarPartida->Connect([this]() {
 		myGame->continuar(true);
 		});
-	pizza.push_back(GuardarPartida);	
+	objects.push_back(GuardarPartida);
 	VolverMenu = new Button(this, myGame->devuelveText(12), 230, 265);	
 	addEventListener(VolverMenu);
 	VolverMenu->Connect([this]() {		
 		MainMenuState* playstate = new MainMenuState(myGame);
 		myGame->pushState(playstate);		
 		});
-	pizza.push_back(VolverMenu);
+	objects.push_back(VolverMenu);
 }
 
-PauseState::~PauseState() {}
+PauseState::~PauseState() {
+	objects.clear();
+}
 
 void PauseState::Update() {
-	for (auto i = pizza.begin(); i != pizza.end(); ++i) {
+	for (auto i = objects.begin(); i != objects.end(); ++i) {
 		(*i).Update();
 	}
 }

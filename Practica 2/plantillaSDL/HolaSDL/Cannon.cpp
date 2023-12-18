@@ -6,17 +6,17 @@
 const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser respeto a la nave
 const int velLaser = -5;			//Velocidad que la nave le da al láser en su construtor
 const int movSpeed = 5;				//Velocidad a la que se mueve la nave
-int invencible = 500;
+const int invencibleM = 500;
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
 Cannon::Cannon(Point2D<int> a, Texture* b, PlayState* c, float d, float e, Texture* f) : myTexture(b), DirecMov(), dispara(false), tiempoRes(0), tiempoEsp(e), Escudo(f),
-SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c) { //Constructor con valores
+SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), invencible(500) { //Constructor con valores
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
 	screenPos.w = myTexture->getFrameWidth();
 }
 void Cannon::Render() const{	//Render
 	(*myTexture).renderFrame(screenPos, 0, 0);	//Renderiza la nave
-	if(invencible < 500) (*Escudo).renderFrame(screenPos, 0, 0);	//Renderiza la nave
+	if(invencible < invencibleM) (*Escudo).renderFrame(screenPos, 0, 0);	//Renderiza la nave
 
 }
 void Cannon::Update() {		//Update	
@@ -40,7 +40,7 @@ void Cannon::Update() {		//Update
 	}
 	screenPos.x = pos.getX();	//Le da la posición a su rect
 	screenPos.y = pos.getY();
-	if (invencible < 500) invencible += 1;
+	if (invencible < invencibleM) invencible++;
 }
 
 bool Cannon::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado	
@@ -50,7 +50,7 @@ bool Cannon::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado
 	else
 	{
 		if (!frien && SDL_HasIntersection(laser, &screenPos)) {
-			if (invencible >= 500) vidas--;
+			if (invencible >= invencibleM) vidas--;
 			if (vidas <= 0) {
 				myPlayState->EndGame(false);
 			}

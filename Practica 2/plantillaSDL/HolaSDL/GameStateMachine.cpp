@@ -6,7 +6,12 @@
 GameStateMachine::GameStateMachine() {
 
 };
-GameStateMachine::~GameStateMachine() {};
+GameStateMachine::~GameStateMachine() {
+	while (iono.size() != 0) {
+		delete iono.top();
+		iono.pop();
+	}
+};
 
 void GameStateMachine::update() {
 	iono.top()->Update();
@@ -25,11 +30,13 @@ void GameStateMachine::pushState(GameState* newState) {
 }
 
 void GameStateMachine::replaceState(GameState* newState) {
+	delete iono.top();
 	iono.pop();
 	iono.push(newState);
 }
 
 void GameStateMachine::popState() {
+	delete iono.top();
 	iono.pop();
 }
 void GameStateMachine::Save() {

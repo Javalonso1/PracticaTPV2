@@ -13,6 +13,7 @@ const int BordeI = 10;				//Constante que indica cuál es el borde izquierdo de l
 const int points = 10;				//Puntos base de cada alien
 const int speedUp = 1;				//Incremento de velocidad al chocar con un borde
 const int vertical = 20;			//Velocidad de bajada cuando chocan con un borde
+const int maxPoints = 3;
 
 Alien::Alien() : myTexture(), subtipo(), frame(), SceneObject(), minimoAltura(), myMother() {}	//Constructor vacío
 Alien::Alien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
@@ -52,7 +53,7 @@ bool Alien::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado
 	else {
 		if (frien && SDL_HasIntersection(laser, &screenPos)) {
 			myPlayState->HasDied(terador);
-			myMother->AlienDied(points * (3 - subtipo));
+			myMother->AlienDied(points * (maxPoints - subtipo));
 			return true;
 		}
 		else return false;

@@ -1,4 +1,4 @@
-﻿  Cannon.cpp
-C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(13,57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(61): warning C4715: 'Cannon::hit': no todas las rutas de acceso de control devuelven un valor
-  HolaSDL.vcxproj -> C:\Users\Javier\Javier\00. Uni\Curso 2\TPV\Pruebas\Practica2\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
+﻿  PlayState.cpp
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(41,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(41,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  HolaSDL.vcxproj -> C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe
