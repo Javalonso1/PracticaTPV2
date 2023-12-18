@@ -4,12 +4,13 @@
 #include "texture.h"
 #include "PlayState.h"
 
+const int vidasMax = 4;
 Bunker::Bunker() : Pos(), vidas(), myTexture() {}	//Constructor vacío del bunker
 Bunker::Bunker(Point2D<int>& a, Texture& b, PlayState* gayme, int i) : Pos(a), vidas(i), myTexture(&b), SceneObject(a, b.getFrameWidth(), b.getFrameHeight(), 4, gayme) {}	//Constructor con valores
 
 void Bunker::Render() const {	//Renderizado del bunker
 	if (vidas > 0) {
-		(*myTexture).renderFrame(screenPos, 0, 4 - vidas);	//Renderiza el bunker
+		(*myTexture).renderFrame(screenPos, 0, vidasMax - vidas);	//Renderiza el bunker
 	}
 }
 void Bunker::Update() {	//Devuelve si aún tiene vidas	

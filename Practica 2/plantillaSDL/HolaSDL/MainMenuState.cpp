@@ -5,6 +5,8 @@
 #include "Game.h"
 #include "PlayState.h"
 
+const int MaxH = 600;
+const int MaxW = 800;
 MainMenuState::MainMenuState(Game* e) : GameState(e) {	
 	NuevaPartida = new Button(this, myGame->devuelveText(7), 250, 135);	
 	addEventListener(NuevaPartida);
@@ -45,8 +47,8 @@ void MainMenuState::Update() {
 
 void MainMenuState::Render() const {		
 	SDL_Rect rect;
-	rect.h = 600;
-	rect.w = 800;
+	rect.h = MaxH;
+	rect.w = MaxW;
 	rect.x = 0;
 	rect.y = 0;
 	myGame->devuelveText(6)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo

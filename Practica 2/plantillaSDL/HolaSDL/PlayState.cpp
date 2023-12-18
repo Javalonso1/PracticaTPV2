@@ -20,9 +20,6 @@
 #include "PauseState.h"
 #include <string>
 
-//const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tienen que morir para que aumenten su velocidad de movimiento
-//constexpr int winWidth = 800;
-//constexpr int winHeight = 600;
 void PlayState::LeerArchivo(std::string e) {		//Método para leer archivos y transformarlos en mapas
 	std::ifstream lector(e);
 	int lineas = 0;

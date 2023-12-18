@@ -28,12 +28,6 @@ void Laser::Update() {	//Update
 	}
 }
 bool Laser::hit(SDL_Rect* rect, bool fren, bool a) {		//Método al que se llama cuando choca con algo		
-	/*if (SDL_HasIntersection(rect, &screenPos) && fren != friendly) {
-		return true;
-	}
-	else {
-		return false;
-	}*/
 	return false;
 }
 

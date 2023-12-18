@@ -50,16 +50,8 @@ Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 		catch (...) {	//Si salta error es que no se han encontrado las texturas
 			throw std::string("No se han encontrado las texturas");
 		}
-		/*myPlayState = new PlayState(this);
-		try { myPlayState->LeerArchivo(mapa);  }	//Intenta leer el archivo de mapa
-		catch (InvadersError e) {	//Si salta error es	que no existe un mapa con ese nombre
-			throw e;
-		}*/
-		DeusEx = new GameStateMachine();
-		//DeusEx->pushState(myPlayState);
-		DeusEx->pushState(new MainMenuState(this));		
-		//DeusEx->pushState(new PauseState(this));		
-		//myPlayState->Run();
+		DeusEx = new GameStateMachine();		
+		DeusEx->pushState(new MainMenuState(this));						
 	}
 }
 Game::~Game() {	//Destructor del Game	
@@ -70,10 +62,6 @@ Game::~Game() {	//Destructor del Game
 	SDL_DestroyRenderer(renderer);	//Se destruye el renderer
 	SDL_DestroyWindow(window);	//Se destruye la ventana
 	SDL_Quit();	//Se sale de SDL	
-	/*for (auto i : Lista) {
-		delete i;
-	}
-	Lista.clear();*/
 	delete DeusEx;
 }
 

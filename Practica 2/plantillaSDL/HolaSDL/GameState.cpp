@@ -10,8 +10,6 @@
 GameState::GameState(Game* a): myGame(a) {}
 
 GameState::~GameState() {
-	//objects.clear();
-	//listeners.clear();
 }
 
 SDL_Renderer* GameState::getRenderer() {

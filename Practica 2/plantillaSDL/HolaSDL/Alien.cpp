@@ -14,9 +14,10 @@ const int points = 10;				//Puntos base de cada alien
 const int speedUp = 1;				//Incremento de velocidad al chocar con un borde
 const int vertical = 20;			//Velocidad de bajada cuando chocan con un borde
 const int maxPoints = 3;
+const int vida = 1;
 
 Alien::Alien() : myTexture(), subtipo(), frame(), SceneObject(), minimoAltura(), myMother() {}	//Constructor vacío
-Alien::Alien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 1, f),
+Alien::Alien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), vida, f),
 																					frame(true), minimoAltura(h), 
 																					myMother(m), myTexture(b) {//Constuctor del alien
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect

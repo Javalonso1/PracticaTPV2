@@ -5,11 +5,13 @@
 #include "texture.h"
 #include "MainMenuState.h"
 #include "Game.h"
+const int LogoPosX = 300;
+const int LogoPosY = 135;
 
 EndState::EndState(Game* e, bool a) : GameState(e) {	
 	screenPos = SDL_Rect();
-	screenPos.x = 300;
-	screenPos.y = 135;	
+	screenPos.x = LogoPosX;
+	screenPos.y = LogoPosY;	
 	if (a) {
 		myTexture = myGame->devuelveText(13);
 	}

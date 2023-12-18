@@ -5,6 +5,7 @@
 #include "texture.h"
 #include "PlayState.h"
 
+const int LEVEL = 2;
 Mothership::Mothership() : direction(), landed(), level(), livingAliens(), move(), wall(), points() {};
 Mothership::Mothership(PlayState* game, int a, int b, int c) : myPlayState(game), direction(a), landed(false), level(b), livingAliens(0), move(true), wall(false), frames(c), points(0) {}
 
@@ -64,8 +65,8 @@ void Mothership::Update() {
 		else if (vertical) {
 			vertical = false;
 			direction = -direction;
-			if (level > 2) {
-				level -= 2;
+			if (level > LEVEL) {
+				level -= LEVEL;
 			}
 		}
 		move = true;

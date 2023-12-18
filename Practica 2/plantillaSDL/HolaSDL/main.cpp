@@ -16,10 +16,7 @@ void firstTest()
 {	
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
-	std::string Nombre1 = "trinchera.txt";
-		
-	
-				
+	std::string Nombre1 = "trinchera.txt";		
 		try {
 			Game a(Nombre1);
 			a.Run(); 			

@@ -10,7 +10,7 @@ const int invencibleM = 500;
 
 Cannon::Cannon() : myTexture(), DirecMov(), dispara(),  tiempoRes(), tiempoEsp(), SceneObject() {} //Constructor vacío
 Cannon::Cannon(Point2D<int> a, Texture* b, PlayState* c, float d, float e, Texture* f) : myTexture(b), DirecMov(), dispara(false), tiempoRes(0), tiempoEsp(e), Escudo(f),
-SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), invencible(500) { //Constructor con valores
+SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), invencible(invencibleM) { //Constructor con valores
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect
 	screenPos.w = myTexture->getFrameWidth();
 }
