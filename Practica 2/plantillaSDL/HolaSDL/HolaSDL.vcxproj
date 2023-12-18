@@ -118,7 +118,6 @@
     <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />
     <ClInclude Include="texture.h" />
-    <ClInclude Include="U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\gameList.h" />
     <ClInclude Include="UFO.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

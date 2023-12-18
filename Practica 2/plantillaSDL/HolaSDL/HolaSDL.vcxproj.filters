@@ -143,9 +143,6 @@
     <ClInclude Include="GameState.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="U:\hlocal\xd\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\gameList.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="PlayState.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

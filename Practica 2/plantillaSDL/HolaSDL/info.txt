@@ -1,1 +1,1 @@
-Los autores somos Pablo Marcos Serrano y Javier Alonso Ruiz. Todas las funcionalidades obligatorias han sido implementadas, y la ñunica funcionalidad opcional aplicada ha sido la animación de los alienígenas
+Los autores somos Pablo Marcos Serrano y Javier Alonso Ruiz. Todas las funcionalidades obligatorias han sido implementadas, salvo la de guardado en un archivo distinto dependiendo de un código introducido (solo hay un archivo de guardado), y no hay ninguna funcionalidad opcional aplicada
