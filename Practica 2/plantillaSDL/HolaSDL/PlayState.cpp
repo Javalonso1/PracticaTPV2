@@ -203,6 +203,6 @@ void PlayState::Save() {
 	}	
 }
 
-Texture* PlayState::returnText(int i) {
+Texture* const PlayState::returnText(int i) {
 	return myGame->devuelveText(i);
 }

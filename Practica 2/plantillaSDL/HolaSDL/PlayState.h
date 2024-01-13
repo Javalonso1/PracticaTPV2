@@ -32,6 +32,6 @@ public:
 	void HasDied(GameList<SceneObject>::anchor Iterador); //Añade un objeto a la lista de muertos
 	void Save() override;			//Guarda el juego
 	void DestroyDead();		//Destruye a los objetos en la lista de muertos		
-	Texture* returnText(int);
+	Texture* const returnText(int);
 };
 

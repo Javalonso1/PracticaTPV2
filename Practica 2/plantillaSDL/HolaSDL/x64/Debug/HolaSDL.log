@@ -1,4 +1,25 @@
-﻿  PlayState.cpp
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(41,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(41,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+﻿  Alien.cpp
+  Bomba.cpp
+  Bunker.cpp
+  Cannon.cpp
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(13,57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  EndState.cpp
+  Escudo.cpp
+  Game.cpp
+  GameState.cpp
+  Laser.cpp
+  MainMenuState.cpp
+  Mothership.cpp
+  PauseState.cpp
+  PlayState.cpp
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(38,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\PlayState.cpp(38,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  SceneObject.cpp
+  ShooterAlien.cpp
+  UFO.cpp
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\UFO.cpp(14,98): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  main.cpp
+  Generando código...
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Cannon.cpp(61): warning C4715: 'Cannon::hit': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\HolaSDL\Bunker.cpp(32): warning C4715: 'Bunker::hit': no todas las rutas de acceso de control devuelven un valor
   HolaSDL.vcxproj -> C:\Users\Pablo\Documents\UNIVERSIDAD\2º\TPV\PracticaTPV2\Practica 2\plantillaSDL\bin\HolaSDLDebug.exe

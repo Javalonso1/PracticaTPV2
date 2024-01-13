@@ -18,8 +18,8 @@ private:
 public:
 	MainMenuState(Game*);
 	~MainMenuState();
-	void Update();
-	void Render() const;
+	void Update() override;
+	void Render() const override;
 	void Save() override;			//Guarda el juego
 };
 

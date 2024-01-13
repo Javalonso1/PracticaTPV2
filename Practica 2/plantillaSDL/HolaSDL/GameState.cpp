@@ -12,7 +12,7 @@ GameState::GameState(Game* a): myGame(a) {}
 GameState::~GameState() {
 }
 
-SDL_Renderer* GameState::getRenderer() {
+SDL_Renderer* const GameState::getRenderer() {
 	return myGame->getRenderer();
 }
 

@@ -17,7 +17,7 @@ const int maxPoints = 3;
 const int vida = 1;
 
 Alien::Alien() : myTexture(), subtipo(), frame(), SceneObject(), minimoAltura(), myMother() {}	//Constructor vacío
-Alien::Alien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), vida, f),
+Alien::Alien(Point2D<int> a, Texture* b, int d, PlayState* f, int h, Mothership* m) : subtipo(d), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), vida, f),
 																					frame(true), minimoAltura(h), 
 																					myMother(m), myTexture(b) {//Constuctor del alien
 	screenPos.h = myTexture->getFrameHeight();	//Le da altura y anchura a su rect

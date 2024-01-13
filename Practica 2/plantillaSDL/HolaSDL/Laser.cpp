@@ -10,7 +10,7 @@ const int maxTam = 600;
 const int minTam = 0;
 
 Laser::Laser() : Vel(), friendly(){}		//Constructor vacío
-Laser::Laser(Point2D<int>& a,int b, bool c, PlayState* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
+Laser::Laser(Point2D<int> a,int b, bool c, PlayState* gayme): friendly(c), SceneObject(a, wide, heigth, 0, gayme){	//Constructor con valores para el láser
 	ImAlive = true;
 	Vel = Vector2D<int> (0, b);		//Crea un vector que será la velocidad al láser
 }
@@ -31,11 +31,11 @@ bool Laser::hit(SDL_Rect* rect, bool fren, bool a) {		//Método al que se llama c
 	return false;
 }
 
-SDL_Rect* const Laser::getRect() {	//Método que devuelve su rect
+SDL_Rect* const Laser::getRect(){	//Método que devuelve su rect
 	return &screenPos;
 }
 
-bool Laser::Friendly() {	//Método que devuelve true si es un láser lanzado por la nave, y false en cualquier otro caso
+bool Laser::Friendly() const{	//Método que devuelve true si es un láser lanzado por la nave, y false en cualquier otro caso
 	return friendly;
 }
 

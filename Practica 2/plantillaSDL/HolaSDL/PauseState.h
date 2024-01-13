@@ -20,8 +20,8 @@ private:
 public:
 	PauseState(Game*);
 	~PauseState();
-	void Update();
-	void Render() const;
+	void Update() override;
+	void Render() const override;
 	void HandleEvents();
 	void Save() override;			
 };

@@ -25,10 +25,6 @@ const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tie
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
 
-bool goback = false;
-bool guardado = false;
-bool pause = false;
-
 Game::Game() : WinHeight(), WinLong(), renderer(), window(), texturas(), mapa(){}
 Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 			window(), texturas(), mapa(e) {
@@ -87,11 +83,11 @@ void Game::loadTextures() {
 	texturas[17] = new Texture(renderer, "shield_reward.png", 1, 1);
 }
 
-SDL_Renderer* Game::getRenderer() {
+SDL_Renderer* const Game::getRenderer() {
 	return renderer;
 }
 
-Texture* Game::devuelveText(int i) {
+Texture* Game::devuelveText(int i) const {
 		return texturas[i];
 }
 
@@ -141,7 +137,7 @@ void Game::replaceState(GameState* newState) {
 	DeusEx->replaceState(newState);
 }
 
-std::string Game::GetMap() {
+std::string Game::GetMap() const{
 	return mapa;
 }
 void Game::EndGame(bool a) {

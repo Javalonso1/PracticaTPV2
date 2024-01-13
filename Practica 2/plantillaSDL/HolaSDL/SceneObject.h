@@ -16,8 +16,8 @@ protected:
 	int width;
 	int height;
 	SDL_Rect screenPos;
-public:
 	int vidas;
+public:
 	SceneObject();
 	SceneObject(Point2D<int>,int,int,int, PlayState*);
 	virtual ~SceneObject();

@@ -15,6 +15,7 @@ private:
 	Estado MiEstado;
 	Texture* myTexture; //Textura de la nave			
 	float tiempoEsp;	//Tiempo que debe esperar el UFO para aparecer de nuevo
+	int randomizador = 0;
 public:
 	UFO();			//Constructor vacío
 	UFO(Point2D<int>, Texture*, PlayState*, int, int, int);	//Constructor

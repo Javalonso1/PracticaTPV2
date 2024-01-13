@@ -3,7 +3,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include "PlayState.h"
-Vector2D<int> Vel = Vector2D<int>(0, 15);		//Crea un vector que será la velocidad al láser;	//Velocidad
+const Vector2D<int> Vel = Vector2D<int>(0, 15);		//Crea un vector que será la velocidad al láser;	//Velocidad
 
 Bomba::Bomba(Point2D<int>& a, Texture* b, PlayState* gayme) :Pos(a), vidas(2), myTexture(b), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), 4, gayme) {}	//Constructor con valores{};
 

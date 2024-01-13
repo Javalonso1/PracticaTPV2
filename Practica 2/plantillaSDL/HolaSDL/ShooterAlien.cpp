@@ -9,7 +9,7 @@ const int LaserDesplazacion = 15;	//Pequeño número usado para centrar el láser r
 const int velLaser = 8;				//Velocidad que el alien le da al láser en su construtor
 const int disp = 5;					//Tiempo para disparar, hecho constante porque no nos funciona el random por alguna razón
 
-ShooterAlien::ShooterAlien(Point2D<int>& a, Texture* b, int d, PlayState* f, int h, Mothership* m) : Alien(a, b, d, f, h, m), shootlaser(0) {};
+ShooterAlien::ShooterAlien(Point2D<int> a, Texture* b, int d, PlayState* f, int h, Mothership* m) : Alien(a, b, d, f, h, m), shootlaser(0) {};
 
 void ShooterAlien::Update()  {
 	if (myMother->shouldMove()) {

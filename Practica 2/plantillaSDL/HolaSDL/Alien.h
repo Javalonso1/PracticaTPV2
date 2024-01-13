@@ -19,7 +19,7 @@ protected:
 	int minimoAltura;	//Altura bajo la cual sucede game over
 public:
 	Alien();			//Constructor vacío
-	Alien(Point2D<int>&, Texture*, int, PlayState*, int, Mothership*);
+	Alien(Point2D<int>, Texture*, int, PlayState*, int, Mothership*);
 	void Render() const override;		//Renderizado
 	virtual void Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado

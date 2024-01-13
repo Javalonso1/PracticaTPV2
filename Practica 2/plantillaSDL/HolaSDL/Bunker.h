@@ -16,7 +16,7 @@ private:
 
 public:
 	Bunker();			//Constructor vacío
-	Bunker(Point2D<int>&, Texture&, PlayState*, int);	//Constructor
+	Bunker(Point2D<int>, Texture&, PlayState*, int);	//Constructor
 	void Render() const override;		//Renderizado
 	void Update() override;		//Bucle Principal
 	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado

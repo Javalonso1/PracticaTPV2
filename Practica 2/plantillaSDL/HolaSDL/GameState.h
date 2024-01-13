@@ -25,6 +25,6 @@ public:
 	void addEventListener(EventHandler*);
 	void hasDied(GameList<GameObject, true>::anchor Iterador);
 	void addObject(GameObject*);
-	SDL_Renderer* getRenderer();
+	SDL_Renderer* const getRenderer();
 };
 

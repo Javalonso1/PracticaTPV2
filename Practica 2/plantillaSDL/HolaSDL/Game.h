@@ -34,6 +34,9 @@ private:
 	SDL_Event manolo;
 
 	bool exit;
+	bool goback = false;
+	bool guardado = false;
+	bool pause = false;
 
 public:	
 	Game();				//Constructor vacío
@@ -41,8 +44,8 @@ public:
 	~Game();			//Destructor
 	void Run();
 	void loadTextures();			//Carga las texturas	
-	SDL_Renderer* getRenderer();	
-	Texture* devuelveText(int);
+	SDL_Renderer* const getRenderer();	
+	Texture* devuelveText(int) const;
 	void ExitGame();
 	void pushState(GameState*);
 	void popState();
@@ -50,6 +53,6 @@ public:
 	void continuar(bool);
 	void PauseGame();
 	void EndGame(bool);
-	std::string GetMap();
+	std::string GetMap() const;
 };
 
