@@ -5,11 +5,16 @@
 #include "PlayState.h"
 #include "Bomba.h"
 #include "Escudo.h"
+
 const int BordeD = 850;				//Constante que indica cuál es el borde derecho de la ventana
 const int BordeI = -50;				//Constante que indica cuál es el borde izquierdo de la ventana
 const int espera = 50;				//Tiempo que permanece el ovni fuera de la pantalla. Constante porque no nos funciona el random
 const int velocidad = 5;			//Velocidad horizontal del alien
 const int Velocity = 1;
+
+const int bomTexIndx = 15;
+const int shiTexIndx = 17;
+
 UFO::UFO() : MiEstado(), SceneObject(), tiempoEsp(){}
 UFO::UFO(Point2D<int> a, Texture* b, PlayState* c, int d, int e, int f) : myTexture(b), tiempoEsp(e), MiEstado((Estado)f), SceneObject(a, b->getFrameWidth(), b->getFrameHeight(), d, c), MovingRight(-1){}
 
@@ -69,11 +74,11 @@ void UFO::save(std::ostream& a) const {
 }
 void UFO::Gamble() {
 	if (randomizador == 0) {
-		Bomba* b = new Bomba(pos, myPlayState->returnText(15), myPlayState);
+		Bomba* b = new Bomba(pos, myPlayState->returnText(bomTexIndx), myPlayState);
 		myPlayState->fireLaser(b);
 	}
 	else if (randomizador == 1) {
-		Escudo* b = new Escudo(pos, myPlayState->returnText(17), myPlayState);
+		Escudo* b = new Escudo(pos, myPlayState->returnText(shiTexIndx), myPlayState);
 		myPlayState->fireLaser(b);
 	}	
 }

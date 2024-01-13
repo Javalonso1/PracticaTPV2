@@ -25,6 +25,25 @@ const int NumDedAliens = 7;	//Constante que indica la cantidad de aliens que tie
 constexpr int winWidth = 800;
 constexpr int winHeight = 600;
 
+const int cannTexIndx = 0;
+const int bunkTexIdx = 1;
+const int alienTexIndx = 2;
+const int backTexIndx = 3;
+const int laserTexIndx = 4;
+const int ufoTexIndx = 5;
+const int mainTexIndx = 6;
+const int newTexIndx = 7;
+const int loadTexIndx = 8;
+const int exitTexIndx = 9;
+const int contTexIndx = 10;
+const int saveTexIndx = 11;
+const int retTexIndx = 12;
+const int winTexIndx = 13;
+const int loseTexIndx = 14;
+const int bomTexIndx = 15;
+const int protTexIndx = 16;
+const int shiTexIndx = 17;
+
 Game::Game() : WinHeight(), WinLong(), renderer(), window(), texturas(), mapa(){}
 Game::Game(std::string e) : WinHeight(), WinLong(), renderer(),
 			window(), texturas(), mapa(e) {
@@ -63,24 +82,24 @@ Game::~Game() {	//Destructor del Game
 
 
 void Game::loadTextures() {
-	texturas[0] = new Texture(renderer, "spaceship.png", 1, 1);	//Inicializa las texturas
-	texturas[2] = new Texture(renderer, "aliens.png", 3, 2);
-	texturas[1] = new Texture(renderer, "bunker.png", 1, 4);
-	texturas[3] = new Texture(renderer, "stars.png", 1, 1);
-	texturas[4] = new Texture(renderer, "laser.png", 1, 1);
-	texturas[5] = new Texture(renderer, "ufo.png", 1, 2);
-	texturas[6] = new Texture(renderer, "mainMenu.png", 1, 1);
-	texturas[7] = new Texture(renderer, "nuevaPartida.png", 1, 1);
-	texturas[8] = new Texture(renderer, "cargarPartida.png", 1, 1);
-	texturas[9] = new Texture(renderer, "salir.png", 1, 1);
-	texturas[10] = new Texture(renderer, "continuar.png", 1, 1);
-	texturas[11] = new Texture(renderer, "guardarPartida.png", 1, 1);
-	texturas[12] = new Texture(renderer, "volverAlMenu.png", 1, 1);	
-	texturas[13] = new Texture(renderer, "hasGanado.png", 1, 1);
-	texturas[14] = new Texture(renderer, "gameOver.png", 1, 1);
-	texturas[15] = new Texture(renderer, "bomb.png", 1, 1);
-	texturas[16] = new Texture(renderer, "shield.png", 1, 1);
-	texturas[17] = new Texture(renderer, "shield_reward.png", 1, 1);
+	texturas[cannTexIndx] = new Texture(renderer, "spaceship.png", 1, 1);	//Inicializa las texturas
+	texturas[alienTexIndx] = new Texture(renderer, "aliens.png", 3, 2);
+	texturas[bunkTexIdx] = new Texture(renderer, "bunker.png", 1, 4);
+	texturas[backTexIndx] = new Texture(renderer, "stars.png", 1, 1);
+	texturas[laserTexIndx] = new Texture(renderer, "laser.png", 1, 1);
+	texturas[ufoTexIndx] = new Texture(renderer, "ufo.png", 1, 2);
+	texturas[mainTexIndx] = new Texture(renderer, "mainMenu.png", 1, 1);
+	texturas[newTexIndx] = new Texture(renderer, "nuevaPartida.png", 1, 1);
+	texturas[loadTexIndx] = new Texture(renderer, "cargarPartida.png", 1, 1);
+	texturas[exitTexIndx] = new Texture(renderer, "salir.png", 1, 1);
+	texturas[contTexIndx] = new Texture(renderer, "continuar.png", 1, 1);
+	texturas[saveTexIndx] = new Texture(renderer, "guardarPartida.png", 1, 1);
+	texturas[retTexIndx] = new Texture(renderer, "volverAlMenu.png", 1, 1);	
+	texturas[winTexIndx] = new Texture(renderer, "hasGanado.png", 1, 1);
+	texturas[loseTexIndx] = new Texture(renderer, "gameOver.png", 1, 1);
+	texturas[bomTexIndx] = new Texture(renderer, "bomb.png", 1, 1);
+	texturas[protTexIndx] = new Texture(renderer, "shield.png", 1, 1);
+	texturas[shiTexIndx] = new Texture(renderer, "shield_reward.png", 1, 1);
 }
 
 SDL_Renderer* const Game::getRenderer() {

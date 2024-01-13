@@ -7,8 +7,21 @@
 
 const int MaxH = 600;
 const int MaxW = 800;
+
+const int newW = 250;
+const int newH = 135;
+const int loadW = 230;
+const int loadH = 200;
+const int exitW = 350;
+const int exitH = 265;
+
+const int mainTexIndx = 6;
+const int newTexIndx = 7;
+const int loadTexIndx = 8;
+const int exitTexIndx = 9;
+
 MainMenuState::MainMenuState(Game* e) : GameState(e) {	
-	NuevaPartida = new Button(this, myGame->devuelveText(7), 250, 135);	
+	NuevaPartida = new Button(this, myGame->devuelveText(newTexIndx), newW, newH);	
 	addEventListener(NuevaPartida);
 	NuevaPartida->Connect([this]() {
 		PlayState* playstate = new PlayState(myGame);
@@ -17,7 +30,7 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 		});
 	objects.push_back(NuevaPartida);
 
-	CargarPartida = new Button(this, myGame->devuelveText(8), 230, 200);
+	CargarPartida = new Button(this, myGame->devuelveText(loadTexIndx), loadW, loadH);
 	addEventListener(CargarPartida);
 	CargarPartida->Connect([this]() {
 		std::string cargar = "saved.txt";		
@@ -27,7 +40,7 @@ MainMenuState::MainMenuState(Game* e) : GameState(e) {
 		});
 	objects.push_back(CargarPartida);
 
-	Salir = new Button(this, myGame->devuelveText(9), 350, 265);
+	Salir = new Button(this, myGame->devuelveText(exitTexIndx), exitW, exitH);
 	addEventListener(Salir);
 	Salir->Connect([this]() {myGame->ExitGame(); });
 	objects.push_back(Salir);
@@ -51,7 +64,7 @@ void MainMenuState::Render() const {
 	rect.w = MaxW;
 	rect.x = 0;
 	rect.y = 0;
-	myGame->devuelveText(6)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
+	myGame->devuelveText(mainTexIndx)->renderFrame(rect, 0, 0);//Se crea el fondo lo primero de todo
 	NuevaPartida->Render();
 	CargarPartida->Render();
 	Salir->Render();
