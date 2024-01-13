@@ -181,13 +181,21 @@ void PlayState::HandleEvents(const SDL_Event& ev) {
 	}
 	nave->handleEvent(ev);	
 }
-
-bool PlayState::CheckColisions(SDL_Rect* LaserRect, bool friendly, bool escudo) {	//método que comprueba la colisiones del láser		
-	auto i = scnobj.begin();
-	while (i != scnobj.end() && !(*i).hit(LaserRect, friendly, escudo)) {
-		++i;
+void PlayState::InvincibleShip() {
+	nave->Invincible();
+}
+bool PlayState::CheckColisions(SDL_Rect* LaserRect, bool friendly, bool reward) {	//método que comprueba la colisiones del láser		
+	if (reward) {
+		return nave->hit(LaserRect, friendly, reward);
 	}
-	return i != scnobj.end();
+	else {
+		auto i = scnobj.begin();
+		while (i != scnobj.end() && !(*i).hit(LaserRect, friendly, false)) {
+			++i;
+		}
+		return i != scnobj.end();
+	}
+	
 }
 
 void PlayState::HasDied(GameList<SceneObject>::anchor it) {

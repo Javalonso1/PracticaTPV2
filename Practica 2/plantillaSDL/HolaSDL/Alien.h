@@ -9,8 +9,7 @@ class Mothership;
 class Alien: public SceneObject
 {
 protected:
-	bool frame;			//Frame actual de la animación
-		
+	bool frame;			//Frame actual de la animación		
 	int subtipo;		//Subtipo de alien
 	Texture* myTexture;	//Textura
 

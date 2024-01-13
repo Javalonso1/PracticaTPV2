@@ -42,10 +42,12 @@ void Cannon::Update() {		//Update
 	screenPos.y = pos.getY();
 	if (invencible < invencibleM) invencible++;
 }
-
+void Cannon::Invincible() {
+	invencible = 0;
+}
 bool Cannon::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado	
 	if (a && SDL_HasIntersection(laser, &screenPos)) {
-		invencible = 0;
+		return true;
 	}
 	else
 	{

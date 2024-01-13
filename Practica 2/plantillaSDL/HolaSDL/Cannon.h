@@ -22,7 +22,7 @@ public:
 	void Render() const override;		//Renderizado
 	void Update() override;		//Bucle principal
 	bool hit(SDL_Rect*, bool, bool) override;			//Método para ser golpeado
-	//void handleEvent(int, bool);	//Usado para manejar eventos	
+	void Invincible();
 	void save(std::ostream&) const override;
 	void handleEvent(const SDL_Event&) override;	
 };

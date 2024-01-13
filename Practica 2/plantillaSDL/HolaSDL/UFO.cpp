@@ -62,7 +62,7 @@ void UFO::Update() {		//Update
 
 bool UFO::hit(SDL_Rect* laser, bool frien, bool a) {	//Si es golpeado
 	if (MiEstado == Visible && SDL_HasIntersection(laser, &screenPos) && frien) {
-		MiEstado = Destruido;
+		MiEstado = Destruido;		
 		Gamble();
 		return true;
 	}
@@ -73,12 +73,14 @@ void UFO::save(std::ostream& a) const {
 	a << "5 " << pos.getX() << " " << pos.getY() << " " << vidas << " " << MiEstado << " " << tiempoEsp;
 }
 void UFO::Gamble() {
-	if (randomizador == 0) {
+	/*if (randomizador == 0) {
 		Bomba* b = new Bomba(pos, myPlayState->returnText(bomTexIndx), myPlayState);
 		myPlayState->fireLaser(b);
 	}
-	else if (randomizador == 1) {
+	else if (randomizador == 1) {		
 		Escudo* b = new Escudo(pos, myPlayState->returnText(shiTexIndx), myPlayState);
 		myPlayState->fireLaser(b);
-	}	
+	}*/
+	Escudo* b = new Escudo(pos, myPlayState->returnText(shiTexIndx), myPlayState);
+	myPlayState->fireLaser(b);
 }

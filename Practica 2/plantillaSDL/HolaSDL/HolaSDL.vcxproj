@@ -86,6 +86,7 @@
     <ClCompile Include="Mothership.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="Reward.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="ShooterAlien.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Mothership.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="Reward.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />

@@ -28,6 +28,7 @@ public:
 	void HandleEvents(const SDL_Event&) override;	//Ejecuta eventos	
 	void fireLaser(SceneObject*);			//Llamado cuando se dispara un láser
 	bool CheckColisions(SDL_Rect*, bool, bool);	//Comprueba las colisiones de todos los láseres		
+	void InvincibleShip();
 	void EndGame(bool);			//Cierra el juego	
 	void HasDied(GameList<SceneObject>::anchor Iterador); //Añade un objeto a la lista de muertos
 	void Save() override;			//Guarda el juego
